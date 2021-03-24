@@ -130,10 +130,22 @@ Plug 'airblade/vim-rooter' " check that if the fzf looking in the project, that 
 
 Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
 
-"for node js
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint']
-"for node js
+" coc stuff
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
+" Plug 'jiangmiao/auto-pairs' "this will auto close ( [ {
+" these two plugins will add highlighting and indenting to JSX and TSX files.
+Plug 'yuezk/vim-js'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
+" The beauty of CoC is that you can add support for the language you're working with. 
+" For example, if you need to work with Python, just add 
+" coc-python to 
+" g:coc_global_extensions, save the file, reopen Neovim, 
+" run :PlugInstall, and you're set. Cool, right? 
+" coc stuff
+
+" Plug 'w0rp/ale' " Es lint
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -264,4 +276,13 @@ command! -bang -nargs=* GGrep
 
 " end of fzf configuration
 
+
+" setting up es lint
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
 
