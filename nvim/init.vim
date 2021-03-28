@@ -4,6 +4,8 @@ let mapleader=" "
 set nocompatible   " Disable vi-compatibility
 set t_Co=256
 syntax on
+syntax enable
+
 filetype off
 filetype plugin indent on
 set ttyfast "helps in fast scrolling of screen
@@ -39,24 +41,23 @@ set encoding=utf-8      " set encoding to UTF-8 (default was "latin1")
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu            " visual autocomplete for command menu
 set wildmode=longest,list,full "this is autocompletion menu
-" automatically rebalance windows on vim resize
-autocmd VimResized * :wincmd =
+autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
 
 set lazyredraw          " redraw screen only when we need to, help in fast scrolling of screen
 set showmatch           " highlight matching parentheses / brackets [{()}]
 
 """"" status line
 set laststatus=2        " enable the status line, if enabled then we can do futher tweaking by set statusline
-                        "for futher tweaking refer to https://shapeshed.com/vim-statuslines/
+                        " for futher tweaking refer to https://shapeshed.com/vim-statuslines/
 "set laststatus=0       " to disable the status line 
 
-set showtabline=2                       " Always show tabs
-" set showtabline=0                       " don't show the tabs
-set cmdheight=1                         " More space for displaying messages
+set showtabline=2       " Always show tabs
+" set showtabline=0     " don't show the tabs
+set cmdheight=1         " More space for displaying messages
 
 """" for windows 
-set splitbelow                          " Horizontal splits will automatically be below
-set splitright                          " Vertical splits will automatically be to the right
+set splitbelow          " Horizontal splits will automatically be below
+set splitright          " Vertical splits will automatically be to the right
 
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
@@ -89,6 +90,44 @@ set softtabstop=4       " backspace after pressing <TAB> will remove up to this 
 "nnoremap <S-TAB> :bprevious<CR>
 
 
+"*****************************************************************************
+"" Mappings
+"*****************************************************************************
+
+"" Split
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Git
+" noremap <Leader>ga :Gwrite<CR>
+" noremap <Leader>gc :Gcommit<CR>
+" noremap <Leader>gsh :Gpush<CR>
+" noremap <Leader>gll :Gpull<CR>
+" noremap <Leader>gs :Gstatus<CR>
+" noremap <Leader>gb :Gblame<CR>
+" noremap <Leader>gd :Gvdiff<CR>
+" noremap <Leader>gr :Gremove<CR>
+
+" session management
+" nnoremap <leader>so :OpenSession<Space>
+" nnoremap <leader>ss :SaveSession<Space>
+" nnoremap <leader>sd :DeleteSession<CR>
+" nnoremap <leader>sc :CloseSession<CR>
+
+"" Tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
+
+
+"" Set working directory
+" nnoremap <leader>. :lcd %:p:h<CR>
+
+"" Opens an edit command with the path of the currently edited file filled in
+noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+"" Opens a tab edit command with the path of the currently edited file filled
+noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 
 
@@ -114,26 +153,51 @@ set ruler
 set conceallevel=0                      " So that I can see `` in markdown files
 
 
+let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+if has('win32')&&!has('win64')
+  let curl_exists=expand('C:\Windows\Sysnative\curl.exe')
+else
+  let curl_exists=expand('curl')
+endif
+
+" let g:vim_bootstrap_langs = "c,html,javascript,lua,php,python,typescript"
+" let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+" let g:vim_bootstrap_theme = "dracula"
+" let g:vim_bootstrap_frams = ""
+
+if !filereadable(vimplug_exists)
+  if !executable(curl_exists)
+    echoerr "You have to install curl or first install vim-plug yourself!"
+    execute "q!"
+  endif
+  echo "Installing Vim-Plug..."
+  echo ""
+  silent exec "!"curl_exists" -fLo " . shellescape(vimplug_exists) . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  let g:not_finish_vimplug = "yes"
+
+  autocmd VimEnter * PlugInstall
+endif
+
+" Required:
+call plug#begin(expand('~/.config/nvim/plugged'))
+
 
 call plug#begin("~/.vim/plugged")
-" Plugin Section
-
+"*****************************************************************************
+"" Plug install packages
+"*****************************************************************************
 Plug 'scrooloose/nerdtree'
+" Plug 'jistr/vim-nerdtree-tabs' " see no longer maintained scene
 Plug 'ryanoasis/vim-devicons' "for icons 
-Plug 'dracula/vim' "theme 
-Plug 'rbong/vim-crystalline' "status line 
+Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+" inserted at bottom, see if work right 
 
-" fzf stuff
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter' " check that if the fzf looking in the project, that we are in, by keeping tracks of git and all.
-
 Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
-
-" coc stuff
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
-" Plug 'jiangmiao/auto-pairs' "this will auto close ( [ {
 " these two plugins will add highlighting and indenting to JSX and TSX files.
 Plug 'yuezk/vim-js'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -149,23 +213,100 @@ Plug 'w0rp/ale' " Es lint
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-"vim surround as was mentioned in the book
 Plug 'tpope/vim-surround'
 Plug 'bfrg/vim-cpp-modern' 
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }
 
 
 
-"Plug 'bling/vim-airline'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+" Plug 'vim-airline/vim-airline' will slow down your stuff greatly
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-scripts/grep.vim'
+Plug 'vim-scripts/CSApprox'
+Plug 'Raimondi/delimitMate'
+Plug 'majutsushi/tagbar'
+Plug 'dense-analysis/ale'
+Plug 'Yggdroot/indentLine'
+Plug 'editor-bootstrap/vim-bootstrap-updater'
+Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
+
+if isdirectory('/usr/local/opt/fzf')
+  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+else
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+endif
+let g:make = 'gmake'
+if exists('make')
+        let g:make = 'make'
+endif
+Plug 'Shougo/vimproc.vim', {'do': g:make}
+
+"" Vim-Session
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+"" Snippets
+" Plug 'SirVer/ultisnips' "take our performance
+Plug 'honza/vim-snippets'
+
+"*****************************************************************************
+"" Custom bundles
+"*****************************************************************************
+
+" c
+Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
+Plug 'ludwig/split-manpage.vim'
+
+
+" html
+"" HTML Bundle
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gko/vim-coloresque'
+Plug 'tpope/vim-haml'
+Plug 'mattn/emmet-vim'
+
+
+" javascript
+"" Javascript Bundle
+Plug 'jelera/vim-javascript-syntax'
+
+
+" lua
+"" Lua Bundle
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'xolox/vim-lua-inspect'
+
+
+" php
+"" PHP Bundle
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install --no-dev -o'}
+Plug 'stephpy/vim-php-cs-fixer'
+
+
+" python
+"" Python Bundle
+Plug 'davidhalter/jedi-vim'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+
+
+" typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+
+
+"*****************************************************************************
+"*****************************************************************************
 
 call plug#end()
-"Config Section
+
 
 if (has("termguicolors"))
   set termguicolors
 endif
-syntax enable
 
 colorscheme dracula
 :highlight Comment ctermfg=green " to set comments in green colour
@@ -175,11 +316,18 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 50
+
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
-" nnoremap <silent> <leader>d :NERDTreeToggle<CR>
 
 tnoremap <Esc> <C-\><C-n>
 " start terminal in insert mode
@@ -187,12 +335,10 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
 function! OpenTerminal()
   split term://fish
-  resize 25
+  resize 28
 endfunction
 nnoremap <leader>n :call OpenTerminal()<CR>
 
-
-"for crystalline
 
 
 " fzf configuration
@@ -228,6 +374,10 @@ let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden"
 let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ignoring node modules 
 
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+" extra but try what is this 
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
 
 " Customize fzf colors to match your color scheme
@@ -285,4 +435,264 @@ let g:ale_fixers = {
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
+
+
+" ale
+let g:ale_linters = {}
+
+
+" grep.vim
+nnoremap <silent> <leader>f :Rgrep<CR>
+let Grep_Default_Options = '-IR'
+let Grep_Skip_Files = '*.log *.db'
+let Grep_Skip_Dirs = '.git node_modules'
+
+" terminal emulation
+nnoremap <silent> <leader>sh :terminal<CR>
+
+
+"*****************************************************************************
+"" Commands
+"*****************************************************************************
+" remove trailing whitespaces
+command! FixWhitespace :%s/\s\+$//e
+
+"*****************************************************************************
+"" Functions
+"*****************************************************************************
+if !exists('*s:setupWrapping')
+  function s:setupWrapping()
+    set wrap
+    set wm=2
+    set textwidth=79
+  endfunction
+endif
+
+
+
+"*****************************************************************************
+"" Autocmd Rules
+"*****************************************************************************
+"" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
+augroup vimrc-sync-fromstart
+  autocmd!
+  autocmd BufEnter * :syntax sync maxlines=200
+augroup END
+
+"" Remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+"" txt
+augroup vimrc-wrapping
+  autocmd!
+  autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
+augroup END
+
+"" make/cmake
+augroup vimrc-make-cmake
+  autocmd!
+  autocmd FileType make setlocal noexpandtab
+  autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
+augroup END
+
+set autoread
+
+
+
+""""""" some more configuration
+if has("gui_running")
+  if has("gui_mac") || has("gui_macvim")
+    set guifont=Menlo:h12
+    set transparency=7
+  endif
+else
+  let g:CSApprox_loaded = 1
+
+  " IndentLine
+  let g:indentLine_enabled = 1
+  let g:indentLine_concealcursor = 0
+  let g:indentLine_char = '┆'
+  let g:indentLine_faster = 1
+
+  
+endif
+
+"" Disable the blinking cursor.
+set gcr=a:blinkon0
+
+au TermEnter * setlocal scrolloff=0
+au TermLeave * setlocal scrolloff=3
+
+
+"" Status bar
+" set laststatus=2 " already above 
+
+"" Use modeline overrides
+set modeline
+set modelines=10
+
+set title
+set titleold="Terminal"
+set titlestring=%F
+
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+if exists("*fugitive#statusline")
+  set statusline+=%{fugitive#statusline()}
+endif
+
+"*****************************************************************************
+"" Abbreviations
+"*****************************************************************************
+"" no one is really happy until you have this shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
+
+" snippets
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" let g:UltiSnipsEditSplit="vertical"
+
+" Disable visualbell
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+
+"" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+" noremap YY "+y<CR>
+" noremap <leader>p "+gP<CR>
+" noremap XX "+x<CR>
+
+if has('macunix')
+  " pbcopy for OSX copy/paste
+  vmap <C-x> :!pbcopy<CR>
+  vmap <C-c> :w !pbcopy<CR><CR>
+endif
+
+"" Buffer nav
+noremap <leader>z :bp<CR>
+noremap <leader>q :bp<CR>
+noremap <leader>x :bn<CR>
+noremap <leader>w :bn<CR>
+
+"" Close buffer
+noremap <leader>c :bd<CR>
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+"" Open current line on GitHub
+nnoremap <Leader>o :.Gbrowse<CR>
+
+"*****************************************************************************
+"" Custom configs
+"*****************************************************************************
+
+" c
+autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
+
+
+" html
+" for html files, 2 spaces
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+
+
+" javascript
+let g:javascript_enable_domhtmlcss = 1
+
+" vim-javascript
+augroup vimrc-javascript
+  autocmd!
+  autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+augroup END
+
+
+" lua
+
+
+" php
+" Phpactor plugin
+" Include use statement
+nmap <Leader>u :call phpactor#UseAdd()<CR>
+" Invoke the context menu
+nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+" Invoke the navigation menu
+nmap <Leader>nn :call phpactor#Navigate()<CR>
+" Goto definition of class or class member under the cursor
+nmap <Leader>oo :call phpactor#GotoDefinition()<CR>
+nmap <Leader>oh :call phpactor#GotoDefinitionHsplit()<CR>
+nmap <Leader>ov :call phpactor#GotoDefinitionVsplit()<CR>
+nmap <Leader>ot :call phpactor#GotoDefinitionTab()<CR>
+" Show brief information about the symbol under the cursor
+nmap <Leader>K :call phpactor#Hover()<CR>
+" Transform the classes in the current file
+nmap <Leader>tt :call phpactor#Transform()<CR>
+" Generate a new class (replacing the current file)
+nmap <Leader>cc :call phpactor#ClassNew()<CR>
+" Extract expression (normal mode)
+nmap <silent><Leader>ee :call phpactor#ExtractExpression(v:false)<CR>
+" Extract expression from selection
+vmap <silent><Leader>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+" Extract method from selection
+vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+
+
+" python
+" vim-python
+augroup vimrc-python
+  autocmd!
+  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
+      \ formatoptions+=croq softtabstop=4
+      \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+augroup END
+
+" jedi-vim
+let g:jedi#popup_on_dot = 0
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#show_call_signatures = "0"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#smart_auto_mappings = 0
+
+" ale
+:call extend(g:ale_linters, {
+    \'python': ['flake8'], })
+
+
+" Syntax highlight
+let python_highlight_all = 1
+
+
+" typescript
+let g:yats_host_keyword = 1
+
+"*****************************************************************************
+"*****************************************************************************
 
