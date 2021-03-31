@@ -29,8 +29,6 @@ set visualbell           " don't beep
 set noerrorbells         " don't beep
 set autowrite           "Save on buffer switch
 set mouse=a
-"set clipboard=unnamed                                        " yank and paste with the system clipboard
-
 
 """" Don't actually know what is this 
 set scrolloff=3                                              " show context above/below cursorline
@@ -209,7 +207,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 " run :PlugInstall, and you're set. Cool, right? 
 " coc stuff
 
-Plug 'w0rp/ale' " Es lint
+Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time 
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -217,19 +215,18 @@ Plug 'tpope/vim-surround'
 Plug 'bfrg/vim-cpp-modern' 
 
 
-
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary' 
+Plug 'tpope/vim-fugitive'   "something related to git
 " Plug 'vim-airline/vim-airline' will slow down your stuff greatly
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
-Plug 'vim-scripts/CSApprox'
-Plug 'Raimondi/delimitMate'
-Plug 'majutsushi/tagbar'
-Plug 'dense-analysis/ale'
-Plug 'Yggdroot/indentLine'
-Plug 'editor-bootstrap/vim-bootstrap-updater'
+" Plug 'vim-scripts/CSApprox' " for colorscheme for gvim type
+" Plug 'Raimondi/delimitMate' " autclose 
+Plug 'majutsushi/tagbar' " https://github.com/preservim/tagbar
+" Plug 'dense-analysis/ale' " takes lots of time, intellisense type
+Plug 'Yggdroot/indentLine' " for indenting lines, I think this is imp
+" Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
 
@@ -578,9 +575,9 @@ if has('autocmd')
 endif
 
 "" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
+"" if has('unnamedplus')
+"" set clipboard=unnamed,unnamedplus
+"" endif
 
 " noremap YY "+y<CR>
 " noremap <leader>p "+gP<CR>
