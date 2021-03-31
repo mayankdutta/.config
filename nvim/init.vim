@@ -242,9 +242,9 @@ if exists('make')
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
-"" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+"" Vim-Session " pretty much useless
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-session'
 
 "" Snippets
 " Plug 'SirVer/ultisnips' "take our performance
