@@ -41,37 +41,6 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
 Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time 
 
-Plug 'tpope/vim-commentary' 
-Plug 'tpope/vim-fugitive'   "something related to git
-" Plug 'vim-airline/vim-airline' will slow down your stuff greatly
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'airblade/vim-gitgutter'
-
-Plug 'vim-scripts/grep.vim'
-Plug 'majutsushi/tagbar' " https://github.com/preservim/tagbar
-Plug 'Yggdroot/indentLine' " for indenting lines, I think this is imp
-Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-
-Plug 'pangloss/vim-javascript' 
-Plug 'sheerun/vim-polyglot' " for hightlighting
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'nathanaelkane/vim-indent-guides'
-
-" not working now, will have to work on mapping
-Plug 'junegunn/vim-easy-align' " important 
-" try these commands:
-"" vipga=
-"""" visual-select inner paragraph
-"""" Start EasyAlign command (ga)
-"""" Align around =
-"" gaip=
-"""" Start EasyAlign command (ga) for inner paragraph
-"""" Align around =
-
-Plug 'cometsong/CommentFrame.vim' " how to use, pic saved to desktop
-" press leader and then one from the images there.
-
 
 "*****************************************************************************
 "" Custom bundles

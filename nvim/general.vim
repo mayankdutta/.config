@@ -112,11 +112,6 @@ endif
 
 
 "" Disable the blinking cursor.
-set gcr=a:blinkon0
-
-au TermEnter * setlocal scrolloff=0
-au TermLeave * setlocal scrolloff=3
-
 
 "" Status bar
 " set laststatus=2 " already above 
@@ -136,13 +131,11 @@ if exists("*fugitive#statusline")
 endif
 
 " Disable visualbell
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
-endif
+" set noerrorbells visualbell t_vb=
 
 "" Copy/Paste/Cut
 "" if has('unnamedplus')
 "" set clipboard=unnamed,unnamedplus
 "" endif
 
+set guicursor& " set default setting for cursor
