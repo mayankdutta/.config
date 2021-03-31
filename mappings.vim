@@ -116,3 +116,5 @@ nnoremap <silent> <leader><space> :noh<cr>
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
 
+" terminal emulation
+nnoremap <silent> <leader>sh :terminal<CR>
