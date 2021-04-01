@@ -19,6 +19,8 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
 Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time 
 
+Plug 'junegunn/vim-easy-align' " for aligning content, see https://github.com/junegunn/vim-easy-align
+
 
 "*****************************************************************************
 ""                          Custom bundles
@@ -147,8 +149,7 @@ let g:ale_fix_on_save = 1
 
 
 "" easy align, plugin 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign) " Start interactive EasyAlign in visual mode (e.g. vipga)
 
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
