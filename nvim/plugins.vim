@@ -1,36 +1,14 @@
-let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
-if has('win32')&&!has('win64')
-  let curl_exists=expand('C:\Windows\Sysnative\curl.exe')
-else
-  let curl_exists=expand('curl')
-endif
-
-if !filereadable(vimplug_exists)
-  if !executable(curl_exists)
-    echoerr "You have to install curl or first install vim-plug yourself!"
-    execute "q!"
-  endif
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent exec "!"curl_exists" -fLo " . shellescape(vimplug_exists) . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  let g:not_finish_vimplug = "yes"
-
-  autocmd VimEnter * PlugInstall
-endif
-
-" Required:
-call plug#begin(expand('~/.config/nvim/plugged'))
-
 
 call plug#begin("~/.vim/plugged")
 "*****************************************************************************
-"" Plug install packages
+"                        Plug install packages
 "*****************************************************************************
 
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs' " see no longer maintained scene
 Plug 'ryanoasis/vim-devicons' "for icons 
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'rbong/vim-crystalline' "status line 
+
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -43,9 +21,7 @@ Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time
 
 
 "*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
-"*****************************************************************************
+""                          Custom bundles
 "*****************************************************************************
 
 call plug#end()
@@ -55,22 +31,11 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme dracula
-:highlight Comment ctermfg=green " to set comments in green colour
-
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
-
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -80,18 +45,17 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nnoremap <silent> <leader>b :NERDTreeToggle<CR>
 
 tnoremap <Esc> <C-\><C-n>
+
 " start terminal in insert mode
 " au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 
-" open terminal on ctrl+n
 function! OpenTerminal()
   split term://fish
   resize 28
 endfunction
-" nnoremap <leader>n :call OpenTerminal()<CR>
-nnoremap <silent> <C-n> :call OpenTerminal()<CR>
-
+nnoremap <leader>n :call OpenTerminal()<CR>
+" nnoremap <silent> <C-n> :call OpenTerminal()<CR>
 
 
 " fzf configuration
@@ -120,8 +84,6 @@ let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden"
 let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ignoring node modules 
 
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
 " extra but try what is this 
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
@@ -182,24 +144,6 @@ let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
 
-
-
-"*****************************************************************************
-"" Commands
-"*****************************************************************************
-" remove trailing whitespaces
-command! FixWhitespace :%s/\s\+$//e
-
-"*****************************************************************************
-"" Functions
-"*****************************************************************************
-if !exists('*s:setupWrapping')
-  function s:setupWrapping()
-    set wrap
-    set wm=2
-    set textwidth=79
-  endfunction
-endif
 
 
 "" easy align, plugin 

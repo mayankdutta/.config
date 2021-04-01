@@ -116,3 +116,38 @@ nnoremap <silent> <leader><space> :noh<cr>
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
 
+" try first
+" Terminal settings, C-n terminal things
+if has('terminal')
+  " Kill job and close terminal window
+  tnoremap <Leader>q <C-w><C-C><C-w>c<cr>
+
+  " switch to normal mode with esc
+  tnoremap <Esc> <C-W>N
+
+  " mappings to move out from terminal to other views
+  tnoremap <C-h> <C-w>h
+  tnoremap <C-j> <C-w>j
+  tnoremap <C-k> <C-w>k
+  tnoremap <C-l> <C-w>l
+ 
+  " Open terminal in vertical, horizontal and new tab
+  nnoremap <leader>tv :vsplit<cr>:term ++curwin<CR>
+  nnoremap <leader>ts :split<cr>:term ++curwin<CR>
+  nnoremap <leader>tt :tabnew<cr>:term ++curwin<CR>
+
+  tnoremap <leader>tv <C-w>:vsplit<cr>:term ++curwin<CR>
+  tnoremap <leader>ts <C-w>:split<cr>:term ++curwin<CR>
+  tnoremap <leader>tt <C-w>:tabnew<cr>:term ++curwin<CR>
+
+  " always start terminal in insert mode when I switch to it
+  " NOTE(arslan): startinsert doesn't work in Terminal-normal mode.
+  " autocmd WinEnter * if &buftype == 'terminal' | call feedkeys("i") | endif
+endif
+
+" Remap H and L (top, bottom of screen to left and right end of line)
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L g_
+

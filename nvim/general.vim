@@ -1,10 +1,18 @@
 set t_Co=256
 syntax on
+
 syntax enable
+set termguicolors
 
 filetype off
 filetype plugin indent on
 set ttyfast "helps in fast scrolling of screen
+
+" don't know what this does.
+if !has('nvim')
+  set ttymouse=xterm2
+  set ttyscroll=3
+endif
 
 set list                        "show trailing white space
 set relativenumber
@@ -21,10 +29,39 @@ set number                      " always show line numbers
 set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase
 set timeout timeoutlen=200 ttimeoutlen=100
+
 set visualbell           " don't beep
 set noerrorbells         " don't beep
+
+set noswapfile               " Don't use swapfile
+set nobackup                 " Don't create annoying backup files
+
+set fileformats=unix,dos,mac " Prefer Unix over Windows over OS 9 formats
+
 set autowrite           "Save on buffer switch
 set mouse=a
+
+" don't know what it does
+set nocursorcolumn           " speed up syntax highlighting
+set nocursorline
+set updatetime=300
+set pumheight=10             " Completion window max size
+set conceallevel=2           " Concealed text is completely hidden
+
+set shortmess+=c   " Shut off completion messages
+
+" increase max memory to show syntax highlighting for large files 
+set maxmempattern=20000
+
+" ~/.viminfo needs to be writable and readable. Set oldfiles to 1000 last
+" recently opened files, :FzfHistory uses it
+set viminfo='1000
+
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.cache/vim
+endif
+
 
 """" Don't actually know what is this 
 set scrolloff=3                                              " show context above/below cursorline
@@ -86,9 +123,9 @@ set ruler
 set conceallevel=0                      " So that I can see `` in markdown files
 
 
-if (has("termguicolors"))
-  set termguicolors
-endif
+" if (has("termguicolors"))
+" set termguicolors
+" endif
 
 colorscheme dracula
 :highlight Comment ctermfg=green " to set comments in green colour
@@ -130,12 +167,18 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
-" Disable visualbell
-" set noerrorbells visualbell t_vb=
-
-"" Copy/Paste/Cut
-"" if has('unnamedplus')
-"" set clipboard=unnamed,unnamedplus
-"" endif
-
 set guicursor& " set default setting for cursor
+
+"=====================================================
+"===================== STATUSLINE ====================
+
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '%Y-%m-%d %H:%M',
+      \'z'    : ' #h',
+      \'options' : {'status-justify' : 'left', 'status-position' : 'top'}}
+let g:tmuxline_powerline_separators = 0
+
