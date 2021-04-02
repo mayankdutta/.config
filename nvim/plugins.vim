@@ -4,22 +4,61 @@ call plug#begin("~/.vim/plugged")
 "                        Plug install packages
 "*****************************************************************************
 
-Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons' "for icons 
+" Plug 'scrooloose/nerdtree' takes time and still unstable with icons
+" Plug 'ryanoasis/vim-devicons' "for icons 
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'rbong/vim-crystalline' "status line 
+" Plug 'rbong/vim-crystalline' "status line 
 
+Plug 'rbgrouleff/bclose.vim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter' " check that if the fzf looking in the project, that we are in, by keeping tracks of git and all.
-Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
+" Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
-Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time 
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
+
+" don't forget to install :CocInstall 'coc-json' 'coc-python' 'coc-tsserver' 'coc-html' 'coc-css'
+" for help type :CocList commands
+" :CocList extensions
+
+" let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
+
+" Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time 
 
 Plug 'junegunn/vim-easy-align' " for aligning content, see https://github.com/junegunn/vim-easy-align
+
+Plug 'pangloss/vim-javascript'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'tpope/vim-haml'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mattn/emmet-vim'
+Plug 'plasticboy/vim-markdown'
+
+
+" === Syntax Highlighting === "
+
+" Syntax highlighting for nginx
+" Plug 'chr4/nginx.vim'
+
+" Syntax highlighting for javascript libraries
+" Plug 'othree/javascript-libraries-syntax.vim'
+
+" Improved syntax highlighting and indentation
+" Plug 'othree/yajs.vim'
+
+" === Javascript Plugins === "
+" Typescript syntax highlighting
+" Plug 'HerringtonDarkholme/yats.vim'
+
+" ReactJS JSX syntax highlighting
+" Plug 'mxw/vim-jsx'
+
+" Generate JSDoc commands based on function signature
+" Plug 'heavenshell/vim-jsdoc'
+
+" for hbs 
+Plug 'joukevandermaas/vim-ember-hbs'
 
 
 "*****************************************************************************
@@ -34,22 +73,25 @@ if (has("termguicolors"))
 endif
 
 
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
+" nerd tree mess
+"let g:NERDTreeShowHidden = 1
+"let g:NERDTreeMinimalUI = 1
+"let g:NERDTreeIgnore = []
+"let g:NERDTreeStatusline = ''
+"
+"" Automaticaly close nvim if NERDTree is only thing left open
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"" Toggle
+"
+"" nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+"nnoremap <silent> <leader>b :NERDTreeToggle<CR>
+"
+"tnoremap <Esc> <C-\><C-n>
+" nerd tree mess
 
-" Automaticaly close nvim if NERDTree is only thing left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Toggle
-
-" nnoremap <silent> <C-b> :NERDTreeToggle<CR>
-nnoremap <silent> <leader>b :NERDTreeToggle<CR>
-
-tnoremap <Esc> <C-\><C-n>
 
 " start terminal in insert mode
-" au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 
 function! OpenTerminal()
@@ -137,14 +179,17 @@ command! -bang -nargs=* GGrep
 " end of fzf configuration
 
 
-" setting up es lint
-let g:ale_fixers = {
-      \ 'javascript': ['eslint']
-      \ }
-
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
-let g:ale_fix_on_save = 1
+" Equivalent to the above.
+" let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+" let g:ale_fixers = {
+" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+" \   'javascript': ['eslint'],
+" \}
+" 
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
+" let g:ale_fix_on_save = 1
+" let g:airline#extensions#ale#enabled = 1
 
 
 
@@ -153,3 +198,9 @@ xmap ga <Plug>(EasyAlign) " Start interactive EasyAlign in visual mode (e.g. vip
 
 nmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+
+
+
+" for ranger 
+let g:ranger_map_keys = 0
+map <leader>b :Ranger<CR>.
