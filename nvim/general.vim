@@ -38,7 +38,7 @@ set nocursorline  " removing no to this, will highlight the current line but wil
 
 set pumheight=10             " Completion window max size
 
-set maxmempattern=20000 " increase max memory to show syntax highlighting for large files 
+set maxmempattern=20000 " increase max memory to show syntax highlighting for large files
 
 set viminfo='1000 " recently opened files, :FzfHistory uses it
 
@@ -59,13 +59,13 @@ set showmatch           " highlight matching parentheses / brackets [{()}]
 """"" status line
 set laststatus=2        " enable the status line, if enabled then we can do futher tweaking by set statusline
 " for futher tweaking refer to https://shapeshed.com/vim-statuslines/
-"set laststatus=0       " to disable the status line 
+"set laststatus=0       " to disable the status line
 
 set showtabline=2       " Always show tabs
 " set showtabline=0     " don't show the tabs
 set cmdheight=1         " More space for displaying messages
 
-"""" for windows 
+"""" for windows
 set splitbelow          " Horizontal splits will automatically be below
 set splitright          " Vertical splits will automatically be to the right
 
@@ -90,8 +90,6 @@ set softtabstop=4       " backspace after pressing <TAB> will remove up to this 
 "nnoremap <TAB> :bnext<CR>
 " SHIFT-TAB will go back
 "nnoremap <S-TAB> :bprevious<CR>
-
-
 
 colorscheme dracula
 :highlight Comment ctermfg=green " to set comments in green colour
@@ -121,4 +119,3 @@ let g:tmuxline_preset = {
       \'z'    : ' #h',
       \'options' : {'status-justify' : 'left', 'status-position' : 'top'}}
 let g:tmuxline_powerline_separators = 0
-

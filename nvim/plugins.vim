@@ -1,13 +1,10 @@
 
 call plug#begin("~/.vim/plugged")
-"*****************************************************************************
-"                        Plug install packages
-"*****************************************************************************
 
 " Plug 'scrooloose/nerdtree' takes time and still unstable with icons
-" Plug 'ryanoasis/vim-devicons' "for icons 
+" Plug 'ryanoasis/vim-devicons' "for icons
 Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'rbong/vim-crystalline' "status line 
+" Plug 'rbong/vim-crystalline' "status line
 
 Plug 'rbgrouleff/bclose.vim'
 
@@ -24,7 +21,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for
 
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
 
-Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time 
+Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time
 
 Plug 'junegunn/vim-easy-align' " for aligning content, see https://github.com/junegunn/vim-easy-align
 
@@ -35,35 +32,9 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mattn/emmet-vim'
 Plug 'plasticboy/vim-markdown'
 
-
-" === Syntax Highlighting === "
-
-" Syntax highlighting for nginx
-" Plug 'chr4/nginx.vim'
-
-" Syntax highlighting for javascript libraries
-" Plug 'othree/javascript-libraries-syntax.vim'
-
-" Improved syntax highlighting and indentation
-" Plug 'othree/yajs.vim'
-
-" === Javascript Plugins === "
-" Typescript syntax highlighting
-" Plug 'HerringtonDarkholme/yats.vim'
-
-" ReactJS JSX syntax highlighting
-" Plug 'mxw/vim-jsx'
-
-" Generate JSDoc commands based on function signature
-" Plug 'heavenshell/vim-jsdoc'
-
-" for hbs 
+" for hbs
 Plug 'joukevandermaas/vim-ember-hbs'
 
-
-"*****************************************************************************
-""                          Custom bundles
-"*****************************************************************************
 
 call plug#end()
 
@@ -72,40 +43,18 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif " start terminal in insert mode
 
-" nerd tree mess
-"let g:NERDTreeShowHidden = 1
-"let g:NERDTreeMinimalUI = 1
-"let g:NERDTreeIgnore = []
-"let g:NERDTreeStatusline = ''
-"
-"" Automaticaly close nvim if NERDTree is only thing left open
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"" Toggle
-"
-"" nnoremap <silent> <C-b> :NERDTreeToggle<CR>
-"nnoremap <silent> <leader>b :NERDTreeToggle<CR>
-"
-"tnoremap <Esc> <C-\><C-n>
-" nerd tree mess
-
-
-" start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
-
+tnoremap <Esc> <C-\><C-n> " responsible for moving you to ex-command from terminal mode
 function! OpenTerminal()
   split term://fish
   resize 28
 endfunction
-nnoremap <leader>n :call OpenTerminal()<CR>
-" nnoremap <silent> <C-n> :call OpenTerminal()<CR>
+" nnoremap <leader>n :call OpenTerminal()<CR>
+nnoremap <silent> <C-n> :call OpenTerminal()<CR>
 
 
-" fzf configuration
-" install dependencies first : https://www.chrisatmachine.com/Neovim/08-fzf/
-
-" This is the default extra key bindings
+" fzf configuration install dependencies first : https://www.chrisatmachine.com/Neovim/08-fzf/
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-x': 'split',
@@ -126,10 +75,10 @@ let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffse
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden"
-let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ignoring node modules 
+let $FZF_DEFAULT_COMMAND = 'ag -g ""' " ignoring node modules
 
 
-" extra but try what is this 
+" extra but try what is this
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
 " Customize fzf colors to match your color scheme
@@ -185,7 +134,7 @@ command! -bang -nargs=* GGrep
  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
  \   'javascript': ['eslint'],
  \}
- 
+
  let g:ale_sign_error = '❌'
  let g:ale_sign_warning = '⚠️'
  let g:ale_fix_on_save = 1
@@ -193,14 +142,9 @@ command! -bang -nargs=* GGrep
 
 
 
-"" easy align, plugin 
+"" easy align, plugin
 xmap ga <Plug>(EasyAlign) " Start interactive EasyAlign in visual mode (e.g. vipga)
 
 nmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 
-
-
-" " for ranger 
-" let g:ranger_map_keys = 0
-" map <leader>b :Ranger<CR>.
