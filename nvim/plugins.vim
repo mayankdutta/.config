@@ -14,17 +14,17 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter' " check that if the fzf looking in the project, that we are in, by keeping tracks of git and all.
-" Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
+Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
 
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
 
 " don't forget to install :CocInstall 'coc-json' 'coc-python' 'coc-tsserver' 'coc-html' 'coc-css'
 " for help type :CocList commands
 " :CocList extensions
 
-" let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
 
-" Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time 
+Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time 
 
 Plug 'junegunn/vim-easy-align' " for aligning content, see https://github.com/junegunn/vim-easy-align
 
@@ -179,17 +179,17 @@ command! -bang -nargs=* GGrep
 " end of fzf configuration
 
 
-" Equivalent to the above.
-" let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
-" let g:ale_fixers = {
-" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \   'javascript': ['eslint'],
-" \}
-" 
-" let g:ale_sign_error = '❌'
-" let g:ale_sign_warning = '⚠️'
-" let g:ale_fix_on_save = 1
-" let g:airline#extensions#ale#enabled = 1
+ " Equivalent to the above.
+ let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+ let g:ale_fixers = {
+ \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+ \   'javascript': ['eslint'],
+ \}
+ 
+ let g:ale_sign_error = '❌'
+ let g:ale_sign_warning = '⚠️'
+ let g:ale_fix_on_save = 1
+ let g:airline#extensions#ale#enabled = 1
 
 
 
@@ -201,6 +201,6 @@ nmap ga <Plug>(EasyAlign)
 
 
 
-" for ranger 
-let g:ranger_map_keys = 0
-map <leader>b :Ranger<CR>.
+" " for ranger 
+" let g:ranger_map_keys = 0
+" map <leader>b :Ranger<CR>.
