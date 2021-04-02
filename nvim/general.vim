@@ -1,6 +1,8 @@
 set t_Co=256
 syntax on
 
+set hidden " for coc 
+set nobackup " for coc
 syntax enable
 set termguicolors
 
@@ -47,7 +49,7 @@ set scrolloff=3                                              " show context abov
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 
 """" Basic Behavior
-set encoding=utf-8      " set encoding to UTF-8 (default was "latin1")
+set encoding=utf-8      " set encoding to UTF-8 (default was "latin1") " also for coc
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu            " visual autocomplete for command menu
 set wildmode=longest,list,full "this is autocompletion menu
@@ -63,7 +65,7 @@ set laststatus=2        " enable the status line, if enabled then we can do futh
 
 set showtabline=2       " Always show tabs
 " set showtabline=0     " don't show the tabs
-set cmdheight=1         " More space for displaying messages
+set cmdheight=1         " More space for displaying messages 
 
 """" for windows
 set splitbelow          " Horizontal splits will automatically be below

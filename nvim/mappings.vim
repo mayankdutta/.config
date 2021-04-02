@@ -36,6 +36,15 @@ nnoremap L $
 vnoremap H ^
 vnoremap L g_
 
+
+"" for coc 
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+inoremap <C-l> <Right>
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+
+
 "" Git
 " nnoremap <Leader>o :.Gbrowse<CR> " Open current line on GitHub
 " noremap <Leader>ga :Gwrite<CR>
