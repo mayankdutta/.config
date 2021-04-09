@@ -11,10 +11,10 @@ nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "" Opens an edit command with the path of the currently edited file filled in
-noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+noremap <Leader>p :e <C-R>=expand("%:p:h") . "/" <CR>
 
 "" Opens a tab edit command with the path of the currently edited file filled
-noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+noremap <Leader>tp :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -26,7 +26,7 @@ noremap <leader>c :bd<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader>n :noh<CR>
-
+nnoremap <leader>Y gg"+yG
 
 " Remap H and L (top, bottom of screen to left and right end of line)
 nnoremap H ^
@@ -41,6 +41,10 @@ inoremap <C-l> <Right>
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap <leader>e :Vex<CR>
 
 
 "" Git
@@ -70,3 +74,4 @@ augroup THE_PRIMEAGEN
   autocmd!
   autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
+
