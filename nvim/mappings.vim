@@ -6,8 +6,6 @@ nnoremap <C-l> <C-w>l
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-
-"" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
@@ -27,7 +25,7 @@ nnoremap N Nzzzv
 noremap <leader>c :bd<CR>
 
 "" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
+nnoremap <silent> <leader>n :noh<CR>
 
 
 " Remap H and L (top, bottom of screen to left and right end of line)
@@ -37,7 +35,7 @@ vnoremap H ^
 vnoremap L g_
 
 
-"" for coc 
+"" for coc
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 inoremap <C-l> <Right>
 inoremap <C-h> <Left>

@@ -1,12 +1,11 @@
-
 call plug#begin("~/.vim/plugged")
 
 " Plug 'scrooloose/nerdtree' takes time and still unstable with icons
 " Plug 'ryanoasis/vim-devicons' "for icons
 Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'rbong/vim-crystalline' "status line
+Plug 'gruvbox-community/gruvbox'
 
-Plug 'rbgrouleff/bclose.vim'
+Plug 'rbgrouleff/bclose.vim' " something buffer related
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -143,7 +142,8 @@ command! -bang -nargs=* GGrep
 
 
 "" easy align, plugin
-xmap ga <Plug>(EasyAlign) " Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign) 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
 
 nmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
