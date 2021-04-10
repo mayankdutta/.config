@@ -1,5 +1,7 @@
 set t_Co=256
 syntax on
+set foldlevelstart=1
+
 
 set hidden                                 "     for coc, also something for buffers
 syntax enable
