@@ -26,6 +26,8 @@ noremap <leader>c :bd<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader>n :noh<CR>
+
+vnoremap <leader>y "+y
 nnoremap <leader>Y gg"+yG
 
 " Remap H and L (top, bottom of screen to left and right end of line)
