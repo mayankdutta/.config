@@ -123,3 +123,4 @@ let g:tmuxline_preset = {
       \'z'    : ' #h',
       \'options' : {'status-justify' : 'left', 'status-position' : 'top'}}
 let g:tmuxline_powerline_separators = 0
+au BufNewFile,BufRead *.ejs set filetype=html " for ejs files

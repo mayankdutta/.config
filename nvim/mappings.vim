@@ -46,7 +46,7 @@ inoremap <C-k> <Up>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>e :Vex<CR>
+nnoremap <leader>e :Ex<CR>
 
 
 "" Git
