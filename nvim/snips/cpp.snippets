@@ -41,24 +41,24 @@ using lld=long double;
 #define mod 1000000007
 
 template <typename t> inline void print(const t & v) {
-		for (const auto& i : v) {
-				std::cout << i << " ";
-		} std::cout << '\n';
+	for (const auto& i : v) {
+		std::cout << i << " ";
+	} std::cout << '\n';
 }
 
 template <typename t> inline void printt(const t & v) {
-		for (const auto& i : v) {
-				std::cout << i.first << " " << i.second << '\n';
-		} std::cout << '\n';
+	for (const auto& i : v) {
+		std::cout << i.first << " " << i.second << '\n';
+	} std::cout << '\n';
 }
 
 void solve() {
-		${1}
+	${1}
 }
 
 int main() {
-		fast;
-		solve();
+	fast;
+	solve();
 }
 endsnippet
 
@@ -100,95 +100,95 @@ using lld=long double;
 #define primeSize 2000000
 
 template <typename t> inline void print(const t & v) {
-		for (const auto& i : v) {
-				std::cout << i << " ";
-		} std::cout << '\n';
+	for (const auto& i : v) {
+		std::cout << i << " ";
+	} std::cout << '\n';
 }
 
 template <typename t> inline void printt(const t & v) {
-		for (const auto& i : v) {
-				std::cout << i.first << " " << i.second << '\n';
-		} std::cout << '\n';
+	for (const auto& i : v) {
+		std::cout << i.first << " " << i.second << '\n';
+	} std::cout << '\n';
 }
 
 template <typename INT> INT GCD(INT a, INT b) {
-		//     if (b == 0) return a;
-		//     return gcd(b, a%b);
-		return b ? gcd(b, a%b) : a;
+	//     if (b == 0) return a;
+	//     return gcd(b, a%b);
+	return b ? gcd(b, a%b) : a;
 }
 
 
 template <typename INT> INT LCM(INT a, INT b) {
-		return a / gcd(a, b) * b;
+	return a / gcd(a, b) * b;
 }
 
 template <typename INT> std::map<INT, int> factorize(INT n) {
-		map<INT, int> mp;
-		for (INT i = 2; i * i <= n; i++) {
-				while (n % i == 0) {
-						n /= i;
-						mp[i] ++;
-				}
+	map<INT, int> mp;
+	for (INT i = 2; i * i <= n; i++) {
+		while (n % i == 0) {
+			n /= i;
+			mp[i] ++;
 		}
+	}
 
-		if (n > 1) mp[n] += 1;
-		return mp;
+	if (n > 1) mp[n] += 1;
+	return mp;
 }
 
 void setIO(string name = "") { // name is nonempty for USACO file I/O
-		// ios_base::sync_with_stdio(0); cin.tie(0); // see Fast Input & Output
-		// alternatively, cin.tie(0)->sync_with_stdio(0);
-		if (!name.empty()) {
-				freopen((name+".in").c_str(), "r", stdin); // see Input & Output
-				freopen((name+".out").c_str(), "w", stdout);
-		}
+	// ios_base::sync_with_stdio(0); cin.tie(0); // see Fast Input & Output
+	// alternatively, cin.tie(0)->sync_with_stdio(0);
+	if (!name.empty()) {
+		freopen((name+".in").c_str(), "r", stdin); // see Input & Output
+		freopen((name+".out").c_str(), "w", stdout);
+	}
 }
 
 ll bin_pow(ll a, ll b) {
-		if (b == 0) return 1;
-		long long res = bin_pow(a, b / 2);
-		if (b % 2) return res * res * a;
-		else return res * res;
+	if (b == 0) return 1;
+	long long res = bin_pow(a, b / 2);
+	if (b % 2) return res * res * a;
+	else return res * res;
 }
 
 int totalDigits(ll i) {
-		return i > 0 ? (int) log10 ((double) i) + 1 : 1;
+	return i > 0 ? (int) log10 ((double) i) + 1 : 1;
 }
 
 vector<bool> isPrime(primeSize, true);
 vector<int> arePrimes;
 void make_seive() {
-		isPrime[0] = false;
-		isPrime[1] = false;
+	isPrime[0] = false;
+	isPrime[1] = false;
 
-		for (int i = 2; i <= sqrt(primeSize); i++) {
-				if (isPrime[i]) {
-						for (int j = i * 2; j <= primeSize; j += i) {
-								isPrime[j] = false;
-						}
-				}
+	for (int i = 2; i <= sqrt(primeSize); i++) {
+		if (isPrime[i]) {
+			for (int j = i * 2; j <= primeSize; j += i) {
+				isPrime[j] = false;
+			}
 		}
+	}
 
-		for (int i = 2; i < primeSize; i++) {
-				if (isPrime[i]) {
-						arePrimes.push_back(i);
-				}
+	for (int i = 2; i < primeSize; i++) {
+		if (isPrime[i]) {
+			arePrimes.push_back(i);
 		}
+	}
 }
 
 
 void solve() {
-		${2}
+	${2}
 }
 
 int main() {
-		// setIO();
-		fast;
-		int t = 1;
-		//make_seive();
-		${1}cin >> t;
-		while (t--)
-				solve();
+	// setIO();
+	fast;
+	int t = 1;
+	//make_seive();
+	${1}cin >> t;
+	while (t--)
+		solve();
 }
 
 endsnippet
@@ -224,4 +224,58 @@ template<typename INT> bool oppositeSigns(INT x, INT y) {
 bool isPowerOfTwo(int n) {
 	return (n & (n - 1) == 0); // note that 0 is considered incorrectly as power of 2
 }
+endsnippet
+
+snippet leet "leet Code template"
+#include <bits/stdc++.h>
+using namespace std;
+using ll=long long int;
+using lld=long double;
+#define fast std::ios_base::sync_with_stdio(0);std::cin.tie(0);
+
+
+#define rep(i, a, n) for (ll i = a; i < n; i++)
+#define per(i, a, n) for (ll i = n-1; i >= a; i--)
+#define all(c) (c).begin(), (c).end()
+#define lla(c) (c).rbegin(), (c).rend()
+#define mod 1000000007
+
+template <typename t> inline void print(const t & v) {
+	for (const auto& i : v) {
+		std::cout << i << " ";
+	} std::cout << '\n';
+}
+
+template <typename t> inline void printt(const t & v) {
+	for (const auto& i : v) {
+		std::cout << i.first << " " << i.second << '\n';
+	} std::cout << '\n';
+}
+
+
+class Solution {
+	public:
+		// Leetcode function
+
+		void check() {
+			int n;      cin >> n;
+			int target; cin >> target;
+
+			vector<int> arr(n);
+			for (auto& i: arr) cin >> i;
+
+			// Leetcode function calling
+			auto ans = twoSum(arr, target);
+
+			for (int i = 0; i <ans.size(); i++)
+				cout << ans[i] << ' ';
+		}
+};
+
+int main() {
+	fast;
+	Solution s; // s variable of solution type
+	s.check();
+}
+
 endsnippet
