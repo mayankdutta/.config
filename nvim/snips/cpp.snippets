@@ -33,7 +33,6 @@ using lld=long double;
 
 #define fast std::ios_base::sync_with_stdio(0);std::cin.tie(0);
 
-
 #define rep(i, a, n) for (ll i = a; i < n; i++)
 #define per(i, a, n) for (ll i = n-1; i >= a; i--)
 #define all(c) (c).begin(), (c).end()
@@ -52,6 +51,12 @@ template <typename t> inline void printt(const t & v) {
 	} std::cout << '\n';
 }
 
+template<typename t> inline void printt(const t& v) {
+	for (const auto& i : v) {
+		std::cout << i.first << " " << i.second << '\n';
+	} std::cout << '\n';
+}
+
 void solve() {
 	${1}
 }
@@ -63,7 +68,7 @@ int main() {
 endsnippet
 
 snippet fcpp "c++ full template"
-//THINK ALOUD !!
+/* THINK ALOUD !! */
 #include <bits/stdc++.h>
 #define debug(x) cout << " -> [ " << #x << " = " << x << "]\n"
 #define debug2(x, y) cout << " -> [ " << #x << " = " << x << " , " << #y << " = " << y << " ]\n"
@@ -87,9 +92,9 @@ using lld=long double;
 #define psi paid<string, int>
 // #define x first
 // #define y second
-#define fast std::ios_base::sync_with_stdio(0);std::cin.tie(0);
+#define fast std::ios_base::sync_with_stdio(0);std::cin.tie(0);std::cout.tie(0);
 
-
+#define INF (int)1e9 // for INT_MAX which still allows for INF + INF
 #define rep(i, a, n) for (ll i = a; i < n; i++)
 #define per(i, a, n) for (ll i = n-1; i >= a; i--)
 #define repp(i, a, n, p) for (ll i = a; i < n; i += p)
@@ -99,16 +104,28 @@ using lld=long double;
 #define mod 1000000007
 #define primeSize 2000000
 
-template <typename t> inline void print(const t & v) {
+/* For printing 1-D array */
+template<typename t> inline void print(const t& v) {
 	for (const auto& i : v) {
 		std::cout << i << " ";
 	} std::cout << '\n';
 }
 
-template <typename t> inline void printt(const t & v) {
+/* For printing Pair*/
+template<typename t> inline void printt(const t& v) {
 	for (const auto& i : v) {
 		std::cout << i.first << " " << i.second << '\n';
 	} std::cout << '\n';
+}
+
+/* For printing Tree/Graph */
+template<typename t> inline void printd(const t& v) {
+	for (int i = 1; i <= v.size(); i++) {
+		std::cout << i << ": ";
+		for (const auto& j: v[i]) {
+			std::cout << j << ' ';
+		} std::cout << '\n';
+	}
 }
 
 template <typename INT> INT GCD(INT a, INT b) {
@@ -161,35 +178,47 @@ void make_seive() {
 	isPrime[0] = false;
 	isPrime[1] = false;
 
-	for (int i = 2; i <= sqrt(primeSize); i++) {
-		if (isPrime[i]) {
-			for (int j = i * 2; j <= primeSize; j += i) {
+	for (int i = 2; i <= sqrt(primeSize); i++)
+		if (isPrime[i])
+			for (int j = i * 2; j <= primeSize; j += i)
 				isPrime[j] = false;
-			}
-		}
-	}
 
-	for (int i = 2; i < primeSize; i++) {
-		if (isPrime[i]) {
+	for (int i = 2; i < primeSize; i++)
+		if (isPrime[i])
 			arePrimes.push_back(i);
-		}
-	}
 }
 
 
 void solve() {
-	${2}
+
 }
 
 int main() {
 	// setIO();
+	// make_seive();
 	fast;
 	int t = 1;
-	//make_seive();
-	${1}cin >> t;
+	// cin >> t;
 	while (t--)
 		solve();
+	cout << "Hello, World\n";
 }
+
+/*
+Tips:
+-- for queries involving sum using queue or minimum sum of size k, do also consider prefix sum.
+ */
+
+/*
+	 Build and running
+	 g++ --std=c++17 -Wall -Wextra -Wshadow -fsanitize=undefined -fsanitize=address FILE.cpp && ./a.out < in
+
+	 Naming
+	 -for types (class/struct name) UpperCamelCase: Point, Info, SegTree
+	 -functions and variable lowerCamelCase: someMethod, someVariable
+	 -MACROS and constants all capital letters separated by _ : SOME_MACRO, MAX_N, MOD
+
+ */
 
 endsnippet
 
