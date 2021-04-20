@@ -11,7 +11,10 @@
     "c",
     "c++",
     "cpp",
-    "ejs"
+    "ejs",
+    "sh",
+    "sql",
+    "js"
   ],
 
   "python.linting.enabled": true,
