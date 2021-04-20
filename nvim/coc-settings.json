@@ -7,7 +7,11 @@
     "html",
     "yaml",
     "json",
-    "python"
+    "python",
+    "c",
+    "c++",
+    "cpp",
+    "ejs"
   ],
 
   "python.linting.enabled": true,

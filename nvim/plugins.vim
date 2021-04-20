@@ -12,7 +12,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter' " check that if the fzf looking in the project, that we are in, by keeping tracks of git and all.
 Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
+" Stable version of coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Keeping up to date with master
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " don't forget to install :CocInstall 'coc-json' 'coc-python' 'coc-tsserver' 'coc-html' 'coc-css'
 " for help type :CocList commands
