@@ -110,29 +110,60 @@ snippet debug "Debugging lines"
 endsnippet
 
 snippet cpp "c++ basic snippets"
+/* THINK ALOUD !! */
 #include <bits/stdc++.h>
+
 using namespace std;
 using ll=long long int;
 using lld=long double;
 
-#define fast std::ios_base::sync_with_stdio(0);std::cin.tie(0);
+#define mp make_pair
+#define pb push_back
+#define accu accumulate
 
+#define vi vector<int>
+#define vb vector<bool>
+#define vc vector<char>
+#define vd vector<double>
+#define vlld vector<long double>
+#define vll vector<long long int>
+
+#define vvi vector<vector<int>>
+#define vvb vector<vector<bool>>
+#define vvc vector<vector<char>>
+#define vvd vector<vector<double>>
+#define vvlld vector<vector<long double>>
+#define vvll vector<vector<long long int>>
+
+#define pll pair<ll, ll>
+#define pii pair<int, int>
+#define pci pair<char, int>
+#define pic pair<int, char>
+#define pls pair<ll, string>
+#define psl pair<string, ll>
+#define pis pair<int, string>
+#define psi paid<string, int>
+#define fast std::ios_base::sync_with_stdio(0);std::cin.tie(0);std::cout.tie(0);
+
+#define INF (int)1e9 // for INT_MAX which still allows for INF + INF
 #define rep(i, a, n) for (ll i = a; i < n; i++)
 #define per(i, a, n) for (ll i = n-1; i >= a; i--)
+#define repp(i, a, n, p) for (ll i = a; i < n; i += p)
 #define all(c) (c).begin(), (c).end()
 #define lla(c) (c).rbegin(), (c).rend()
+#define print_arr(arr, n) for (int i = 0; i < n; i++) std::cout << arr[i] << ' '; std::cout << '\n';
 #define mod 1000000007
+#define primeSize 2000000
 
 void solve() {
-	${1}
+
 }
 
 int main() {
 	fast;
-	int test;
-	cin >> test;
-
-	for (int i = 1; i <= test; i++)
+	int t = 1;
+	cin >> t;
+	while (t--)
 		solve();
 }
 endsnippet
@@ -148,9 +179,24 @@ snippet fcpp "c++ full template"
 using namespace std;
 using ll=long long int;
 using lld=long double;
+
 #define mp make_pair
 #define pb push_back
 #define accu accumulate
+
+#define vi vector<int>
+#define vb vector<bool>
+#define vc vector<char>
+#define vd vector<double>
+#define vlld vector<long double>
+#define vll vector<long long int>
+
+#define vvi vector<vector<int>>
+#define vvb vector<vector<bool>>
+#define vvc vector<vector<char>>
+#define vvd vector<vector<double>>
+#define vvlld vector<vector<long double>>
+#define vvll vector<vector<long long int>>
 
 #define pll pair<ll, ll>
 #define pii pair<int, int>

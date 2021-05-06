@@ -14,7 +14,8 @@
     "ejs",
     "sh",
     "sql",
-    "js"
+    "js",
+    "jsx"
   ],
 
   "python.linting.enabled": true,
