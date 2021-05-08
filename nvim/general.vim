@@ -14,7 +14,7 @@ set ttyfast                                "     helps in fast scrolling of scre
 set list                                   "     show trailing white space
 set relativenumber
 set showmode                               "     always show what mode we're currently editing in
-set nowrap                                 "     don't wrap lines
+" set nowrap                                 "     don't wrap lines
 set backspace=indent,eol,start             "     allow backspacing over everything in insert mode
 set number                                 "     always show line numbers
 
