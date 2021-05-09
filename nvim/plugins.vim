@@ -39,7 +39,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'} " tailwind
 
-
 call plug#end()
 
 
