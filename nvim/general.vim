@@ -14,7 +14,7 @@ set ttyfast                                "     helps in fast scrolling of scre
 set list                                   "     show trailing white space
 set relativenumber
 set showmode                               "     always show what mode we're currently editing in
-" set nowrap                                 "     don't wrap lines
+set nowrap                                 "     don't wrap lines
 set backspace=indent,eol,start             "     allow backspacing over everything in insert mode
 set number                                 "     always show line numbers
 
@@ -102,6 +102,20 @@ colorscheme gruvbox
                                            ""    Use modeline overrides
                                            "     set modeline
                                            "     set modelines=10
+
+
+
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+" zo opens a fold at the cursor.
+" zShift+o opens all folds at the cursor.
+" zc closes a fold at the cursor.
+" zm increases the foldlevel by one.
+" zShift+m closes all open folds.
+" zr decreases the foldlevel by one.
+" zShift+r decreases the foldlevel to zero -- all folds will be open.
 
 set title
 set titleold="Terminal"
