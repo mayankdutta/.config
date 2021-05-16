@@ -24,16 +24,16 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 let g:coc_global_extensions = ['coc-snippets', 'coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
 
-Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time
+" Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time
 
 Plug 'junegunn/vim-easy-align' " for aligning content, see https://github.com/junegunn/vim-easy-align
 
-Plug 'pangloss/vim-javascript'
-Plug 'hail2u/vim-css3-syntax'
+" Plug 'pangloss/vim-javascript'
+" Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-haml'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'mattn/emmet-vim'
-Plug 'plasticboy/vim-markdown'
+" Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'mattn/emmet-vim'
+" Plug 'plasticboy/vim-markdown'
 
 " for hbs
 Plug 'joukevandermaas/vim-ember-hbs'
