@@ -2,7 +2,7 @@ call plug#begin("~/.vim/plugged")
 
 " Plug 'scrooloose/nerdtree' takes time and still unstable with icons
 " Plug 'ryanoasis/vim-devicons' "for icons
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'gruvbox-community/gruvbox'
 
 Plug 'rbgrouleff/bclose.vim' " something buffer related
@@ -10,7 +10,7 @@ Plug 'rbgrouleff/bclose.vim' " something buffer related
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter' " check that if the fzf looking in the project, that we are in, by keeping tracks of git and all.
-Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
+" Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
 
 " Stable version of coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
