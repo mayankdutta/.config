@@ -104,7 +104,6 @@ colorscheme gruvbox
                                            "     set modelines=10
 
 
-
 set foldmethod=syntax
 set foldnestmax=10
 set nofoldenable

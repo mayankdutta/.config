@@ -1,8 +1,6 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["*"],
 
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snips"
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
+  "coc.preferences.extensionUpdateCheck": "daily"
 }

@@ -9,6 +9,7 @@ Plug 'rbgrouleff/bclose.vim' " something buffer related
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
 Plug 'airblade/vim-rooter' " check that if the fzf looking in the project, that we are in, by keeping tracks of git and all.
 " Plug 'sheerun/vim-polyglot' "for js and python better hightlighting
 
@@ -38,6 +39,10 @@ Plug 'tpope/vim-haml'
 " for hbs
 Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'} " tailwind
+
+" tpope
+Plug 'tpope/vim-haml'
+
 
 call plug#end()
 

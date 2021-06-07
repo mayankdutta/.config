@@ -46,7 +46,8 @@ inoremap <C-k> <Up>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-nnoremap <leader>e :Ex<CR>
+" nnoremap <leader>e :Ex<CR>
+nnoremap <leader>e :GFiles<CR>
 
 
 "" Git
@@ -77,3 +78,6 @@ augroup THE_PRIMEAGEN
   autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
 
+"" Buffer nav
+noremap <C-h> :bp<CR>
+noremap <C-l> :bn<CR>

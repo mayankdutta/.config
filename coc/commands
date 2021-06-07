@@ -1,2 +1,10 @@
-eslint.showOutputChannel
+clangd.install
+workspace.showOutput
+workspace.diagnosticRelated
+extensions.toggleAutoUpdate
+workspace.renameCurrentFile
+workspace.workspaceFolders
+workspace.clearWatchman
+workspace.diffDocument
 snippets.editSnippets
+eslint.showOutputChannel
