@@ -1,6 +1,18 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["*"],
-
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown"
+  ],
+  "diagnostic.errorSign": "●",
+  "diagnostic.infoSign": "●",
   "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
   "coc.preferences.extensionUpdateCheck": "daily"
 }

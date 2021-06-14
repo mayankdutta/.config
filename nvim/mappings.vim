@@ -6,8 +6,8 @@ nnoremap <C-l> <C-w>l
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+" nnoremap <Tab> gt
+" nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "" Opens an edit command with the path of the currently edited file filled in
@@ -79,5 +79,7 @@ augroup THE_PRIMEAGEN
 augroup END
 
 "" Buffer nav
-noremap <C-h> :bp<CR>
-noremap <C-l> :bn<CR>
+" noremap <C-h> :bp<CR>
+" noremap <C-l> :bn<CR>
+nnoremap <Tab> :bp <CR>
+nnoremap <S-Tab> :bn <CR>
