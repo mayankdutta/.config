@@ -43,7 +43,6 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'camspiers/lens.vim'
 Plug 'psliwka/vim-smoothie'
 
-
 " auto changing the matching tag in html css and all.
 Plug 'andrewradev/tagalong.vim'
 
@@ -205,7 +204,7 @@ let g:maplocalleader = ','
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 " By default timeoutlen is 1000 ms
-set timeoutlen=200
+ set timeoutlen=1000
 
 " Define prefix dictionary
 let g:which_key_map =  {}

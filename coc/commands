@@ -1,7 +1,7 @@
+extensions.toggleAutoUpdate
 clangd.install
 workspace.showOutput
 workspace.diagnosticRelated
-extensions.toggleAutoUpdate
 workspace.renameCurrentFile
 workspace.workspaceFolders
 workspace.clearWatchman
