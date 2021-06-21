@@ -79,7 +79,5 @@ augroup THE_PRIMEAGEN
 augroup END
 
 "" Buffer nav
-" noremap <C-h> :bp<CR>
-" noremap <C-l> :bn<CR>
-nnoremap <Tab> :bp <CR>
-nnoremap <S-Tab> :bn <CR>
+nnoremap <Tab> :bn <CR>
+nnoremap <S-Tab> :bp <CR>

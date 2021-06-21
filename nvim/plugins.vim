@@ -27,6 +27,8 @@ let g:coc_global_extensions = ['coc-snippets', 'coc-tslint-plugin', 'coc-tsserve
 
 " Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time
 
+Plug 'mattn/emmet-vim'
+
 Plug 'junegunn/vim-easy-align' " for aligning content, see https://github.com/junegunn/vim-easy-align
 
 " for hbs

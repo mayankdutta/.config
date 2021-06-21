@@ -13,6 +13,9 @@
   ],
   "diagnostic.errorSign": "●",
   "diagnostic.infoSign": "●",
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.includeLanguages": {},
   "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
   "coc.preferences.extensionUpdateCheck": "daily"
 }
