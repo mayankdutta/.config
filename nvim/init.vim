@@ -13,3 +13,9 @@ source $HOME/.config/nvim/coc.vim " for general, set type commands
 " =======================================
 " https://github.com/fatih/dotfiles/blob/master/vimrc
 
+
+source $HOME/.config/nvim/plugin-config/fzf.vim
+source $HOME/.config/nvim/plugin-config/ale.vim
+source $HOME/.config/nvim/plugin-config/coc-snippet.vim
+source $HOME/.config/nvim/plugin-config/easyAlign.vim
+source $HOME/.config/nvim/plugin-config/whichKey.vim
