@@ -46,8 +46,6 @@ inoremap <C-k> <Up>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-" nnoremap <leader>e :Ex<CR>
-nnoremap <leader>e :GFiles<CR>
 
 
 "" Git
@@ -81,3 +79,51 @@ augroup END
 "" Buffer nav
 nnoremap <Tab> :bn <CR>
 nnoremap <S-Tab> :bp <CR>
+
+
+"" netrew
+
+" % create new file, more info :help netrw-%
+" d create new directory
+" R rename file/directory under cursor
+" D delete file/directory under cursor
+
+" nnoremap <leader>e :Vex<CR>
+" nnoremap <leader>e :GFiles<CR>
+
+
+let g:netrw_browse_split = 2
+" 1 - open files in a new horizontal split
+" 2 - open files in a new vertical split
+" 3 - open files in a new tab
+" 4 - open in previous window
+
+let g:netrw_winsize = 15
+let g:netrw_banner = 0
+let g:netrw_altv = 1
+let g:netrw_liststyle = 3
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
+
+function! ToggleVExplorer()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+      Vexplore
+      let t:expl_buf_num = bufnr("%")
+  endif
+endfunction
+map <silent> <leader>e :call ToggleVExplorer()<CR>
+

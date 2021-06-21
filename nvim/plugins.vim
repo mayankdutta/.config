@@ -16,7 +16,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " don't forget to install :CocInstall 'coc-json' 'coc-python' 'coc-tsserver' 'coc-html' 'coc-css'
 " for help type :CocList commands
 " :CocList extensions
-let g:coc_global_extensions = ['coc-snippets', 'coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-highlight', 'coc-pairs']  " list of CoC extensions needed
+let g:coc_global_extensions = ['coc-snippets', 'coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-highlight', 'coc-pairs', 'coc-styled-components', 'coc-react-refactor', 'coc-eslint']  " list of CoC extensions needed
 
 " Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time
 Plug 'mattn/emmet-vim'
@@ -61,4 +61,7 @@ endfunction
 " nnoremap <leader>n :call OpenTerminal()<CR>
 nnoremap <silent> <C-n> :call OpenTerminal()<CR>
 
+
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 

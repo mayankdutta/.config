@@ -17,5 +17,11 @@
   "emmet.showAbbreviationSuggestions": true,
   "emmet.includeLanguages": {},
   "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
-  "coc.preferences.extensionUpdateCheck": "daily"
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "typescript.autoClosingTags": true,
+  "javascript.format.enabled": true,
+  "javascript.showUnused": true,
+  "html.autoClosingTags": true,
+  "javascript.autoClosingTags": true,
+  "javascript.suggest.autoImports": true
 }
