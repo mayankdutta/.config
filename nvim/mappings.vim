@@ -6,8 +6,9 @@ nnoremap <C-l> <C-w>l
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-" nnoremap <Tab> gt
-" nnoremap <S-Tab> gT
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "" Opens an edit command with the path of the currently edited file filled in
@@ -77,8 +78,8 @@ augroup THE_PRIMEAGEN
 augroup END
 
 "" Buffer nav
-nnoremap <Tab> :bn <CR>
-nnoremap <S-Tab> :bp <CR>
+nnoremap <C-p> :bn <CR>
+nnoremap <C-n> :bp <CR>
 
 
 "" netrew
@@ -102,10 +103,10 @@ let g:netrw_winsize = 15
 let g:netrw_banner = 0
 let g:netrw_altv = 1
 let g:netrw_liststyle = 3
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
 
 function! ToggleVExplorer()
   if exists("t:expl_buf_num")

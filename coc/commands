@@ -1,10 +1,1 @@
-extensions.toggleAutoUpdate
-clangd.install
-workspace.showOutput
-workspace.diagnosticRelated
-workspace.renameCurrentFile
-workspace.workspaceFolders
-workspace.clearWatchman
-workspace.diffDocument
-snippets.editSnippets
 eslint.showOutputChannel

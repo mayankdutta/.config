@@ -1,4 +1,5 @@
 {
+  "prettier.disableSuccessMessage": true,
   "coc.preferences.formatOnSaveFiletypes": ["*"],
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
@@ -8,7 +9,6 @@
     "typescript",
     "typescriptreact",
     "html",
-    "vue",
     "markdown"
   ],
   "diagnostic.errorSign": "●",
