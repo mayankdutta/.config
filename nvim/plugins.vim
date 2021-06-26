@@ -7,6 +7,13 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 
 Plug 'gruvbox-community/gruvbox'
+" Plug 'lifepillar/vim-gruvbox8'
+Plug 'tweekmonster/startuptime.vim'
+
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'hrsh7th/nvim-compe'
+
+
 " Plug 'rbgrouleff/bclose.vim' " something buffer related
 
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -20,11 +27,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Keeping up to date with master
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" don't forget to install :CocInstall 'coc-json' 'coc-python' 'coc-tsserver' 'coc-html' 'coc-css'
-" for help type :CocList commands
-
-" :CocList extensions
 let g:coc_global_extensions = ['coc-snippets', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-prettier', 'coc-highlight', 'coc-styled-components', 'coc-react-refactor', 'coc-eslint']  " list of CoC extensions needed
+" :CocList extensions
 
 " Plug 'w0rp/ale' " Es lint, intellisense type, but takes lots of time
 Plug 'mattn/emmet-vim'
@@ -41,11 +45,16 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " use the autocmd hook to call which_key#register(), e.g., register for the Space key:
 " autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 
-Plug 'camspiers/lens.vim'
+Plug 'mbbill/undotree'
+
+" Plug 'camspiers/lens.vim'
 " Plug 'psliwka/vim-smoothie'
 
 " auto changing the matching tag in html css and all.
 Plug 'andrewradev/tagalong.vim'
+
+Plug 'mbbill/undotree'
+Plug '9mm/vim-closer'
 
 " tpope
 Plug 'tpope/vim-haml'
@@ -78,3 +87,12 @@ nnoremap <silent> <leader>T :call VerticalOpenTerminal()<CR>
 
 " xmap <leader>a  <Plug>(coc-codeaction-selected)
 " nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+
+" undo tree
+nnoremap <leader>u :UndotreeToggle<CR>
+
+" lsp
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" lua.require'nvim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }

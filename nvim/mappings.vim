@@ -3,6 +3,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
+
+" nnoremap <Leader>S :source $MYVIMRC<CR>
+" 2021 update: If you are using neovim with a lua config, you can use :luafile $MYVIMRC
+
+
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
@@ -127,4 +133,5 @@ function! ToggleVExplorer()
   endif
 endfunction
 map <silent> <leader>e :call ToggleVExplorer()<CR>
+
 

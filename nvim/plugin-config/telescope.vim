@@ -1,15 +1,10 @@
-
-
-" Telescope
-" Find files using Telescope command-line sugar.
-
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-lua << EOF
-require('telescope').setup{
+:lua << EOF
+require('telescope').setup {
   defaults = {
     vimgrep_arguments = {
       'rg',
@@ -56,7 +51,7 @@ require('telescope').setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-  }
+  },
   pickers = {
     -- Your special builtin config goes in here
     buffers = {
@@ -90,3 +85,4 @@ require('telescope').setup{
 require('telescope').load_extension('fzy_native')
 
 EOF
+
