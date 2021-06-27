@@ -5,9 +5,16 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+Plug 'editorconfig/editorconfig-vim'
+Plug 'dag/vim-fish'
 
-Plug 'gruvbox-community/gruvbox'
-" Plug 'lifepillar/vim-gruvbox8'
+Plug 'romainl/vim-cool'
+
+Plug '9mm/vim-closer'
+
+" Plug 'gruvbox-community/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
+
 Plug 'tweekmonster/startuptime.vim'
 
 " Plug 'neovim/nvim-lspconfig'
@@ -45,16 +52,13 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " use the autocmd hook to call which_key#register(), e.g., register for the Space key:
 " autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 
-Plug 'mbbill/undotree'
-
-" Plug 'camspiers/lens.vim'
+Plug 'camspiers/lens.vim'
 " Plug 'psliwka/vim-smoothie'
 
 " auto changing the matching tag in html css and all.
 Plug 'andrewradev/tagalong.vim'
 
 Plug 'mbbill/undotree'
-Plug '9mm/vim-closer'
 
 " tpope
 Plug 'tpope/vim-haml'
@@ -64,6 +68,17 @@ Plug 'tpope/vim-eunuch'
 
 call plug#end()
 
+
+set ts=2 sts=2 sw=2 et list lcs=tab:┆·,trail:·,precedes:,extends:
+set hid nowrap spr sb ic scs nu rnu tgc nosmd swb=useopen scl=yes nosc noru icm=split
+set udir=~/.local/share/nvim/undodir udf
+set cot=menuone,noinsert,noselect shm+=c
+set bg=dark
+colo gruvbox8
+
+let $V=stdpath('config')
+" so $V/xstl.vim
+" so $V/aesth.vim
 
 if (has("termguicolors"))
   set termguicolors

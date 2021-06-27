@@ -96,7 +96,7 @@ set conceallevel=0                         "     So that I can see `` in markdow
                                            "     nnoremap <S-TAB> :bprevious<CR>
 
 " colorscheme dracula
-colorscheme gruvbox
+" colorscheme gruvbox
 " :highlight Comment ctermfg=green           "     to set comments in green colour
 
                                            ""    Use modeline overrides

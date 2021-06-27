@@ -3,7 +3,7 @@ nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-:lua << EOF
+lua << EOF
 require('telescope').setup {
   defaults = {
     vimgrep_arguments = {
@@ -83,6 +83,4 @@ require('telescope').setup {
   }
 }
 require('telescope').load_extension('fzy_native')
-
 EOF
-
