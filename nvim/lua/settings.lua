@@ -8,6 +8,12 @@ vim.cmd('let &titleold="'..TERMINAL..'"')
 vim.o.titlestring="%<%F%=%l/%L - nvim"
 vim.wo.wrap = O.wrap_lines -- Display long lines as just one line
 vim.cmd('set whichwrap+=<,>,[,],h,l') -- move to next line with theses keys
+
+vim.cmd('set autoindent') -- move to next line with theses keys
+vim.cmd('set smartindent') -- move to next line with theses keys
+vim.cmd('set smartindent') -- move to next line with theses keys
+vim.cmd('set cindent') -- move to next line with theses keys
+
 vim.cmd('syntax on') -- syntax highlighting
 vim.o.pumheight = 10 -- Makes popup menu smaller
 vim.o.fileencoding = "utf-8" -- The encoding written to file
