@@ -1,1 +1,1 @@
-set PATH /Users/{myusername}/{global-npm-folder}/bin $PATH
+
