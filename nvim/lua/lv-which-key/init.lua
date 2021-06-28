@@ -74,6 +74,15 @@ vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap = true,
 -- close buffer
 vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", {noremap = true, silent = true})
 
+-- vnoremap <leader>y "+y
+-- nnoremap <leader>Y gg"+yG
+
+-- copying a line
+vim.api.nvim_set_keymap("v", "<Leader>y", [["+y]], {noremap = true, silent = true})
+
+-- copying whole doc
+vim.api.nvim_set_keymap("n", "<Leader>Y", 'gg"+G', {noremap = true, silent = true})
+
 -- open projects
 vim.api.nvim_set_keymap('n', '<leader>p', ":lua require'telescope'.extensions.project.project{}<CR>",
                         {noremap = true, silent = true})
@@ -103,6 +112,8 @@ local mappings = {
     ["T"] = "vertical split terminal",
     ["h"] = "horizontal split",
     ["v"] = "vertical split",
+    ["y"] = "copying selected area",
+    ["Y"] = "Copying whole document",
     b = {
       name = "+Buffers",
       j = {"<cmd>BufferPick<cr>", "jump to buffer"},
