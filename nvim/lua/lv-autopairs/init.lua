@@ -1,3 +1,4 @@
+
 local remap = vim.api.nvim_set_keymap
 local npairs = require('nvim-autopairs')
 local Rule = require('nvim-autopairs.rule')
@@ -41,15 +42,5 @@ npairs.add_rules({
   Rule("%", "%", "lua")
     :with_pair(ts_conds.is_ts_node({'string','comment'})),
   Rule("$", "$", "lua")
-    :with_pair(ts_conds.is_not_ts_node({'function'})),
-
-   Rule('{', '}')
-        :end_wise(function() return true end),
-
-    Rule('(', ')')
-        :end_wise(function() return true end),
-
-    Rule('[', ']')
-        :end_wise(function() return true end),
-
+    :with_pair(ts_conds.is_not_ts_node({'function'}))
 })
