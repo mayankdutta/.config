@@ -1,71 +1,49 @@
-require('lv-globals')
-vim.cmd('luafile ' .. CONFIG_PATH .. '/lv-settings.lua')
+require('default-config')
+vim.cmd('luafile ' .. CONFIG_PATH .. '/lv-config.lua')
 require('settings')
 require('plugins')
 require('lv-utils')
 require('lv-autocommands')
 require('keymappings')
-require('lv-nvimtree') -- This plugin must be required somewhere before colorscheme.  Placing it after will break navigation keymappings
 require('colorscheme') -- This plugin must be required somewhere after nvimtree. Placing it before will break navigation keymappings
 require('lv-galaxyline')
-require('lv-comment')
-require('lv-compe')
-require('lv-barbar')
 require('lv-telescope')
-require('lv-gitsigns')
 require('lv-treesitter')
 require('lv-autopairs')
 require('lv-which-key')
 
--- extras
-if O.extras then
-    require('lv-rnvimr')
-    require('lv-gitblame')
-    require('lv-matchup')
-    require('lv-numb')
-    require('lv-dial')
-    require('lv-hop')
-    require('lv-colorizer')
-    require('lv-spectre')
-    require('lv-symbols-outline')
-    require('lv-vimtex')
-    require('lv-zen')
-    require('lv-dashboard')
-    require('lv-lsp-rooter')
-end
-
--- TODO is there a way to do this without vimscript
-vim.cmd('source ' .. CONFIG_PATH .. '/vimscript/functions.vim')
-
 -- LSP
 require('lsp')
-require('lsp.java-ls')
-require('lsp.angular-ls')
-require('lsp.bash-ls')
-require('lsp.clangd')
-require('lsp.cmake-ls')
-require('lsp.css-ls')
-require('lsp.dart-ls')
-require('lsp.docker-ls')
-require('lsp.efm-general-ls')
-require('lsp.elm-ls')
-require('lsp.emmet-ls')
-require('lsp.graphql-ls')
-require('lsp.go-ls')
-require('lsp.html-ls')
-require('lsp.json-ls')
-require('lsp.js-ts-ls')
-require('lsp.kotlin-ls')
-require('lsp.latex-ls')
-require('lsp.lua-ls')
-require('lsp.php-ls')
-require('lsp.python-ls')
-require('lsp.ruby-ls')
-require('lsp.rust-ls')
-require('lsp.svelte-ls')
-require('lsp.terraform-ls')
-require('lsp.tailwindcss-ls')
-require('lsp.vim-ls')
-require('lsp.vue-ls')
-require('lsp.yaml-ls')
-require('lsp.elixir-ls')
+-- TODO should I put this in the filetype files?
+if O.lang.java.active then require('lsp.java-ls') end
+if O.lang.clang.active then require('lsp.clangd') end
+if O.lang.sh.active then require('lsp.bash-ls') end
+if O.lang.cmake.active then require('lsp.cmake-ls') end
+if O.lang.css.active then require('lsp.css-ls') end
+if O.lang.dart.active then require('lsp.dart-ls') end
+if O.lang.docker.active then require('lsp.docker-ls') end
+if O.lang.efm.active then require('lsp.efm-general-ls') end
+if O.lang.elm.active then require('lsp.elm-ls') end
+if O.lang.emmet.active then require('lsp.emmet-ls') end
+if O.lang.graphql.active then require('lsp.graphql-ls') end
+if O.lang.go.active then require('lsp.go-ls') end
+if O.lang.html.active then require('lsp.html-ls') end
+if O.lang.json.active then require('lsp.json-ls') end
+if O.lang.kotlin.active then require('lsp.kotlin-ls') end
+if O.lang.latex.active then require('lsp.latex-ls') end
+if O.lang.lua.active then require('lsp.lua-ls') end
+if O.lang.php.active then require('lsp.php-ls') end
+if O.lang.python.active then require('lsp.python-ls') end
+if O.lang.ruby.active then require('lsp.ruby-ls') end
+if O.lang.rust.active then require('lsp.rust-ls') end
+if O.lang.svelte.active then require('lsp.svelte-ls') end
+if O.lang.terraform.active then require('lsp.terraform-ls') end
+if O.lang.tailwindcss.active then require('lsp.tailwindcss-ls') end
+if O.lang.vim.active then require('lsp.vim-ls') end
+if O.lang.yaml.active then require('lsp.yaml-ls') end
+if O.lang.elixer.active then require('lsp.elixer-ls') end
+if O.lang.tsserver.active then
+    require('lsp.js-ts-ls')
+    require('lsp.angular-ls')
+    require('lsp.vue-ls')
+end

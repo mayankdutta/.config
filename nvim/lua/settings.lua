@@ -8,7 +8,6 @@ vim.cmd('let &titleold="'..TERMINAL..'"')
 vim.o.titlestring="%<%F%=%l/%L - nvim"
 vim.wo.wrap = O.wrap_lines -- Display long lines as just one line
 vim.cmd('set whichwrap+=<,>,[,],h,l') -- move to next line with theses keys
-vim.cmd('filetype indent on ') -- move to next line with theses keys
 
 vim.cmd('syntax on') -- syntax highlighting
 vim.o.pumheight = 10 -- Makes popup menu smaller
@@ -51,3 +50,5 @@ vim.cmd('filetype plugin on') -- filetype detection
 vim.o.guifont = "FiraCode Nerd Font:h17"
 
 -- vim.o.guifont = "JetBrains\\ Mono\\ Regular\\ Nerd\\ Font\\ Complete"
+vim.o.ignorecase = O.ignore_case
+vim.o.smartcase = O.smart_case

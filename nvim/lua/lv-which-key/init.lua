@@ -74,9 +74,6 @@ vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap = true,
 -- close buffer
 vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", {noremap = true, silent = true})
 
--- vnoremap <leader>y "+y
--- nnoremap <leader>Y gg"+yG
-
 -- copying a line
 vim.api.nvim_set_keymap("v", "<Leader>y", [["+y]], {noremap = true, silent = true})
 
