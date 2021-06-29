@@ -37,7 +37,7 @@ vim.o.undofile = true -- Enable persistent undo
 vim.wo.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 vim.o.updatetime = 300 -- Faster completion
 vim.o.timeoutlen = O.timeoutlen -- By default timeoutlen is 1000 ms
-vim.o.clipboard = "unnamedplus" -- Copy paste between vim and everything else
+-- vim.o.clipboard = "unnamedplus" -- Copy paste between vim and everything else
 -- vim.g.nvim_tree_disable_netrw = O.nvim_tree_disable_netrw -- enable netrw for remote gx gf support (must be set before plugin's packadd)
 vim.cmd('filetype plugin on') -- filetype detection
 -- vim.o.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"

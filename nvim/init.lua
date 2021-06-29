@@ -12,6 +12,15 @@ require('lv-treesitter')
 require('lv-autopairs')
 require('lv-which-key')
 
+-- my requirement
+require('lsp.js-ts-ls')
+require('lsp.clangd')
+require('lsp.html-ls')
+require('lsp.json-ls')
+require('lsp.lua-ls')
+require('lsp.tailwindcss-ls')
+require('lsp.vim-ls')
+
 -- LSP
 require('lsp')
 -- TODO should I put this in the filetype files?
