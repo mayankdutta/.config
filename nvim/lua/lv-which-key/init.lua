@@ -100,7 +100,7 @@ vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR>",
 vim.api.nvim_set_keymap("v", "<Leader>y", [["+y]], {noremap = true, silent = true})
 
 -- copying whole doc
-vim.api.nvim_set_keymap("n", "<Leader>Y", 'gg"+G', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>Y", 'gg"+yG', {noremap = true, silent = true})
 
 -- horizontal terminal
 vim.api.nvim_set_keymap("n", "<Leader>T", [[<cmd>vnew term://fish <CR>]], {silent = true}) -- term over right
