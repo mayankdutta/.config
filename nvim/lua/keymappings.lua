@@ -18,7 +18,6 @@ vim.cmd([[
   inoremap <C-k> <C-\><C-N><C-w>k
   inoremap <C-l> <C-\><C-N><C-w>l
   tnoremap <Esc> <C-\><C-n>
-  au BufEnter * if &buftype == 'terminal' | :startinsert | endif 
 ]])
 
 -- TODO fix this
@@ -32,25 +31,18 @@ vim.api.nvim_set_keymap('n', '<C-Right>', ':vertical resize +2<CR>', {silent = t
 vim.api.nvim_set_keymap('v', '<', '<gv', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '>', '>gv', {noremap = true, silent = true})
 
-
 -- I hate escape
--- vim.api.nvim_set_keymap('i', 'jk', '<ESC>', {noremap = true, silent = true})
--- vim.api.nvim_set_keymap('i', 'kj', '<ESC>', {noremap = true, silent = true})
--- vim.api.nvim_set_keymap('i', 'jj', '<ESC>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', 'jk', '<ESC>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', 'kj', '<ESC>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', 'jj', '<ESC>', {noremap = true, silent = true})
 
 -- Tab switch buffer
 vim.api.nvim_set_keymap('n', '<TAB>', ':bnext<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<S-TAB>', ':bprevious<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-n>', ':bnext<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<C-p>', ':bprevious<CR>', {noremap = true, silent = true})
 
 -- Move selected line / block of text in visual mode
-
--- vnoremap J :m '>+1<CR>gv=gv
--- vnoremap K :m '<-2<CR>gv=gv
-vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv=gv', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('x', 'K', ':move \'<-2<CR>gv=gv', {noremap = true, silent = true})
-
+vim.api.nvim_set_keymap('x', 'K', ':move \'<-2<CR>gv-gv', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
 
 -- Better nav for omnicomplete
 vim.cmd('inoremap <expr> <c-j> (\"\\<C-n>\")')
