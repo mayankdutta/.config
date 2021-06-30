@@ -47,6 +47,11 @@ lsp.tsserver.setup {
   root_dir = root_pattern_prefer("tsconfig.json", "package.json", ".git")
 }
 
+lsp.clangd.setup {
+    cmd = {"/usr/local/opt/llvm/bin/clangd"},
+    filetypes = { "c", "cpp", "objc", "objcpp" }
+}
+
 -- lsp.hls.setup {
 --   on_attach = on_attach,
 -- }

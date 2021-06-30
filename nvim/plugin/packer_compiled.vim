@@ -84,6 +84,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/info/.local/share/nvim/site/pack/packer/start/haskell-vim"
   },
+  ["nvim-compe"] = {
+    after_files = { "/Users/info/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe.vim" },
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\rlv-compe\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/info/.local/share/nvim/site/pack/packer/opt/nvim-compe"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/info/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
@@ -158,6 +165,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/info/.local/share/nvim/site/pack/packer/start/vim-signify"
   },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/Users/info/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+  },
+  ["vim-vsnip-integ"] = {
+    loaded = true,
+    path = "/Users/info/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
+  },
   yui = {
     loaded = true,
     path = "/Users/info/.local/share/nvim/site/pack/packer/start/yui"
@@ -171,6 +186,13 @@ time([[Defining lazy-load commands]], true)
 vim.cmd [[command! -nargs=* -range -bang -complete=file HexokinaseToggle lua require("packer.load")({'vim-hexokinase'}, { cmd = "HexokinaseToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 time([[Defining lazy-load commands]], false)
 
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 END

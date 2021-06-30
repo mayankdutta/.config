@@ -19,6 +19,16 @@ return require('packer').startup(
     use '9mm/vim-closer'
     use 'romainl/vim-cool'
 
+     use {
+        "hrsh7th/nvim-compe",
+        event = "InsertEnter",
+        config = function()
+            require("lv-compe").config()
+        end
+    }
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
+
     use 'junegunn/vim-easy-align'
 
     use 'dag/vim-fish'
