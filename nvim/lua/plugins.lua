@@ -14,6 +14,19 @@ return require('packer').startup(
     use 'lifepillar/vim-gruvbox8'
     use 'neovimhaskell/haskell-vim'
 
+     use {
+        'dstein64/vim-startuptime',
+        cmd = 'StartupTime',
+        config = [[vim.g.startuptime_tries = 10]]
+    }
+        use {'unblevable/quick-scope'}
+            use {'p00f/nvim-ts-rainbow'}
+    use {'szw/vim-maximizer'}
+        use {'pechorin/any-jump.vim'}
+
+
+
+
     use 'tpope/vim-commentary'
     use 'machakann/vim-sandwich'
     use '9mm/vim-closer'
