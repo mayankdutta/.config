@@ -9,7 +9,7 @@ require('keymappings')
 require('lv-galaxyline')
 require('lv-telescope')
 require('lv-treesitter')
-require('lv-autopairs')
+-- require('lv-autopairs')
 require('lv-which-key')
 
 -- LSP

@@ -60,7 +60,7 @@ return require("packer").startup(function(use)
     use {"folke/which-key.nvim"}
 
     -- Autopairs
-    use {"windwp/nvim-autopairs"}
+    -- use {"windwp/nvim-autopairs"}
 
     -- Comments
     use {
