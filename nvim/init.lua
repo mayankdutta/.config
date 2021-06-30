@@ -1,6 +1,9 @@
+vim.g.mapleader = " "
+
 require 'plugins'
 require 'conf'
-
+require 'keymappings'
+require 'settings'
 
 -- autocommands to hijack color schemes
 -- require('hijackc')
@@ -14,14 +17,14 @@ vim.cmd 'colo gruvbox8_soft'
 vim.o.guicursor = ''
 vim.o.showmode = false
 vim.o.shortmess = vim.o.shortmess .. 'F'
-vim.o.clipboard = 'unnamedplus'
+-- vim.o.clipboard = 'unnamedplus'
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.hidden = true
 
 local opts = {noremap = true, silent = true}
 
-mapk('t', '<Esc>', '<C-\\><C-n>', opts)
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', opts)
 
 vim.cmd 'au FileType fzf tno <Esc> <C-c>'
 
