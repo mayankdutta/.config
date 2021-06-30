@@ -30,20 +30,18 @@ require("which-key").setup {
         width = {min = 20, max = 50}, -- min and max width of the columns
         spacing = 3 -- spacing between columns
     },
-    hidden = {
-        "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "
-    }, -- hide mapping boilerplate
+    hidden = {"<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
     show_help = true -- show help message on the command line when the popup is visible
 }
 
 -- Set leader
 if O.leader_key == ' ' or O.leader_key == 'space' then
     vim.api.nvim_set_keymap('n', '<Space>', '<NOP>',
-        {noremap = true, silent = true})
+                            {noremap = true, silent = true})
     vim.g.mapleader = ' '
 else
     vim.api.nvim_set_keymap('n', O.leader_key, '<NOP>',
-        {noremap = true, silent = true})
+                            {noremap = true, silent = true})
     vim.g.mapleader = O.leader_key
 end
 
@@ -58,43 +56,51 @@ local opts = {
 
 -- no hl
 vim.api.nvim_set_keymap('n', '<Leader>n', ':let @/=""<CR>',
-    {noremap = true, silent = true})
+                        {noremap = true, silent = true})
 
 -- explorer
-vim.api.nvim_set_keymap('n', '<Leader>e', ":NvimTreeToggle<CR>",
-    {noremap = true, silent = true})
+
+-- TODO this introduces some bugs unfortunately
+-- vim.api.nvim_set_keymap('n', '<Leader>e',
+--                         ":lua require'lv-nvimtree'.toggle_tree()<CR>",
+--                         {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>e',
+                        ":NvimTreeToggle<CR>",
+                        {noremap = true, silent = true})
 
 -- telescope
 vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>',
-    {noremap = true, silent = true})
-
--- live grep_previewer
-vim.api.nvim_set_keymap('n', '<Leader>F', ':Telescope live_grep<CR>', {noremap = true, silent = true})
-
+                        {noremap = true, silent = true})
 
 -- dashboard
 vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>',
-    {noremap = true, silent = true})
+                        {noremap = true, silent = true})
 
 -- Comments
 vim.api.nvim_set_keymap("n", "<leader>/", ":CommentToggle<CR>",
-    {noremap = true, silent = true})
+                        {noremap = true, silent = true})
 vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>",
-    {noremap = true, silent = true})
+                        {noremap = true, silent = true})
 
 -- close buffer
 vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>",
-    {noremap = true, silent = true})
+                        {noremap = true, silent = true})
 
--- open projects
-vim.api.nvim_set_keymap('n', '<leader>p',
-    ":lua require'telescope'.extensions.project.project{}<CR>",
-    {noremap = true, silent = true})
+-- horizontal terminal
+vim.api.nvim_set_keymap("n", "<Leader>T", [[<cmd>vnew term://fish <CR>]],
+  {silent = true}) -- term over right
 
-vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR>",
-    {noremap = true, silent = true})
--- z = {"<cmd>TZAtaraxis<cr>", "toggle zen"}
+-- vertical terminal
+vim.api.nvim_set_keymap("n", "<Leader>t", [[<cmd> split term://fish | resize 28 <CR>]],
+  {silent = true}) --  term bottom
 
+  -- horizontal split
+vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>",
+  {noremap = true, silent = true})
+
+-- vertical split
+vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>",
+{noremap = true, silent = true})
 -- TODO create entire treesitter section
 
 vim.api.nvim_set_keymap("v", "<Leader>y", [["+y]], {noremap = true, silent = true})
@@ -102,48 +108,36 @@ vim.api.nvim_set_keymap("v", "<Leader>y", [["+y]], {noremap = true, silent = tru
 -- copying whole doc
 vim.api.nvim_set_keymap("n", "<Leader>Y", 'gg"+yG', {noremap = true, silent = true})
 
--- horizontal terminal
-vim.api.nvim_set_keymap("n", "<Leader>T", [[<cmd>vnew term://fish <CR>]], {silent = true}) -- term over right
 
--- vertical terminal
-vim.api.nvim_set_keymap("n", "<Leader>t", [[<cmd> split term://fish | resize 28 <CR>]], {silent = true}) --  term bottom
+-- live grep_previewer
+vim.api.nvim_set_keymap('n', '<Leader>F', ':Telescope live_grep<CR>', {noremap = true, silent = true})
 
--- horizontal split
-vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>", {noremap = true, silent = true})
 
--- vertical split
-vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", {noremap = true, silent = true})
 -- TODO create entire treesitter section
 
 local mappings = {
+
     ["/"] = "Comment",
     ["c"] = "Close Buffer",
     ["e"] = "Explorer",
     ["f"] = "Find File",
     ["F"] = "Live Grep",
-    ["n"] = "No Highlight",
-    ["p"] = "Projects",
-    ["z"] = "Zen",
-    ["gy"] = "Gitlink",
-    [";"] = "Dashboard",
     ["t"] = "split terminal",
     ["T"] = "vertical split terminal",
+    ["n"] = "No Highlight",
     ["h"] = "horizontal split",
-    ["v"] = "vertical split",
-    ["y"] = "copying selected area",
+  ["y"] = "copying selected area",
     ["Y"] = "Copying whole document",
+    ["v"] = "vertical split",
     b = {
-        name = "+Buffers",
+        name = "Buffers",
         j = {"<cmd>BufferPick<cr>", "jump to buffer"},
+        f = {"<cmd>Telescope buffers<cr>", "Find buffer"},
         w = {"<cmd>BufferWipeout<cr>", "wipeout buffer"},
         e = {
-            "<cmd>BufferCloseAllButCurrent<cr>",
-            "close all but current buffer"
+            "<cmd>BufferCloseAllButCurrent<cr>", "close all but current buffer"
         },
-        h = {
-            "<cmd>BufferCloseBuffersLeft<cr>",
-            "close all buffers to the left"
-        },
+        h = {"<cmd>BufferCloseBuffersLeft<cr>", "close all buffers to the left"},
         l = {
             "<cmd>BufferCloseBuffersRight<cr>",
             "close all BufferLines to the right"
@@ -158,24 +152,31 @@ local mappings = {
         }
     },
 
-    d = {
-        name = "Diagnostics",
-        t = {"<cmd>TroubleToggle<cr>", "trouble"},
-        w = {
-            "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace"
-        },
-        d = {"<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document"},
-        q = {"<cmd>TroubleToggle quickfix<cr>", "quickfix"},
-        l = {"<cmd>TroubleToggle loclist<cr>", "loclist"},
-        r = {"<cmd>TroubleToggle lsp_references<cr>", "references"}
-    },
+-- diagnostics vanilla nvim
+-- -- diagnostic
+-- function lv_utils.get_all()
+--     vim.lsp.diagnostic.get_all()
+-- end
+-- function lv_utils.get_next()
+--     vim.lsp.diagnostic.get_next()
+-- end
+-- function lv_utils.get_prev()
+--     vim.lsp.diagnostic.get_prev()
+-- end
+-- function lv_utils.goto_next()
+--     vim.lsp.diagnostic.goto_next()
+-- end
+-- function lv_utils.goto_prev()
+--     vim.lsp.diagnostic.goto_prev()
+-- end
+-- function lv_utils.show_line_diagnostics()
+--     vim.lsp.diagnostic.show_line_diagnostics()
+-- end
 
     -- " Available Debug Adapters:
     -- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
-    -- " 
     -- " Adapter configuration and installation instructions:
     -- "   https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
-    -- " 
     -- " Debug Adapter protocol:
     -- "   https://microsoft.github.io/debug-adapter-protocol/
     -- " Debugging
@@ -187,30 +188,26 @@ local mappings = {
     -- command! DebugStepInto lua require'dap'.step_into()
     -- command! DebugToggleRepl lua require'dap'.repl.toggle()
     -- command! DebugGetSession lua require'dap'.session()
-    D = {
-        name = "Debug",
-        b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
-        c = {"<cmd>DebugContinue<cr>", "Continue"},
-        i = {"<cmd>DebugStepInto<cr>", "Step Into"},
-        o = {"<cmd>DebugStepOver<cr>", "Step Over"},
-        r = {"<cmd>DebugToggleRepl<cr>", "Toggle Repl"},
-        s = {"<cmd>DebugStart<cr>", "Start"}
-    },
+    -- D = {
+    --     name = "Debug",
+    --     b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
+    --     c = {"<cmd>DebugContinue<cr>", "Continue"},
+    --     i = {"<cmd>DebugStepInto<cr>", "Step Into"},
+    --     o = {"<cmd>DebugStepOver<cr>", "Step Over"},
+    --     r = {"<cmd>DebugToggleRepl<cr>", "Toggle Repl"},
+    --     s = {"<cmd>DebugStart<cr>", "Start"}
+    -- },
     g = {
         name = "Git",
-        j = {"<cmd>lua require 'lv-utils'.next_hunk()<cr>", "Next Hunk"},
-        k = {"<cmd>lua require 'lv-utils'.prev_hunk()<cr>", "Prev Hunk"},
-        l = {"<cmd>lua require 'lv-utils'.blame_line()<cr>", "Blame"},
-        p = {
-            "<cmd>lua require 'lv-utils'.preview_hunk()<cr>", "Preview Hunk"
-        },
-        r = {"<cmd>lua require 'lv-utils'.reset_hunk()<cr>", "Reset Hunk"},
-        R = {
-            "<cmd>lua require 'lv-utils'.reset_buffer()<cr>", "Reset Buffer"
-        },
-        s = {"<cmd>lua require 'lv-utils'.stage_hunk()<cr>", "Stage Hunk"},
+        j = {"<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk"},
+        k = {"<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk"},
+        l = {"<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame"},
+        p = {"<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk"},
+        r = {"<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk"},
+        R = {"<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer"},
+        s = {"<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk"},
         u = {
-            "<cmd>lua require 'lv-utils'.undo_stage_hunk()<cr>",
+            "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
             "Undo Stage Hunk"
         },
         o = {"<cmd>Telescope git_status<cr>", "Open changed file"},
@@ -233,7 +230,7 @@ local mappings = {
             "<cmd>Telescope lsp_workspace_diagnostics<cr>",
             "Workspace Diagnostics"
         },
-        f = {"<cmd>lua require 'lv-utils'.formatting()<cr>", "Format"},
+        f = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Format"},
         h = {"<cmd>Lspsaga hover_doc<cr>", "Hover Doc"},
         i = {"<cmd>LspInfo<cr>", "Info"},
         l = {"<cmd>Lspsaga lsp_finder<cr>", "LSP Finder"},
@@ -252,8 +249,7 @@ local mappings = {
     r = {
         name = "Replace",
         f = {
-            "<cmd>lua require('spectre').open_file_search()<cr>",
-            "Current File"
+            "<cmd>lua require('spectre').open_file_search()<cr>", "Current File"
         },
         p = {"<cmd>lua require('spectre').open()<cr>", "Project"}
     },
@@ -261,17 +257,17 @@ local mappings = {
         name = "Search",
         b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
         c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
-        d = {
-            "<cmd>Telescope lsp_document_diagnostics<cr>",
-            "Document Diagnostics"
-        },
-        D = {
-            "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-            "Workspace Diagnostics"
-        },
+        -- d = {
+        --     "<cmd>Telescope lsp_document_diagnostics<cr>",
+        --     "Document Diagnostics"
+        -- },
+        -- D = {
+        --     "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+        --     "Workspace Diagnostics"
+        -- },
         f = {"<cmd>Telescope find_files<cr>", "Find File"},
         h = {"<cmd>Telescope help_tags<cr>", "Find Help"},
-        m = {"<cmd>Telescope marks<cr>", "Marks"},
+        -- m = {"<cmd>Telescope marks<cr>", "Marks"},
         M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
         r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
         R = {"<cmd>Telescope registers<cr>", "Registers"},
@@ -282,16 +278,37 @@ local mappings = {
         s = {"<cmd>SessionSave<cr>", "Save Session"},
         l = {"<cmd>SessionLoad<cr>", "Load Session"}
     }
-    -- extras
-    -- z = {
-    --     name = "Zen",
-    --     s = {"<cmd>TZBottom<cr>", "toggle status line"},
-    --     t = {"<cmd>TZTop<cr>", "toggle tab bar"},
-    --     z = {"<cmd>TZAtaraxis<cr>", "toggle zen"}
-    -- }
 }
 
-if O.extras then
+if O.plugin.trouble.active then
+    mappings['d'] = {
+        name = "Diagnostics",
+        t = {"<cmd>TroubleToggle<cr>", "trouble"},
+        w = {"<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace"},
+        d = {"<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document"},
+        q = {"<cmd>TroubleToggle quickfix<cr>", "quickfix"},
+        l = {"<cmd>TroubleToggle loclist<cr>", "loclist"},
+        r = {"<cmd>TroubleToggle lsp_references<cr>", "references"}
+    }
+end
+
+if O.plugin.gitlinker.active then mappings["gy"] = "Gitlink" end
+if O.plugin.zen.active then
+    vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR>",
+                            {noremap = true, silent = true})
+    mappings["z"] = "Zen"
+end
+if O.plugin.telescope_project then
+    -- open projects
+    vim.api.nvim_set_keymap('n', '<leader>p',
+                            ":lua require'telescope'.extensions.project.project{}<CR>",
+                            {noremap = true, silent = true})
+    mappings["p"] = "Projects"
+end
+
+-- [";"] = "Dashboard",
+
+if O.lang.latex.active then
     mappings["L"] = {
         name = "+Latex",
         c = {"<cmd>VimtexCompile<cr>", "Toggle Compilation Mode"},
@@ -302,26 +319,6 @@ if O.extras then
         v = {"<cmd>VimtexView<cr>", "View PDF"}
     }
 end
--- TODO come back and fix visual mappings
--- local visualOpts = {
---     mode = "v", -- Visual mode
---     prefix = "<leader>",
---     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
---     silent = true, -- use `silent` when creating keymaps
---     noremap = true, -- use `noremap` when creating keymaps
---     nowait = false -- use `nowait` when creating keymaps
--- }
-
--- local visualMappings = {
--- ["/"] = {"<cmd>CommentToggle<cr>", "Comment"},
--- r = {
--- name = "Replace",
--- f = {"<cmd>lua require('spectre').open_visual({path = vim.fn.expand('%')})<cr>", "File"},
--- p = {"<cmd>lua require('spectre').open_visual()<cr>", "Project"}
--- }
--- }
 
 local wk = require("which-key")
 wk.register(mappings, opts)
--- wk.register(visualMappings, visualOpts)
-

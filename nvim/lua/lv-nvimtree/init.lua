@@ -8,7 +8,7 @@ M.config = function()
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 30
     g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
-    g.nvim_tree_auto_open = 0
+    g.nvim_tree_auto_open = 1
     g.nvim_tree_auto_close = 0
     g.nvim_tree_quit_on_open = 0
     g.nvim_tree_follow = 1
@@ -25,7 +25,7 @@ M.config = function()
         git = 1,
         folders = 1,
         files = 1,
-        folder_arrows = 0
+        folder_arrows = 1
     }
 
     vim.g.nvim_tree_icons = {
@@ -62,7 +62,7 @@ M.config = function()
         ["<C-]>"] = tree_cb("cd"),
         ["<C-v>"] = tree_cb("vsplit"),
         ["v"] = tree_cb("vsplit"),
-        ["<C-h>"] = tree_cb("split"),
+        ["<C-x>"] = tree_cb("split"),
         ["<C-t>"] = tree_cb("tabnew"),
         ["<"] = tree_cb("prev_sibling"),
         [">"] = tree_cb("next_sibling"),
@@ -87,6 +87,19 @@ M.config = function()
         ["-"] = tree_cb("dir_up"),
         ["q"] = tree_cb("close")
     }
+end
+
+local view = require 'nvim-tree.view'
+
+M.toggle_tree = function()
+    if view.win_open() then
+        require'nvim-tree'.close()
+        require'bufferline.state'.set_offset(0)
+    else
+        require'bufferline.state'.set_offset(31, 'File Explorer')
+        require'nvim-tree'.find_file(true)
+    end
+
 end
 
 return M

@@ -8,7 +8,7 @@ an executable
 ]] -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- general
 O.auto_complete = true
-O.colorscheme = 'dracula'
+O.colorscheme = 'lunar'
 O.auto_close_tree = 0
 O.wrap_lines = false
 O.timeoutlen = 100
@@ -27,8 +27,8 @@ O.plugin.colorizer.active = false
 O.plugin.numb.active = false
 O.plugin.ts_playground.active = false
 O.plugin.indent_line.active = false
-O.plugin.gitlinker.active = true
-O.plugin.zen.active = true
+O.plugin.gitlinker.active = false
+O.plugin.zen.active = false
 
 -- dashboard
 -- O.dashboard.custom_header = {""}
@@ -72,6 +72,7 @@ O.lang.tsserver.linter = nil
 O.lang.tsserver.autoformat = true
 
 -- json
+O.lang.json.active = false
 O.lang.json.autoformat = true
 
 -- ruby
@@ -79,6 +80,9 @@ O.lang.ruby.autoformat = true
 
 -- go
 O.lang.go.autoformat = true
+
+-- rust
+O.lang.rust.autoformat = true
 -- create custom autocommand field (This would be easy with lua)
 
 -- Turn off relative_numbers
@@ -87,7 +91,7 @@ O.lang.go.autoformat = true
 -- Turn off cursorline
 -- O.cursorline = false
 
--- Neovim turns the default cursor to 'Block' 
+-- Neovim turns the default cursor to 'Block'
 -- when switched back into terminal.
 -- This below line fixes that. Uncomment if needed.
 
@@ -100,4 +104,8 @@ O.lang.go.autoformat = true
 --       The numbers didn't make a difference in alacritty. Please change
 --       the number to something that suits your needs if it looks weird.
 
+-- TODO
+-- custom autocommands
+-- user defined plugin config
+-- custom settings
 

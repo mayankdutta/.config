@@ -2,24 +2,15 @@ require('default-config')
 vim.cmd('luafile ' .. CONFIG_PATH .. '/lv-config.lua')
 require('settings')
 require('plugins')
+require('colorscheme')
 require('lv-utils')
 require('lv-autocommands')
 require('keymappings')
-require('colorscheme') -- This plugin must be required somewhere after nvimtree. Placing it before will break navigation keymappings
 require('lv-galaxyline')
 require('lv-telescope')
 require('lv-treesitter')
 require('lv-autopairs')
 require('lv-which-key')
-
--- my requirement
-require('lsp.js-ts-ls')
-require('lsp.clangd')
-require('lsp.html-ls')
-require('lsp.json-ls')
-require('lsp.lua-ls')
-require('lsp.tailwindcss-ls')
-require('lsp.vim-ls')
 
 -- LSP
 require('lsp')
@@ -44,13 +35,16 @@ if O.lang.lua.active then require('lsp.lua-ls') end
 if O.lang.php.active then require('lsp.php-ls') end
 if O.lang.python.active then require('lsp.python-ls') end
 if O.lang.ruby.active then require('lsp.ruby-ls') end
-if O.lang.rust.active then require('lsp.rust-ls') end
+if O.lang.rust.active then
+    require('lsp.rust-ls')
+    require('lv-rust-tools')
+end
 if O.lang.svelte.active then require('lsp.svelte-ls') end
 if O.lang.terraform.active then require('lsp.terraform-ls') end
 if O.lang.tailwindcss.active then require('lsp.tailwindcss-ls') end
 if O.lang.vim.active then require('lsp.vim-ls') end
 if O.lang.yaml.active then require('lsp.yaml-ls') end
-if O.lang.elixer.active then require('lsp.elixer-ls') end
+if O.lang.elixir.active then require('lsp.elixir-ls') end
 if O.lang.tsserver.active then
     require('lsp.js-ts-ls')
     require('lsp.angular-ls')
