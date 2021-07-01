@@ -88,7 +88,7 @@ O = {
             sdk_path = '/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot'
         },
         lua = {
-            active = false,
+            active = true,
             -- @usage can be 'lua-format'
             formatter = '',
             autoformat = false,
@@ -112,7 +112,7 @@ O = {
             }
         },
         tsserver = {
-            active = false,
+            active = true,
             -- @usage can be 'eslint'
             linter = '',
             -- @usage can be 'prettier'
@@ -125,7 +125,7 @@ O = {
             }
         },
         json = {
-            active = false,
+            active = true,
             -- @usage can be 'prettier'
             formatter = '',
             autoformat = false,
@@ -136,14 +136,14 @@ O = {
             }
         },
         tailwindcss = {
-            active = false,
+            active = true,
             filetypes = {
                 'html', 'css', 'scss', 'javascript', 'javascriptreact',
                 'typescript', 'typescriptreact'
             }
         },
         clang = {
-            active = false,
+            active = true,
             diagnostics = {
                 virtual_text = {spacing = 0, prefix = ""},
                 signs = true,
@@ -188,7 +188,7 @@ O = {
         cmake = {active = false},
         java = {active = false},
         css = {
-            active = false,
+            active = true,
 
             formatter = '',
             autoformat = false,

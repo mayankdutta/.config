@@ -68,6 +68,13 @@ if O.lang.rust.active then
     if O.lang.rust.autoformat then table.insert(auto_formatters, rust_format) end
 end
 
+if O.lang.clang.active then
+  local clang_format = {
+    'BufWritePre', '*.cpp', 'lua vim.lsp.buf.formatting_sync(nil,1000)'
+  }
+end
+
+
 utils.define_augroups({
     _general_settings = {
         {
@@ -91,6 +98,10 @@ utils.define_augroups({
 
         -- {'User', 'GoyoLeave', 'lua require(\'galaxyline\').disable_galaxyline()'},
         -- {'User', 'GoyoEnter', 'lua require(\'galaxyline\').galaxyline_augroup()'},
+    },
+      _auto_resize = {
+        -- will cause split windows to be resized evenly if main window is resized
+        {'VimResized ', '*', 'wincmd ='},
     },
     _java = {
         -- {'FileType', 'java', 'luafile '..CONFIG_PATH..'/lua/lsp/java-ls.lua'},

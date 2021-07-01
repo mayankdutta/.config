@@ -83,6 +83,9 @@ O.lang.go.autoformat = true
 
 -- rust
 O.lang.rust.autoformat = true
+
+-- cpp
+O.lang.clang.active = true
 -- create custom autocommand field (This would be easy with lua)
 
 -- Turn off relative_numbers
