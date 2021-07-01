@@ -24,8 +24,6 @@ vim.cmd('set sw=2') -- Change the number of space characters inserted for indent
 vim.cmd('set expandtab') -- Converts tabs to spaces
 vim.o.completeopt = "menuone,noselect"
 vim.bo.smartindent = true -- Makes indenting smart
-vim.bo.cindent = true -- Makes indenting smart
-vim.bo.autoindent = true -- Makes indenting smart
 vim.wo.number = O.number -- set numbered lines
 vim.wo.relativenumber = O.relative_number -- set relative number
 vim.wo.cursorline = O.cursorline -- set highlighting of the current line
