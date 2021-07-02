@@ -64,7 +64,7 @@ O.lang.python.analysis.use_library_code_types = true
 O.lang.lua.active = true
 O.lang.lua.formatter = 'lua-format'
 -- O.lua.formatter = 'lua-format'
-O.lang.lua.autoformat = false
+O.lang.lua.autoformat = true
 
 -- javascript
 O.lang.tsserver.formatter = 'prettier'
@@ -72,7 +72,8 @@ O.lang.tsserver.linter = nil
 O.lang.tsserver.autoformat = true
 
 -- json
-O.lang.json.active = false
+O.lang.json.formatter = 'prettier'
+O.lang.json.active = true
 O.lang.json.autoformat = true
 
 -- ruby

@@ -9,13 +9,20 @@ require('lv-galaxyline')
 require('lv-treesitter')
 require('lv-which-key')
 
-require('lsp.bash-ls')
-require('lsp.tailwindcss-ls')
-require('lsp.css-ls')
-require('lsp.html-ls')
-require('lsp.json-ls')
-require('lsp.vim-ls')
-require('lsp.lua-ls')
+O.lang.tailwindcss.active = true
+O.lang.html.active = true
+O.lang.json.active = true
+O.lang.clang.active = true
+O.lang.vim.active = true
+O.lang.lua.active = true
+O.lang.tsserver.active = true
+
+-- require('lsp.tailwindcss-ls')
+-- require('lsp.css-ls')
+-- require('lsp.html-ls')
+-- require('lsp.json-ls')
+-- require('lsp.vim-ls')
+-- require('lsp.lua-ls')
 
 -- LSP
 require('lsp')

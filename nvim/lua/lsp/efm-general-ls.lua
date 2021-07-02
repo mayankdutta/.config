@@ -96,23 +96,23 @@ require"lspconfig".efm.setup {
     settings = {
         rootMarkers = {".git/"},
         languages = {
-            python = python_arguments,
-            lua = lua_arguments,
-            sh = sh_arguments,
-            javascript = tsserver_args,
-            javascriptreact = tsserver_args,
-			typescript = tsserver_args,
-			typescriptreact = tsserver_args,
-            html = {prettier},
-            css = {prettier},
-            json = {prettier},
-            yaml = {prettier},
-            markdown = {markdownPandocFormat}
-            -- javascriptreact = {prettier, eslint},
-            -- javascript = {prettier, eslint},
-            -- markdown = {markdownPandocFormat, markdownlint},
+          python = python_arguments,
+          lua = lua_arguments,
+          sh = sh_arguments,
+          javascript = tsserver_args,
+          javascriptreact = tsserver_args,
+          typescript = tsserver_args,
+          typescriptreact = tsserver_args,
+          html = {prettier},
+          css = {prettier},
+          json = {prettier},
+          yaml = {prettier},
+          markdown = {markdownPandocFormat}
+          -- javascriptreact = {prettier, eslint},
+          -- javascript = {prettier, eslint},
+          -- markdown = {markdownPandocFormat, markdownlint},
         }
-    }
+      }
 }
 
 -- Also find way to toggle format on save

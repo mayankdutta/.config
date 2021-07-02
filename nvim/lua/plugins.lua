@@ -53,6 +53,8 @@ return require("packer").startup(function(use)
     }
 
     use {"hrsh7th/vim-vsnip", event = "InsertEnter"}
+    use {'hrsh7th/vim-vsnip-integ'}
+
     use {"rafamadriz/friendly-snippets", event = "InsertEnter"}
 
     -- Treesitter
