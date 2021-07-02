@@ -125,7 +125,6 @@ local mappings = {
     ["F"] = "Live Grep",
     ["t"] = "split terminal",
     ["T"] = "vertical split terminal",
-    ["n"] = "No Highlight",
     ["h"] = "horizontal split",
   ["y"] = "copying selected area",
     ["Y"] = "Copying whole document",

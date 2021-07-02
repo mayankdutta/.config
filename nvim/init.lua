@@ -9,7 +9,6 @@ require('lv-galaxyline')
 require('lv-treesitter')
 require('lv-which-key')
 
-require('lsp.clangd')
 require('lsp.bash-ls')
 require('lsp.tailwindcss-ls')
 require('lsp.css-ls')
