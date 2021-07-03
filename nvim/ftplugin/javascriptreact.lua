@@ -40,7 +40,6 @@ if O.lang.tsserver.autoformat then
     require('lv-utils').define_augroups({
         _javascript_autoformat = {
             {
-
                 'BufWritePre', '*.js',
                 'lua vim.lsp.buf.formatting_sync(nil, 1000)'
             }

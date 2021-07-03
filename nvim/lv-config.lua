@@ -73,6 +73,7 @@ O.lang.tsserver.autoformat = true
 
 -- json
 O.lang.json.autoformat = true
+O.lang.json.formatter = 'prettier'
 
 -- ruby
 O.lang.ruby.autoformat = true
@@ -84,7 +85,6 @@ O.lang.go.autoformat = true
 O.lang.rust.autoformat = true
 
 -- clang
-O.lang.clang.active = true
 O.lang.clang.autoformat = true
 
 -- create custom autocommand field (This would be easy with lua)

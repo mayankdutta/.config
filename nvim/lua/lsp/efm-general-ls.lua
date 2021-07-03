@@ -36,23 +36,23 @@ require"lspconfig".efm.setup {
     init_options = {documentFormatting = true, codeAction = false},
     filetypes = {"lua", "python", "javascriptreact", "javascript", "typescript","typescriptreact","sh", "html", "css", "yaml", "markdown", "vue"},
     settings = {
-        rootMarkers = {".git/"},
-        languages = {
-            javascript = tsserver_args,
-            javascriptreact = tsserver_args,
-			typescript = tsserver_args,
-			typescriptreact = tsserver_args,
-            html = {prettier},
-            css = {prettier},
-            json = {prettier},
-            yaml = {prettier},
-            markdown = {markdownPandocFormat}
-            -- javascriptreact = {prettier, eslint},
-            -- javascript = {prettier, eslint},
-            -- markdown = {markdownPandocFormat, markdownlint},
-        }
+      rootMarkers = {".git/"},
+      languages = {
+        javascript = tsserver_args,
+        javascriptreact = tsserver_args,
+        typescript = tsserver_args,
+        typescriptreact = tsserver_args,
+        html = {prettier},
+        css = {prettier},
+        json = {prettier},
+        yaml = {prettier},
+        markdown = {markdownPandocFormat}
+        -- javascriptreact = {prettier, eslint},
+        -- javascript = {prettier, eslint},
+        -- markdown = {markdownPandocFormat, markdownlint},
+      }
     }
-}
+  }
 
 -- Also find way to toggle format on save
 -- maybe this will help: https://superuser.com/questions/439078/how-to-disable-autocmd-or-augroup-in-vim
