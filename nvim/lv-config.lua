@@ -8,7 +8,7 @@ an executable
 ]] -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- general
 O.auto_complete = true
-O.colorscheme = 'lunar'
+O.colorscheme = 'spacegray'
 O.auto_close_tree = 0
 O.wrap_lines = false
 O.timeoutlen = 100
@@ -17,6 +17,7 @@ O.extras = false
 O.leader_key = ' '
 O.ignore_case = true
 O.smart_case = true
+O.lushmode = false
 
 -- After changing plugin config it is recommended to run :PackerCompile
 O.plugin.hop.active = false
@@ -39,9 +40,9 @@ O.treesitter.ensure_installed = "all"
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
 
-O.lang.clang.diagnostics.virtual_text = false
-O.lang.clang.diagnostics.signs = false
-O.lang.clang.diagnostics.underline = false
+O.lang.clang.diagnostics.virtual_text = true
+O.lang.clang.diagnostics.signs = true
+O.lang.clang.diagnostics.underline = true
 
 -- python
 -- add things like O.python.formatter.yapf.exec_path
@@ -49,7 +50,6 @@ O.lang.clang.diagnostics.underline = false
 -- add things like O.python.formatter.isort.exec_path
 O.lang.python.formatter = 'yapf'
 -- O.python.linter = 'flake8'
-O.lang.python.active = true
 O.lang.python.isort = true
 O.lang.python.autoformat = true
 O.lang.python.diagnostics.virtual_text = true
@@ -59,12 +59,12 @@ O.lang.python.analysis.type_checking = "off"
 O.lang.python.analysis.auto_search_paths = true
 O.lang.python.analysis.use_library_code_types = true
 
+
 -- lua
 -- TODO look into stylua
-O.lang.lua.active = true
 O.lang.lua.formatter = 'lua-format'
 -- O.lua.formatter = 'lua-format'
-O.lang.lua.autoformat = true
+O.lang.lua.autoformat = false
 
 -- javascript
 O.lang.tsserver.formatter = 'prettier'
@@ -72,8 +72,6 @@ O.lang.tsserver.linter = nil
 O.lang.tsserver.autoformat = true
 
 -- json
-O.lang.json.formatter = 'prettier'
-O.lang.json.active = true
 O.lang.json.autoformat = true
 
 -- ruby
@@ -84,10 +82,6 @@ O.lang.go.autoformat = true
 
 -- rust
 O.lang.rust.autoformat = true
-
--- clang
-O.lang.clang.autoformat = true
-
 -- create custom autocommand field (This would be easy with lua)
 
 -- Turn off relative_numbers

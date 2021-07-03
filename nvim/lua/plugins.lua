@@ -10,20 +10,19 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 local packer_ok, packer = pcall(require, "packer")
-if not packer_ok then
-  return
-end
+if not packer_ok then return end
 
 packer.init {
-  -- compile_path = vim.fn.stdpath('data')..'/site/pack/loader/start/packer.nvim/plugin/packer_compiled.vim',
-  git = {
-    clone_timeout = 300
-  },
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "single" }
-    end,
-  },
+    -- compile_path = vim.fn.stdpath('data')..'/site/pack/loader/start/packer.nvim/plugin/packer_compiled.vim',
+    compile_path = require("packer.util").join_paths(vim.fn.stdpath('config'),
+                                                     'plugin',
+                                                     'packer_compiled.vim'),
+    git = {clone_timeout = 300},
+    display = {
+        open_fn = function()
+            return require("packer.util").float {border = "single"}
+        end
+    }
 }
 
 vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
@@ -34,16 +33,26 @@ return require("packer").startup(function(use)
 
     -- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
     use {"neovim/nvim-lspconfig"}
-    use {"glepnir/lspsaga.nvim", event = "BufRead"}
-    use {"kabouzeid/nvim-lspinstall", event = "BufRead"}
+    use {"glepnir/lspsaga.nvim"}
+    use {"kabouzeid/nvim-lspinstall"}
     -- Telescope
     use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
+    use {"tjdevries/astronauta.nvim"}
     use {
         "nvim-telescope/telescope.nvim",
         config = [[require('lv-telescope')]],
         cmd = "Telescope"
     }
+    -- Snap TODO disable for now, need to only install fzy when user specifies they want to use snap
+    -- use {
+        -- "camspiers/snap",
+        -- rocks = "fzy",
+        -- config = function()
+        --    require("lv-snap").config()
+        -- end,
+        -- disable = not O.plugin.snap.active
+    -- }
     -- Autocomplete
     use {
         "hrsh7th/nvim-compe",
@@ -53,8 +62,6 @@ return require("packer").startup(function(use)
     }
 
     use {"hrsh7th/vim-vsnip", event = "InsertEnter"}
-    use {'hrsh7th/vim-vsnip-integ'}
-
     use {"rafamadriz/friendly-snippets", event = "InsertEnter"}
 
     -- Treesitter
@@ -81,8 +88,11 @@ return require("packer").startup(function(use)
     use {"folke/which-key.nvim"}
 
     -- Autopairs
-    use {"windwp/nvim-autopairs",
-        config = function() require'lv-autopairs' end
+    use {
+        "windwp/nvim-autopairs",
+        config = function()
+            require 'lv-autopairs'
+        end
     }
 
     -- Comments
@@ -212,7 +222,6 @@ return require("packer").startup(function(use)
 
     use {
         "lukas-reineke/indent-blankline.nvim",
-        branch = "lua",
         event = "BufRead",
         setup = function()
 
@@ -391,7 +400,7 @@ return require("packer").startup(function(use)
     -- Lush Create Color Schemes
     use {
         "rktjmp/lush.nvim",
-        cmd = {"LushRunQuickstart", "LushRunTutorial", "Lushify"},
+        -- cmd = {"LushRunQuickstart", "LushRunTutorial", "Lushify"},
         disable = not O.plugin.lush.active,
     }
     -- HTML preview
@@ -401,19 +410,22 @@ return require("packer").startup(function(use)
         run = 'npm install --prefix server',
         disable = not O.plugin.bracey.active
     }
+    -- Debugger management
+    use {
+        'Pocco81/DAPInstall.nvim',
+        event = "BufRead",
+        disable = not O.plugin.dap_install.active
+    }
 
     -- LANGUAGE SPECIFIC GOES HERE
 
     -- Latex TODO what filetypes should this be active for?
-    use {"lervag/vimtex", ft = "latex", disable = not O.lang.latex.active}
+    use {"lervag/vimtex", ft = "latex"}
 
     -- Rust tools
     -- TODO: use lazy loading maybe?
-    use {"simrat39/rust-tools.nvim", disable = not O.lang.rust.active}
+    use {"simrat39/rust-tools.nvim", ft = "rust"}
 
     -- Elixir
-    use {"elixir-editors/vim-elixir",
-        ft = {"elixir", "eelixir"},
-        disable = not O.lang.elixir.active
-    }
+    use {"elixir-editors/vim-elixir", ft = {"elixir", "eelixir", "euphoria3"}}
 end)

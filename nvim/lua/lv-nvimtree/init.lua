@@ -8,7 +8,7 @@ M.config = function()
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 30
     g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
-    g.nvim_tree_auto_open = 0
+    g.nvim_tree_auto_open = 1
     g.nvim_tree_auto_close = 0
     g.nvim_tree_quit_on_open = 0
     g.nvim_tree_follow = 1
@@ -67,7 +67,8 @@ M.toggle_tree = function()
         end
     else
         if package.loaded['bufferline.state'] then
-            require'bufferline.state'.set_offset(31, 'File Explorer')
+            -- require'bufferline.state'.set_offset(31, 'File Explorer')
+            require'bufferline.state'.set_offset(31, '')
         end
         require'nvim-tree'.find_file(true)
     end
