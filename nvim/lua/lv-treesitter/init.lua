@@ -11,7 +11,7 @@ require'nvim-treesitter.configs'.setup {
     context_commentstring = {enable = O.plugin.ts_context_commentstring, config = {css = '// %s'}},
     -- indent = {enable = true, disable = {"python", "html", "javascript"}},
     -- TODO seems to be broken
-    -- indent = {enable = {"javascriptreact"}},
+    indent = {enable = {"javascriptreact"}},
     autotag = {enable = true},
 
     playground = {

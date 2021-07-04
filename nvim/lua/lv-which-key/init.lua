@@ -55,7 +55,7 @@ local opts = {
 }
 
 -- no hl
-vim.api.nvim_set_keymap('n', '<Leader>n', ':let @/=""<CR>',
+vim.api.nvim_set_keymap('n', '<Leader>h', ':let @/=""<CR>',
                         {noremap = true, silent = true})
 
 -- explorer
@@ -98,6 +98,10 @@ vim.api.nvim_set_keymap('n', '<Leader>F', ':Telescope live_grep<CR>',
                         {noremap = true, silent = true})
 
 
+-- horizontal terminal
+-- vim.api.nvim_set_keymap("n", "<Leader>T", [[<cmd>vnew term://fish <CR>]],
+--   {silent = true}) -- term over right
+
 -- vertical terminal
 vim.api.nvim_set_keymap("n", "<Leader>t", [[<cmd> split term://fish | resize 28 <CR>]],
   {silent = true}) --  term bottom
@@ -115,7 +119,6 @@ vim.api.nvim_set_keymap("v", "<Leader>y", [["+y]], {noremap = true, silent = tru
 
 -- copying whole doc
 vim.api.nvim_set_keymap("n", "<Leader>Y", 'gg"+yG', {noremap = true, silent = true})
-
 
 
 

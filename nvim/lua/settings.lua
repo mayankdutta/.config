@@ -9,7 +9,7 @@ local opt = vim.opt
 
 
 cmd('filetype plugin on')               -- filetype detection
-cmd('let &titleold="'..TERMINAL..'"')
+cmd('let &titleold="'..TERMINAL..'"')   
 cmd('set inccommand=split')             -- show what you are substituting in real time
 cmd('set iskeyword+=-')                 -- treat dash as a separate word
 cmd('set whichwrap+=<,>,[,],h,l')       -- move to next line with theses keys
@@ -37,8 +37,8 @@ opt.showmode        = false                     -- we don't need to see things l
 opt.showtabline     = 2                         -- always show tabs
 opt.smartcase       = O.smart_case              -- smart case
 opt.smartindent     = true                      -- make indenting smarter again
-opt.autoindent       = true                      -- make indenting smarter again
-opt.cindent         = true                      -- make indenting smarter again
+opt.autoindent = true                      -- make indenting smarter again
+opt.cindent = true                      -- make indenting smarter again
 opt.splitbelow      = true                      -- force all horizontal splits to go below current window
 opt.splitright      = true                      -- force all vertical splits to go to the right of current window
 opt.swapfile        = false                     -- creates a swapfile
