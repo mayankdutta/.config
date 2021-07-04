@@ -10,9 +10,11 @@ M.setup = function()
         formatStdin = true
     }
 
-    if vim.fn.glob("node_modules/.bin/prettier") then
+    -- if vim.fn.glob("node_modules/.bin/prettier") then
+    if vim.fn.glob("/usr/local/bin/prettier") then
         prettier = {
-            formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}",
+            -- formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}",
+            formatCommand = "prettier --stdin-filepath ${INPUT}",
             formatStdin = true
         }
     end
