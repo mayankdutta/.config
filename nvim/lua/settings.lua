@@ -13,7 +13,9 @@ cmd('let &titleold="'..TERMINAL..'"')
 cmd('set inccommand=split')             -- show what you are substituting in real time
 cmd('set iskeyword+=-')                 -- treat dash as a separate word
 cmd('set whichwrap+=<,>,[,],h,l')       -- move to next line with theses keys
-
+if O.transparent_window then
+    cmd('au ColorScheme * hi Normal ctermbg=none guibg=none')
+ end
 
 ---  SETTINGS  ---
 
@@ -35,8 +37,8 @@ opt.showmode        = false                     -- we don't need to see things l
 opt.showtabline     = 2                         -- always show tabs
 opt.smartcase       = O.smart_case              -- smart case
 opt.smartindent     = true                      -- make indenting smarter again
-opt.autoindent      = true                      -- make indenting
-opt.cindent         = true                      -- make indenting
+opt.autoindent      = true                      -- make indenting smarter again
+opt.cindent         = true                      -- make indenting smarter again
 opt.splitbelow      = true                      -- force all horizontal splits to go below current window
 opt.splitright      = true                      -- force all vertical splits to go to the right of current window
 opt.swapfile        = false                     -- creates a swapfile
@@ -49,9 +51,9 @@ opt.undofile        = true                      -- enable persisten undo
 opt.updatetime      = 300                       -- faster completion
 opt.writebackup     = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 opt.expandtab       = true                      -- convert tabs to spaces
-opt.shiftwidth      = 2                         -- the number of spaces inserted for each indentation
+opt.shiftwidth      = 4                         -- the number of spaces inserted for each indentation
 opt.shortmess:append("c")                       -- don't pass messages to |ins-completion-menu|
-opt.tabstop         = 2                         -- insert 4 spaces for a tab
+opt.tabstop         = 4                         -- insert 4 spaces for a tab
 opt.cursorline      = O.cursorline              -- highlight the current line
 opt.number          = O.number                  -- set numbered lines
 opt.relativenumber  = O.relative_number         -- set relative numbered lines

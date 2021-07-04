@@ -18,6 +18,7 @@ O.leader_key = ' '
 O.ignore_case = true
 O.smart_case = true
 O.lushmode = false
+O.transparent_window = false
 
 -- After changing plugin config it is recommended to run :PackerCompile
 O.plugin.hop.active = false
@@ -59,7 +60,6 @@ O.lang.python.analysis.type_checking = "off"
 O.lang.python.analysis.auto_search_paths = true
 O.lang.python.analysis.use_library_code_types = true
 
-
 -- lua
 -- TODO look into stylua
 O.lang.lua.formatter = 'lua-format'
@@ -85,7 +85,7 @@ O.lang.go.autoformat = true
 O.lang.rust.autoformat = true
 
 -- clang
-O.lang.clang.autoformat = true
+O.lang.clang.autoformat = true -- Set to true to enable auto-format in C/C++ files.
 
 -- create custom autocommand field (This would be easy with lua)
 

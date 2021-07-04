@@ -92,16 +92,17 @@ vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>",
                         {noremap = true, silent = true})
 
 
+
 vim.api.nvim_set_keymap('n', '<Leader>F', ':Telescope live_grep<CR>',
                         {noremap = true, silent = true})
 
 
--- horizontal terminal
-vim.api.nvim_set_keymap("n", "<Leader>T", [[<cmd>vnew term://fish <CR>]],
-  {silent = true}) -- term over right
-
 -- vertical terminal
-vim.api.nvim_set_keymap("n", "<Leader>t", [[<cmd> split term://fish | resize 28 <CR>]],
+-- vim.api.nvim_set_keymap("n", "<Leader>T", [[<cmd>vnew term://fish <CR>]],
+-- vim.api.nvim_set_keymap("n", "<Leader>T", ":vnew term://fish <CR>", {silent = true}) -- term over right
+
+  -- horizontal terminal
+vim.api.nvim_set_keymap("n", "<Leader>t", ":split term://fish | resize 28 <CR>",
   {silent = true}) --  term bottom
 
   -- horizontal split
@@ -130,9 +131,8 @@ local mappings = {
     ["f"] = "Find File",
     ["F"] = "Live Grep",
     ["t"] = "split terminal",
-    ["T"] = "vertical split terminal",
     ["h"] = "horizontal split",
-  ["y"] = "copying selected area",
+    ["y"] = "copying selected area",
     ["Y"] = "Copying whole document",
     ["v"] = "vertical split",
     ["n"] = "No Highlight",
@@ -249,7 +249,8 @@ local mappings = {
         r = {"<cmd>Lspsaga rename<cr>", "Rename"},
         t = {"<cmd>LspTypeDefinition<cr>", "Type Definition"},
         x = {"<cmd>cclose<cr>", "Close Quickfix"},
-        s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
+        s = {O.plugin.symbol_outline.active and "<cmd>SymbolsOutline<cr>" or
+            "<cmd> Telescope lsp_document_symbols<cr>", "Document Symbols"},
         S = {
             "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
             "Workspace Symbols"

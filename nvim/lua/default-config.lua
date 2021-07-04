@@ -20,6 +20,7 @@ O = {
     smart_case = true,
     lushmode = false,
     hl_search = false,
+    transparent_window = false;
     leader_key = "space";
 
     -- @usage pass a table with your desired languages
@@ -119,7 +120,7 @@ O = {
             linter = '',
             -- @usage can be 'prettier'
             formatter = '',
-            autoformat = false,
+            autoformat = true,
             diagnostics = {
                 virtual_text = {spacing = 0, prefix = ""},
                 signs = true,
@@ -150,7 +151,7 @@ O = {
             },
             cross_file_rename = true,
             header_insertion = 'never',
-            autoformat = false
+            autoformat = false  -- update this to true for enabling autoformat
         },
         ruby = {
             diagnostics = {
