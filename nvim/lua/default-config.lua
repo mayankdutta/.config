@@ -120,7 +120,7 @@ O = {
             linter = '',
             -- @usage can be 'prettier'
             formatter = '',
-            autoformat = true,
+            autoformat = false,
             diagnostics = {
                 virtual_text = {spacing = 0, prefix = ""},
                 signs = true,
@@ -159,7 +159,7 @@ O = {
                 signs = true,
                 underline = true
             },
-            filetypes = {'rb', 'erb', 'rakefile'}
+            filetypes = {'rb', 'erb', 'rakefile', 'ruby'}
         },
         go = {},
         elixir = {},
@@ -167,6 +167,9 @@ O = {
         yaml = {},
         terraform = {},
         rust = {
+            rust_tools = {
+                active = false
+            },
             linter = '',
             formatter = '',
             autoformat = false,
