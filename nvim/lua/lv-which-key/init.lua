@@ -94,6 +94,10 @@ vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>",
 -- TODO create entire treesitter section
 
 
+vim.api.nvim_set_keymap('n', '<Leader>F', ':Telescope live_grep<CR>',
+                        {noremap = true, silent = true})
+
+
 -- vertical terminal
 vim.api.nvim_set_keymap("n", "<Leader>t", [[<cmd> split term://fish | resize 28 <CR>]],
   {silent = true}) --  term bottom
