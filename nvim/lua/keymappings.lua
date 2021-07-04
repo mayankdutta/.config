@@ -16,6 +16,8 @@ vim.cmd([[
   inoremap <C-k> <C-\><C-N><C-w>k
   inoremap <C-l> <C-\><C-N><C-w>l
   tnoremap <Esc> <C-\><C-n>
+          au BufEnter * if &buftype == 'terminal' | :startinsert | endif 
+
 ]])
 
 -- TODO fix this

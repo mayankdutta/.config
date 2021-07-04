@@ -55,7 +55,7 @@ local opts = {
 }
 
 -- no hl
-vim.api.nvim_set_keymap('n', '<Leader>h', ':let @/=""<CR>',
+vim.api.nvim_set_keymap('n', '<Leader>n', ':let @/=""<CR>',
                         {noremap = true, silent = true})
 
 -- explorer
@@ -93,13 +93,41 @@ vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>",
 
 -- TODO create entire treesitter section
 
+
+-- vertical terminal
+vim.api.nvim_set_keymap("n", "<Leader>t", [[<cmd> split term://fish | resize 28 <CR>]],
+  {silent = true}) --  term bottom
+
+  -- horizontal split
+vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>",
+  {noremap = true, silent = true})
+
+-- vertical split
+vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>",
+{noremap = true, silent = true})
+-- TODO create entire treesitter section
+
+vim.api.nvim_set_keymap("v", "<Leader>y", [["+y]], {noremap = true, silent = true})
+
+-- copying whole doc
+vim.api.nvim_set_keymap("n", "<Leader>Y", 'gg"+yG', {noremap = true, silent = true})
+
+
+
+
 local mappings = {
 
     ["/"] = "Comment",
     ["c"] = "Close Buffer",
     ["e"] = "Explorer",
     ["f"] = "Find File",
-    ["h"] = "No Highlight",
+    ["F"] = "Live Grep",
+    ["t"] = "split terminal",
+    ["h"] = "horizontal split",
+  ["y"] = "copying selected area",
+    ["Y"] = "Copying whole document",
+    ["v"] = "vertical split",
+    ["n"] = "No Highlight",
     b = {
         name = "Buffers",
         j = {"<cmd>BufferPick<cr>", "jump to buffer"},
