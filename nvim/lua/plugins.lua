@@ -84,6 +84,8 @@ return require("packer").startup(function(use)
     -- whichkey
     use {"folke/which-key.nvim"}
 
+    use {"mrdotb/vim-tailwindcss"}
+
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
