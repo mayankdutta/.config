@@ -71,14 +71,8 @@ vim.api.nvim_set_keymap("n", "<Leader>e",
 --                         ":NvimTreeToggle<CR>",
 --                         {noremap = true, silent = true})
 
--- telescope or snap
-if O.plugin.snap.active then
-    vim.api.nvim_set_keymap("n", "<Leader>f", ":Snap find_files<CR>",
-                            {noremap = true, silent = true})
-else
-    vim.api.nvim_set_keymap("n", "<Leader>f", ":Telescope find_files<CR>",
-                            {noremap = true, silent = true})
-end
+vim.api.nvim_set_keymap("n", "<Leader>f", ":Telescope find_files<CR>",
+                        {noremap = true, silent = true})
 
 -- dashboard
 vim.api.nvim_set_keymap("n", "<Leader>;", ":Dashboard<CR>",
@@ -140,10 +134,7 @@ local mappings = {
     b = {
         name = "Buffers",
         j = {"<cmd>BufferPick<cr>", "jump to buffer"},
-        f = {
-            O.plugin.snap.active and "<cmd>Snap buffers<cr>" or
-                "<cmd>Telescope buffers<cr>", "Find buffer"
-        },
+        f = {"<cmd>Telescope buffers<cr>", "Find buffer"},
         w = {"<cmd>BufferWipeout<cr>", "wipeout buffer"},
         e = {
             "<cmd>BufferCloseAllButCurrent<cr>", "close all but current buffer"
@@ -273,30 +264,12 @@ local mappings = {
         name = "Search",
         b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
         c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
-        -- d = {
-        --     "<cmd>Telescope lsp_document_diagnostics<cr>",
-        --     "Document Diagnostics"
-        -- },
-        -- D = {
-        --     "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-        --     "Workspace Diagnostics"
-        -- },
-        f = {
-            O.plugin.snap.active and "<cmd>Snap find_files<cr>" or
-                "<cmd>Telescope find_files<cr>", "Find File"
-        },
+        f = {"<cmd>Telescope find_files<cr>", "Find File"},
         h = {"<cmd>Telescope help_tags<cr>", "Find Help"},
-        -- m = {"<cmd>Telescope marks<cr>", "Marks"},
         M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
-        r = {
-            O.plugin.snap.active and "<cmd>Snap oldfiles<cr>" or
-                "<cmd>Telescope oldfiles<cr>", "Open Recent File"
-        },
+        r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
         R = {"<cmd>Telescope registers<cr>", "Registers"},
-        t = {
-            O.plugin.snap.active and "<cmd>Snap live_grep<cr>" or
-                "<cmd>Telescope live_grep<cr>", "Text"
-        }
+        t = {"<cmd>Telescope live_grep<cr>", "Text"}
     },
     S = {
         name = "Session",
@@ -305,16 +278,6 @@ local mappings = {
     },
     T = {name = "Treesitter", i = {":TSConfigInfo<cr>", "Info"}}
 }
-
-if O.plugin.spectre.active then
-    mappings["r"] = {
-        name = "Replace",
-        f = {
-            "<cmd>lua require('spectre').open_file_search()<cr>", "Current File"
-        },
-        p = {"<cmd>lua require('spectre').open()<cr>", "Project"}
-    }
-end
 
 -- if O.plugin.trouble.active then
 --   mappings["d"] = {
@@ -328,7 +291,11 @@ end
 --   }
 -- end
 
-if O.plugin.gitlinker.active then mappings["gy"] = "Gitlink" end
+if O.plugin.symbol_outline.active then
+    vim.api.nvim_set_keymap("n", "<leader>o", ":SymbolsOutline<CR>",
+                            {noremap = true, silent = true})
+    mappings["o"] = "Symbols outline"
+end
 
 if O.plugin.ts_playground.active then
     vim.api.nvim_set_keymap("n", "<leader>Th",
@@ -349,7 +316,7 @@ if O.plugin.lazygit.active then
 end
 if O.plugin.telescope_project.active then
     -- open projects
-    vim.api.nvim_set_keymap("n", "<leader>p",
+    vim.api.nvim_set_keymap("n", "<leader>P",
                             ":lua require'telescope'.extensions.project.project{}<CR>",
                             {noremap = true, silent = true})
     mappings["P"] = "Projects"

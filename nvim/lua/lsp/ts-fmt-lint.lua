@@ -21,10 +21,7 @@ M.setup = function()
         -- init_options = {initializationOptions},
         cmd = {DATA_PATH .. "/lspinstall/efm/efm-langserver"},
         init_options = {documentFormatting = true, codeAction = false},
-        filetypes = {
-            "html", "css", "yaml", "vue", "javascript", "javascriptreact",
-            "typescript", "typescriptreact"
-        },
+        filetypes = {"html", "css", "yaml", "vue", "javascript", "javascriptreact", "typescript", "typescriptreact"},
         settings = {
             rootMarkers = {".git/", "package.json"},
             languages = {
