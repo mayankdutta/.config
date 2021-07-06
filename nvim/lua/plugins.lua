@@ -1,7 +1,7 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
     execute("!git clone https://github.com/wbthomason/packer.nvim " ..
@@ -14,9 +14,9 @@ if not packer_ok then return end
 
 packer.init {
     -- compile_path = vim.fn.stdpath('data')..'/site/pack/loader/start/packer.nvim/plugin/packer_compiled.vim',
-    compile_path = require("packer.util").join_paths(vim.fn.stdpath('config'),
-                                                     'plugin',
-                                                     'packer_compiled.vim'),
+    compile_path = require("packer.util").join_paths(vim.fn.stdpath "config",
+                                                     "plugin",
+                                                     "packer_compiled.vim"),
     git = {clone_timeout = 300},
     display = {
         open_fn = function()
@@ -25,7 +25,7 @@ packer.init {
     }
 }
 
-vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
+vim.cmd "autocmd BufWritePost plugins.lua PackerCompile"
 
 return require("packer").startup(function(use)
     -- Packer can manage itself as an optional plugin
@@ -33,7 +33,6 @@ return require("packer").startup(function(use)
 
     -- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
     use {"neovim/nvim-lspconfig"}
-    use {"glepnir/lspsaga.nvim"}
     use {"kabouzeid/nvim-lspinstall"}
     -- Telescope
     use {"nvim-lua/popup.nvim"}
@@ -56,9 +55,8 @@ return require("packer").startup(function(use)
     -- Autocomplete
     use {
         "hrsh7th/nvim-compe",
-        config = function()
-            require("lv-compe").config()
-        end
+        event = "InsertEnter",
+        config = function() require("lv-compe").config() end
     }
 
     use {"hrsh7th/vim-vsnip", event = "InsertEnter"}
@@ -67,20 +65,19 @@ return require("packer").startup(function(use)
     -- Treesitter
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
+    -- Neoformat
+    use {"sbdchd/neoformat", event = "BufEnter"}
     use {
+
         "kyazdani42/nvim-tree.lua",
         -- cmd = "NvimTreeToggle",
-        config = function()
-            require("lv-nvimtree").config()
-        end
+        config = function() require("lv-nvimtree").config() end
     }
 
     use {
         "lewis6991/gitsigns.nvim",
 
-        config = function()
-            require("lv-gitsigns").config()
-        end,
+        config = function() require("lv-gitsigns").config() end,
         event = "BufRead"
     }
 
@@ -90,18 +87,16 @@ return require("packer").startup(function(use)
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
-        config = function()
-            require 'lv-autopairs'
-        end
+        event = "InsertEnter",
+        after = {"telescope.nvim", "nvim-compe"},
+        config = function() require "lv-autopairs" end
     }
 
     -- Comments
     use {
         "terrortylor/nvim-comment",
         cmd = "CommentToggle",
-        config = function()
-            require('nvim_comment').setup()
-        end
+        config = function() require("nvim_comment").setup() end
     }
 
     -- Color
@@ -114,44 +109,48 @@ return require("packer").startup(function(use)
     use {"glepnir/galaxyline.nvim"}
 
     use {
-        "akinsho/nvim-bufferline.lua",
+        "romgrk/barbar.nvim",
         config = function()
-            require("lv-bufferline").config()
-        end,
-        event = "BufRead"
-
+            vim.api.nvim_set_keymap("n", "<TAB>", ":BufferNext<CR>",
+                                    {noremap = true, silent = true})
+            vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferPrevious<CR>",
+                                    {noremap = true, silent = true})
+            vim.api.nvim_set_keymap("n", "<S-x>", ":BufferClose<CR>",
+                                    {noremap = true, silent = true})
+        end
+        -- event = "BufRead",
     }
+
+    -- use {
+    --     "akinsho/nvim-bufferline.lua",
+    --     config = function() require("lv-bufferline").config() end,
+    --     event = "BufRead"
+    -- }
 
     -- Extras, these do not load by default
 
     -- Better motions
     use {
-        'phaazon/hop.nvim',
-        event = 'BufRead',
-        config = function()
-            require('lv-hop').config()
-        end,
+        "phaazon/hop.nvim",
+        event = "BufRead",
+        config = function() require("lv-hop").config() end,
         disable = not O.plugin.hop.active,
         opt = true
     }
     -- Enhanced increment/decrement
     use {
-        'monaqa/dial.nvim',
-        event = 'BufRead',
-        config = function()
-            require('lv-dial').config()
-        end,
+        "monaqa/dial.nvim",
+        event = "BufRead",
+        config = function() require("lv-dial").config() end,
         disable = not O.plugin.dial.active,
         opt = true
     }
     -- Dashboard
     use {
         "ChristianChiarulli/dashboard-nvim",
-        event = 'BufWinEnter',
+        event = "BufWinEnter",
         cmd = {"Dashboard", "DashboardNewFile", "DashboardJumpMarks"},
-        config = function()
-            require('lv-dashboard').config()
-        end,
+        config = function() require("lv-dashboard").config() end,
         disable = not O.plugin.dashboard.active,
         opt = true
     }
@@ -160,28 +159,22 @@ return require("packer").startup(function(use)
         "folke/zen-mode.nvim",
         cmd = "ZenMode",
         -- event = "BufRead",
-        config = function()
-            require('lv-zen').config()
-        end,
+        config = function() require("lv-zen").config() end,
         disable = not O.plugin.zen.active
     }
     -- Ranger
     use {
         "kevinhwang91/rnvimr",
         cmd = "Rnvimr",
-        config = function()
-            require('lv-rnvimr').config()
-        end,
+        config = function() require("lv-rnvimr").config() end,
         disable = not O.plugin.ranger.active
     }
 
     -- matchup
     use {
-        'andymass/vim-matchup',
+        "andymass/vim-matchup",
         event = "CursorMoved",
-        config = function()
-            require('lv-matchup').config()
-        end,
+        config = function() require("lv-matchup").config() end,
         disable = not O.plugin.matchup.active
     }
 
@@ -190,7 +183,7 @@ return require("packer").startup(function(use)
         event = "BufRead",
         config = function()
             require("colorizer").setup()
-            vim.cmd("ColorizerReloadAllBuffers")
+            vim.cmd "ColorizerReloadAllBuffers"
         end,
         disable = not O.plugin.colorizer.active
     }
@@ -199,7 +192,7 @@ return require("packer").startup(function(use)
         "nacro90/numb.nvim",
         event = "BufRead",
         config = function()
-            require('numb').setup {
+            require("numb").setup {
                 show_numbers = true, -- Enable 'number' for the window while peeking
                 show_cursorline = true -- Enable 'cursorline' for the window while peeking
             }
@@ -209,7 +202,7 @@ return require("packer").startup(function(use)
 
     -- Treesitter playground
     use {
-        'nvim-treesitter/playground',
+        "nvim-treesitter/playground",
         event = "BufRead",
         disable = not O.plugin.ts_playground.active
     }
@@ -218,7 +211,6 @@ return require("packer").startup(function(use)
         "lukas-reineke/indent-blankline.nvim",
         event = "BufRead",
         setup = function()
-
             vim.g.indentLine_enabled = 1
             vim.g.indent_blankline_char = "▏"
 
@@ -235,27 +227,36 @@ return require("packer").startup(function(use)
 
     -- comments in context
     use {
-        'JoosepAlviste/nvim-ts-context-commentstring',
+        "JoosepAlviste/nvim-ts-context-commentstring",
         event = "BufRead",
         disable = not O.plugin.ts_context_commentstring.active
     }
 
     -- Symbol Outline
     use {
-        'simrat39/symbols-outline.nvim',
-        cmd = 'SymbolsOutline',
+        "simrat39/symbols-outline.nvim",
+        cmd = "SymbolsOutline",
         disable = not O.plugin.symbol_outline.active
     }
     -- diagnostics
     use {
         "folke/trouble.nvim",
-        cmd = 'TroubleToggle',
+        cmd = "TroubleToggle",
         disable = not O.plugin.trouble.active
     }
     -- Debugging
     use {
         "mfussenegger/nvim-dap",
-        event = "BufRead",
+        config = function()
+            require "dap"
+            vim.fn.sign_define("DapBreakpoint", {
+                text = "",
+                texthl = "LspDiagnosticsSignError",
+                linehl = "",
+                numhl = ""
+            })
+            require("dap").defaults.fallback.terminal_win_cmd = "50vsplit new"
+        end,
         disable = not O.plugin.debug.active
     }
     -- Better quickfix
@@ -266,45 +267,41 @@ return require("packer").startup(function(use)
     }
     -- Floating terminal
     use {
-        'numToStr/FTerm.nvim',
+        "numToStr/FTerm.nvim",
         event = "BufRead",
         config = function()
-            require'FTerm'.setup({
+            require("FTerm").setup {
                 dimensions = {height = 0.8, width = 0.8, x = 0.5, y = 0.5},
-                border = 'single' -- or 'double'
-            })
+                border = "single" -- or 'double'
+            }
         end,
         disable = not O.plugin.floatterm.active
     }
     -- Search & Replace
     use {
-        'windwp/nvim-spectre',
+        "windwp/nvim-spectre",
         event = "BufRead",
-        config = function()
-            require('spectre').setup()
-        end,
+        config = function() require("spectre").setup() end,
         disable = not O.plugin.spectre.active
     }
     -- lsp root with this nvim-tree will follow you
     use {
         "ahmedkhalf/lsp-rooter.nvim",
         event = "BufRead",
-        config = function()
-            require("lsp-rooter").setup()
-        end,
+        config = function() require("lsp-rooter").setup() end,
         disable = not O.plugin.lsp_rooter.active
     }
     -- Markdown preview
     use {
-        'iamcco/markdown-preview.nvim',
-        run = 'cd app && npm install',
-        ft = 'markdown',
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        ft = "markdown",
         disable = not O.plugin.markdown_preview.active
     }
     -- Interactive scratchpad
     use {
-        'metakirby5/codi.vim',
-        cmd = 'Codi',
+        "metakirby5/codi.vim",
+        cmd = "Codi",
         disable = not O.plugin.codi.active
     }
     -- Use fzy for telescope
@@ -345,27 +342,25 @@ return require("packer").startup(function(use)
         disable = not O.plugin.git_blame.active
     }
     use {
-        'ruifm/gitlinker.nvim',
+        "ruifm/gitlinker.nvim",
         event = "BufRead",
         config = function()
-            require"gitlinker".setup({
+            require("gitlinker").setup {
                 opts = {
                     -- remote = 'github', -- force the use of a specific remote
                     -- adds current line nr in the url for normal mode
                     add_current_line_on_normal_mode = true,
                     -- callback for what to do with the url
-                    action_callback = require"gitlinker.actions".open_in_browser,
+                    action_callback = require("gitlinker.actions").open_in_browser,
                     -- print the url after performing the action
                     print_url = false,
                     -- mapping to call url generation
                     mappings = "<leader>gy"
                 }
-            })
-
+            }
         end,
         disable = not O.plugin.gitlinker.active,
-        requires = 'nvim-lua/plenary.nvim'
-
+        requires = "nvim-lua/plenary.nvim"
     }
     -- Lazygit
     use {
@@ -390,7 +385,7 @@ return require("packer").startup(function(use)
         "mattn/vim-gist",
         event = "BufRead",
         disable = not O.plugin.gist.active,
-        requires = 'mattn/webapi-vim'
+        requires = "mattn/webapi-vim"
     }
     -- Lush Create Color Schemes
     use {
@@ -400,27 +395,61 @@ return require("packer").startup(function(use)
     }
     -- HTML preview
     use {
-        'turbio/bracey.vim',
+        "turbio/bracey.vim",
         event = "BufRead",
-        run = 'npm install --prefix server',
+        run = "npm install --prefix server",
         disable = not O.plugin.bracey.active
     }
     -- Debugger management
     use {
-        'Pocco81/DAPInstall.nvim',
-        event = "BufRead",
+        "Pocco81/DAPInstall.nvim",
+        -- event = "BufRead",
         disable = not O.plugin.dap_install.active
     }
 
     -- LANGUAGE SPECIFIC GOES HERE
 
-    -- Latex TODO what filetypes should this be active for?
-    use {"lervag/vimtex", ft = "latex"}
+    use {"lervag/vimtex", ft = "tex"}
 
     -- Rust tools
     -- TODO: use lazy loading maybe?
-    use {"simrat39/rust-tools.nvim", ft = "rust"}
+    use {
+        "simrat39/rust-tools.nvim",
+        disable = not O.lang.rust.rust_tools.active
+    }
 
     -- Elixir
     use {"elixir-editors/vim-elixir", ft = {"elixir", "eelixir", "euphoria3"}}
+
+    -- Javascript / Typescript
+    use {
+        "jose-elias-alvarez/nvim-lsp-ts-utils",
+        ft = {
+            "javascript", "javascriptreact", "javascript.jsx", "typescript",
+            "typescriptreact", "typescript.tsx"
+        }
+    }
+    -- use {
+    --   "jose-elias-alvarez/null-ls.nvim",
+    --   ft = {
+    --     "javascript",
+    --     "javascriptreact",
+    --     "javascript.jsx",
+    --     "typescript",
+    --     "typescriptreact",
+    --     "typescript.tsx",
+    --   },
+    --   config = function()
+    --     require("null-ls").setup()
+    --   end,
+    -- }
+
+    -- Tabnine
+    use {
+        "tzachar/compe-tabnine",
+        run = "./install.sh",
+        requires = "hrsh7th/nvim-compe",
+        disable = not O.plugin.tabnine.active
+    }
+    for _, plugin in pairs(O.custom_plugins) do packer.use(plugin) end
 end)

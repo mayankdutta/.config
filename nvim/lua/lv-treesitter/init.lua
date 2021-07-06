@@ -1,4 +1,7 @@
-require'nvim-treesitter.configs'.setup {
+-- if not package.loaded['nvim-treesitter'] then
+--   return
+-- end
+require("nvim-treesitter.configs").setup {
     ensure_installed = O.treesitter.ensure_installed, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     ignore_install = O.treesitter.ignore_install,
     matchup = {
@@ -8,10 +11,13 @@ require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = O.treesitter.highlight.enabled -- false will disable the whole extension
     },
-    context_commentstring = {enable = O.plugin.ts_context_commentstring, config = {css = '// %s'}},
+    context_commentstring = {
+        enable = O.plugin.ts_context_commentstring,
+        config = {css = "// %s"}
+    },
     -- indent = {enable = true, disable = {"python", "html", "javascript"}},
     -- TODO seems to be broken
-    -- indent = {enable = {"javascriptreact"}},
+    indent = {enable = {"javascriptreact"}},
     autotag = {enable = true},
 
     playground = {
@@ -20,17 +26,16 @@ require'nvim-treesitter.configs'.setup {
         updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
         persist_queries = false, -- Whether the query persists across vim sessions
         keybindings = {
-            toggle_query_editor = 'o',
-            toggle_hl_groups = 'i',
-            toggle_injected_languages = 't',
-            toggle_anonymous_nodes = 'a',
-            toggle_language_display = 'I',
-            focus_language = 'f',
-            unfocus_language = 'F',
-            update = 'R',
-            goto_node = '<cr>',
-            show_help = '?'
+            toggle_query_editor = "o",
+            toggle_hl_groups = "i",
+            toggle_injected_languages = "t",
+            toggle_anonymous_nodes = "a",
+            toggle_language_display = "I",
+            focus_language = "f",
+            unfocus_language = "F",
+            update = "R",
+            goto_node = "<cr>",
+            show_help = "?"
         }
     }
 }
-
