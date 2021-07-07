@@ -21,7 +21,7 @@ vim.g.colors_name = O.colorscheme
 ---  SETTINGS  ---
 
 opt.backup = false -- creates a backup file
-opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+-- opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
 opt.colorcolumn = "99999" -- fix indentline for now
 opt.completeopt = {"menuone", "noselect"}
@@ -37,6 +37,8 @@ opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 opt.showtabline = 2 -- always show tabs
 opt.smartcase = O.smart_case -- smart case
 opt.smartindent = true -- make indenting smarter again
+opt.autoindent = true -- make indenting smarter again
+opt.cindent = true -- make indenting smarter again
 opt.splitbelow = true -- force all horizontal splits to go below current window
 opt.splitright = true -- force all vertical splits to go to the right of current window
 opt.swapfile = false -- creates a swapfile

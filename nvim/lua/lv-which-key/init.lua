@@ -61,7 +61,7 @@ local opts = {
 }
 
 -- no hl
-vim.api.nvim_set_keymap("n", "<Leader>n", ':let @/=""<CR>',
+vim.api.nvim_set_keymap("n", "<esc>", ':let @/=""<CR>',
                         {noremap = true, silent = true})
 
 -- explorer
@@ -127,7 +127,7 @@ local mappings = {
     ["c"] = "Close Buffer",
     ["e"] = "Explorer",
     ["f"] = "Find File",
-    ["n"] = "No Highlight",
+    ["n"] = "Float terminal",
     [";"] = "Dashboard",
     ["F"] = "Live Grep",
     ["t"] = "split terminal",
@@ -297,10 +297,10 @@ if O.plugin.floatterm.active then
     vim.api.nvim_set_keymap("n", "<leader>gg",
                             "<CMD>lua _G.__fterm_lazygit()<CR>",
                             {noremap = true, silent = true})
-    vim.api.nvim_set_keymap("n", "<A-i>",
+    vim.api.nvim_set_keymap("n", "<Leader>n",
                             "<CMD>lua require('FTerm').toggle()<CR>",
                             {noremap = true, silent = true})
-    vim.api.nvim_set_keymap("t", "<A-i>",
+    vim.api.nvim_set_keymap("t", "<Leader>n",
                             "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>",
                             {noremap = true, silent = true})
     vim.api.nvim_set_keymap("n", "<A-l>", "<CMD>lua _G.__fterm_lazygit()<CR>",
