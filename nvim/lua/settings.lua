@@ -21,7 +21,7 @@ vim.g.colors_name = O.colorscheme
 ---  SETTINGS  ---
 
 opt.backup = false -- creates a backup file
--- opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
 opt.colorcolumn = "99999" -- fix indentline for now
 opt.completeopt = {"menuone", "noselect"}
@@ -37,8 +37,6 @@ opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 opt.showtabline = 2 -- always show tabs
 opt.smartcase = O.smart_case -- smart case
 opt.smartindent = true -- make indenting smarter again
-opt.autoindent = true -- make indenting smarter again
-opt.cindent = true -- make indenting smarter again
 opt.splitbelow = true -- force all horizontal splits to go below current window
 opt.splitright = true -- force all vertical splits to go to the right of current window
 opt.swapfile = false -- creates a swapfile
@@ -51,9 +49,9 @@ opt.undofile = true -- enable persisten undo
 opt.updatetime = 300 -- faster completion
 opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 opt.expandtab = true -- convert tabs to spaces
-opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
+opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 opt.shortmess:append "c"
-opt.tabstop = 4 -- insert 4 spaces for a tab
+opt.tabstop = 2 -- insert 4 spaces for a tab
 opt.cursorline = O.cursorline -- highlight the current line
 opt.number = O.number -- set numbered lines
 opt.relativenumber = O.relative_number -- set relative numbered lines

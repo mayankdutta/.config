@@ -16,7 +16,7 @@ vim.cmd [[
   inoremap <C-k> <C-\><C-N><C-w>k
   inoremap <C-l> <C-\><C-N><C-w>l
   tnoremap <Esc> <C-\><C-n>
-      au BufEnter * if &buftype == 'terminal' | :startinsert | endif 
+        au BufEnter * if &buftype == 'terminal' | :startinsert | endif 
 
 ]]
 
@@ -43,9 +43,9 @@ vim.api.nvim_set_keymap("v", "<", "<gv", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("v", ">", ">gv", {noremap = true, silent = true})
 
 -- I hate escape
--- vim.api.nvim_set_keymap("i", "jk", "<ESC>", {noremap = true, silent = true})
--- vim.api.nvim_set_keymap("i", "kj", "<ESC>", {noremap = true, silent = true})
--- vim.api.nvim_set_keymap("i", "jj", "<ESC>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("i", "jk", "<ESC>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("i", "kj", "<ESC>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("i", "jj", "<ESC>", {noremap = true, silent = true})
 
 -- Tab switch buffer
 vim.api.nvim_set_keymap("n", "<TAB>", ":bnext<CR>",
@@ -54,9 +54,9 @@ vim.api.nvim_set_keymap("n", "<S-TAB>", ":bprevious<CR>",
                         {noremap = true, silent = true})
 
 -- Move selected line / block of text in visual mode
-vim.api.nvim_set_keymap("x", "K", ":move '<-2<CR>gv=gv",
+vim.api.nvim_set_keymap("x", "K", ":move '<-2<CR>gv-gv",
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap("x", "J", ":move '>+1<CR>gv=gv",
+vim.api.nvim_set_keymap("x", "J", ":move '>+1<CR>gv-gv",
                         {noremap = true, silent = true})
 
 -- Move current line / block with Alt-j/k ala vscode.
@@ -68,9 +68,9 @@ vim.api.nvim_set_keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi",
                         {noremap = true, silent = true})
 vim.api.nvim_set_keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi",
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap("x", "<A-j>", ":m '>+1<CR>gv-gv",
+vim.api.nvim_set_keymap("x", "<A-j>", ":m '>+1<CR>gv=gv",
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap("x", "<A-k>", ":m '<-2<CR>gv-gv",
+vim.api.nvim_set_keymap("x", "<A-k>", ":m '<-2<CR>gv=gv",
                         {noremap = true, silent = true})
 
 -- QuickFix
