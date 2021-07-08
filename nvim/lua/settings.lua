@@ -36,9 +36,11 @@ opt.pumheight = 10 -- pop up menu height
 opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 opt.showtabline = 2 -- always show tabs
 opt.smartcase = O.smart_case -- smart case
+
 opt.smartindent = true -- make indenting smarter again
 opt.autoindent = true -- make indenting smarter again
 opt.cindent = true -- make indenting smarter again
+
 opt.splitbelow = true -- force all horizontal splits to go below current window
 opt.splitright = true -- force all vertical splits to go to the right of current window
 opt.swapfile = false -- creates a swapfile
