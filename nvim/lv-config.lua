@@ -24,7 +24,6 @@ O.plugin.colorizer.active = false
 O.plugin.ts_playground.active = false
 O.plugin.indent_line.active = false
 O.plugin.zen.active = false
-O.plugin.floatterm.active = true
 
 -- dashboard
 -- O.dashboard.custom_header = {""}
@@ -47,8 +46,14 @@ O.lang.tsserver.linter = nil
 -- tailwindServer
 O.lang.tailwindcss.active = true
 
+-- floating terminal 
+O.plugin.floatterm.active = true
+
+O.lang.emmet.active = true
+O.lang.tailwindcss.active = true
+
 -- Additional Plugins
--- O.custom_plugins = {{"windwp/nvim-ts-autotag"}}
+-- O.user_plugins = {{"windwp/nvim-ts-autotag"}}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- O.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}

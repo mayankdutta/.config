@@ -61,7 +61,7 @@ local opts = {
 }
 
 -- no hl
-vim.api.nvim_set_keymap("n", "<esc>", ':let @/=""<CR>',
+vim.api.nvim_set_keymap("n", "<esc>h", ':let @/=""<CR>',
                         {noremap = true, silent = true})
 
 -- explorer
@@ -127,8 +127,9 @@ local mappings = {
     ["c"] = "Close Buffer",
     ["e"] = "Explorer",
     ["f"] = "Find File",
-    ["n"] = "Float terminal",
+    ["h"] = "No Highlight",
     [";"] = "Dashboard",
+    ["n"] = "Float terminal",
     ["F"] = "Live Grep",
     ["t"] = "split terminal",
     ["h"] = "horizontal split",

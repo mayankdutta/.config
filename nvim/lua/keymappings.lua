@@ -16,7 +16,7 @@ vim.cmd [[
   inoremap <C-k> <C-\><C-N><C-w>k
   inoremap <C-l> <C-\><C-N><C-w>l
   tnoremap <Esc> <C-\><C-n>
-  au BufEnter * if &buftype == 'terminal' | :startinsert | endif 
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 ]]
 
 -- TODO fix this
@@ -67,9 +67,9 @@ vim.api.nvim_set_keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi",
                         {noremap = true, silent = true})
 vim.api.nvim_set_keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi",
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap("x", "<A-j>", ":m '>+1<CR>gv=gv",
+vim.api.nvim_set_keymap("x", "<A-j>", ":m '>+1<CR>gv-gv",
                         {noremap = true, silent = true})
-vim.api.nvim_set_keymap("x", "<A-k>", ":m '<-2<CR>gv=gv",
+vim.api.nvim_set_keymap("x", "<A-k>", ":m '<-2<CR>gv-gv",
                         {noremap = true, silent = true})
 
 -- QuickFix
