@@ -22,7 +22,7 @@ O.smart_case = true
 O.plugin.dashboard.active = true
 O.plugin.colorizer.active = false
 O.plugin.ts_playground.active = false
-O.plugin.indent_line.active = false
+O.plugin.indent_line.active = true
 O.plugin.zen.active = false
 
 -- dashboard
