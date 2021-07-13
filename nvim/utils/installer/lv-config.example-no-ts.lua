@@ -5,7 +5,8 @@ Linters should be
 filled in as strings with either
 a global executable or a path to
 an executable
-]] -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
+]]
+-- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- general
 O.format_on_save = true
 O.auto_complete = true
@@ -30,8 +31,8 @@ O.plugin.zen.active = false
 -- O.dashboard.footer = {""}
 
 -- if you don't want all the parsers change this to a table of the ones you want
-O.treesitter.ensure_installed = "maintained"
-O.treesitter.ignore_install = {"haskell"}
+O.treesitter.ensure_installed = {}
+O.treesitter.ignore_install = { "haskell" }
 O.treesitter.highlight.enabled = true
 
 -- python
@@ -41,11 +42,7 @@ O.lang.python.diagnostics.virtual_text = true
 O.lang.python.analysis.use_library_code_types = true
 
 -- javascript
-O.lang.tsserver.linter = eslint
-
-O.lang.tailwindcss.active = true
-
-O.lang.emmet.active = true
+O.lang.tsserver.linter = nil
 
 -- Additional Plugins
 -- O.user_plugins = {

@@ -21,15 +21,13 @@ packer.init {
     }
 }
 
-vim.cmd "autocmd BufWritePost plugins.lua PackerCompile"
-
 return require("packer").startup(function(use)
     -- Packer can manage itself as an optional plugin
     use "wbthomason/packer.nvim"
 
     -- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
     use {"neovim/nvim-lspconfig"}
-    use {"kabouzeid/nvim-lspinstall", event = "BufRead"}
+    use {"kabouzeid/nvim-lspinstall", event = "VimEnter"}
     -- Telescope
     use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
@@ -51,10 +49,14 @@ return require("packer").startup(function(use)
     use {"rafamadriz/friendly-snippets", event = "InsertEnter"}
 
     -- Treesitter
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+    use {"nvim-treesitter/nvim-treesitter"}
 
     -- Neoformat
-    use {"sbdchd/neoformat"}
+    use {
+        "sbdchd/neoformat",
+        config = function() require "lv-neoformat" end,
+        event = "BufRead"
+    }
 
     use {
         "kyazdani42/nvim-tree.lua",
@@ -72,7 +74,11 @@ return require("packer").startup(function(use)
     }
 
     -- whichkey
-    use {"folke/which-key.nvim"}
+    use {
+        "folke/which-key.nvim",
+        config = function() require "lv-which-key" end,
+        event = "BufWinEnter"
+    }
 
     -- Autopairs
     use {
@@ -85,8 +91,7 @@ return require("packer").startup(function(use)
     -- Comments
     use {
         "terrortylor/nvim-comment",
-        event = "BufRead",
-        -- cmd = "CommentToggle",
+        event = "BufWinEnter",
         config = function()
             local status_ok, nvim_comment = pcall(require, "nvim_comment")
             if not status_ok then return end
@@ -101,19 +106,16 @@ return require("packer").startup(function(use)
     use {"kyazdani42/nvim-web-devicons"}
 
     -- Status Line and Bufferline
-    use {"glepnir/galaxyline.nvim"}
+    use {
+        "glepnir/galaxyline.nvim",
+        config = function() require "lv-galaxyline" end
+        -- event = "VimEnter",
+    }
 
     use {
         "romgrk/barbar.nvim",
-        config = function()
-            vim.api.nvim_set_keymap("n", "<TAB>", ":BufferNext<CR>",
-                                    {noremap = true, silent = true})
-            vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferPrevious<CR>",
-                                    {noremap = true, silent = true})
-            vim.api.nvim_set_keymap("n", "<S-x>", ":BufferClose<CR>",
-                                    {noremap = true, silent = true})
-        end
-        -- event = "BufRead",
+        config = function() require "lv-barbar" end,
+        event = "BufWinEnter"
     }
 
     -- Builtins, these do not load by default
@@ -140,7 +142,7 @@ return require("packer").startup(function(use)
 
     use {
         "norcalli/nvim-colorizer.lua",
-        event = "BufRead",
+        event = "BufWinEnter",
         config = function()
             require "lv-colorizer"
             -- vim.cmd "ColorizerReloadAllBuffers"
@@ -196,18 +198,7 @@ return require("packer").startup(function(use)
     -- Debugging
     use {
         "mfussenegger/nvim-dap",
-        config = function()
-            local status_ok, dap = pcall(require, "dap")
-            if not status_ok then return end
-            -- require "dap"
-            vim.fn.sign_define("DapBreakpoint", {
-                text = "",
-                texthl = "LspDiagnosticsSignError",
-                linehl = "",
-                numhl = ""
-            })
-            dap.defaults.fallback.terminal_win_cmd = "50vsplit new"
-        end,
+        config = function() require "lv-dap" end,
         disable = not O.plugin.debug.active
     }
 
@@ -287,6 +278,9 @@ return require("packer").startup(function(use)
             "typescriptreact", "typescript.tsx"
         }
     }
+
+    use {"mfussenegger/nvim-jdtls", disable = not O.lang.java.java_tools.active}
+
     -- use {
     --   "jose-elias-alvarez/null-ls.nvim",
     --   ft = {

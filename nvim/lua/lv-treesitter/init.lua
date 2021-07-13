@@ -38,7 +38,7 @@ for obj, suffix in pairs(textobj_suffixes) do
         textobj_move_keymaps["goto_next_end"][textobj_prefixes["goto_next"] ..
             suffix[2]] = "@" .. obj .. ".outer"
     end
-    if textobj_prefixes["goto_prev"] ~= nil then
+    if textobj_prefixes["goto_previous"] ~= nil then
         textobj_move_keymaps["goto_previous_start"][textobj_prefixes["goto_previous"] ..
             suffix[2]] = "@" .. obj .. ".outer"
         textobj_move_keymaps["goto_previous_end"][textobj_prefixes["goto_previous"] ..

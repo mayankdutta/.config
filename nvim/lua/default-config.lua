@@ -2,25 +2,35 @@ CONFIG_PATH = vim.fn.stdpath "config"
 DATA_PATH = vim.fn.stdpath "data"
 CACHE_PATH = vim.fn.stdpath "cache"
 TERMINAL = vim.fn.expand "$TERMINAL"
+USER = vim.fn.expand "$USER"
 
 O = {
     format_on_save = true,
     auto_close_tree = 0,
     auto_complete = true,
-    colorscheme = "lunar",
+    colorcolumn = "99999", -- fixes indentline for now
+    colorscheme = "spacegray",
+    clipboard = "unnamedplus",
     hidden_files = true,
     wrap_lines = false,
+    spell = false,
+    spelllang = "en",
     number = true,
-    relative_number = true,
+    relative_number = false,
+    number_width = 4,
+    shift_width = 2,
+    tab_stop = 2,
+    cmdheight = 2,
     cursorline = true,
     shell = "bash",
+    scrolloff = 0,
     timeoutlen = 100,
     nvim_tree_disable_netrw = 0,
     ignore_case = true,
     smart_case = true,
     lushmode = false,
     hl_search = false,
-    document_highlight = false,
+    document_highlight = true,
     transparent_window = false,
     leader_key = "space",
     vnsip_dir = vim.fn.stdpath "config" .. "/snippets",
@@ -63,7 +73,7 @@ O = {
         -- Builtins
         dashboard = {active = false},
         colorizer = {active = false},
-        zen = {active = false},
+        -- zen = { active = false },
         ts_playground = {active = false},
         ts_context_commentstring = {active = false},
         ts_hintobjects = {active = false},
@@ -93,6 +103,55 @@ O = {
     user_autocommands = {{"FileType", "qf", "set nobuflisted"}},
 
     lang = {
+        cmake = {},
+        clang = {
+            diagnostics = {
+                virtual_text = {spacing = 0, prefix = ""},
+                signs = true,
+                underline = true
+            },
+            cross_file_rename = true,
+            header_insertion = "never"
+        },
+        css = {virtual_text = true},
+        dart = {
+            sdk_path = "/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot"
+        },
+        docker = {},
+        efm = {},
+        elm = {},
+        emmet = {active = true},
+        elixir = {},
+        graphql = {},
+        go = {},
+        html = {},
+        java = {java_tools = {active = false}},
+        json = {
+            diagnostics = {
+                virtual_text = {spacing = 0, prefix = ""},
+                signs = true,
+                underline = true
+            }
+        },
+        kotlin = {},
+        latex = {},
+        lua = {
+            diagnostics = {
+                virtual_text = {spacing = 0, prefix = ""},
+                signs = true,
+                underline = true
+            }
+        },
+        php = {
+            format = {format = {default = "psr12"}},
+            environment = {php_version = "7.4"},
+            diagnostics = {
+                virtual_text = {spacing = 0, prefix = ""},
+                signs = true,
+                underline = true
+            },
+            filetypes = {"php", "phtml"}
+        },
         python = {
             linter = "",
             isort = false,
@@ -107,10 +166,21 @@ O = {
                 use_library_code_types = true
             }
         },
-        dart = {
-            sdk_path = "/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot"
+        ruby = {
+            diagnostics = {
+                virtualtext = {spacing = 0, prefix = ""},
+                signs = true,
+                underline = true
+            },
+            filetypes = {"rb", "erb", "rakefile", "ruby"}
         },
-        lua = {
+        rust = {
+            rust_tools = {
+                active = false,
+                parameter_hints_prefix = "<-",
+                other_hints_prefix = "=>" -- prefix for all the other hints (type, chaining)
+            },
+            linter = "",
             diagnostics = {
                 virtual_text = {spacing = 0, prefix = ""},
                 signs = true,
@@ -127,6 +197,15 @@ O = {
                 underline = true
             }
         },
+        svelte = {},
+        tailwindcss = {
+            active = false,
+            filetypes = {
+                "html", "css", "scss", "javascript", "javascriptreact",
+                "typescript", "typescriptreact"
+            }
+        },
+        terraform = {},
         tsserver = {
             -- @usage can be 'eslint'
             linter = "",
@@ -136,74 +215,8 @@ O = {
                 underline = true
             }
         },
-        json = {
-            diagnostics = {
-                virtual_text = {spacing = 0, prefix = ""},
-                signs = true,
-                underline = true
-            }
-        },
-        tailwindcss = {
-            active = false,
-            filetypes = {
-                "html", "css", "scss", "javascript", "javascriptreact",
-                "typescript", "typescriptreact"
-            }
-        },
-        clang = {
-            diagnostics = {
-                virtual_text = {spacing = 0, prefix = ""},
-                signs = true,
-                underline = true
-            },
-            cross_file_rename = true,
-            header_insertion = "never"
-        },
-        ruby = {
-            diagnostics = {
-                virtualtext = {spacing = 0, prefix = ""},
-                signs = true,
-                underline = true
-            },
-            filetypes = {"rb", "erb", "rakefile", "ruby"}
-        },
-        go = {},
-        elixir = {},
         vim = {},
-        yaml = {},
-        terraform = {},
-        rust = {
-            rust_tools = {active = false},
-            linter = "",
-            diagnostics = {
-                virtual_text = {spacing = 0, prefix = ""},
-                signs = true,
-                underline = true
-            }
-        },
-        svelte = {},
-
-        php = {
-            format = {format = {default = "psr12"}},
-            environment = {php_version = "7.4"},
-            diagnostics = {
-                virtual_text = {spacing = 0, prefix = ""},
-                signs = true,
-                underline = true
-            },
-            filetypes = {"php", "phtml"}
-        },
-        latex = {},
-        kotlin = {},
-        html = {},
-        elm = {},
-        emmet = {active = true},
-        graphql = {},
-        efm = {},
-        docker = {},
-        cmake = {},
-        java = {},
-        css = {virtual_text = true}
+        yaml = {}
     },
 
     dashboard = {
@@ -231,3 +244,5 @@ O = {
         footer = {"chrisatmachine.com"}
     }
 }
+
+require "lv-zen.config"

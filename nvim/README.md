@@ -25,14 +25,14 @@
 Make sure you have the newest version of Neovim (0.5).
 
 ``` bash
-bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/stable/utils/installer/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/master/utils/installer/install.sh)
 ```
 
 ## Installing LSP for your language
 
 Just enter `:LspInstall` followed by `<TAB>` to see your options
 
-**NOTE** I recommend installing `lua` language support to make work
+**NOTE** I recommend installing `lua` for autocomplete in `lv-config.lua`
 
 ## Configuration file
 
@@ -52,12 +52,12 @@ O.timeoutlen = 100
 O.leader_key = ' '
 
 -- After changing plugin config it is recommended to run :PackerCompile
-O.plugin.hop.active = true
 O.plugin.colorizer.active = true
+O.plugin.dashboard.active = true
+O.plugin.floatterm.active = true
+O.plugin.symbol_outline = true
 O.plugin.trouble.active = true
-O.plugin.lazygit.active = true
 O.plugin.zen.active = true
-O.plugin.markdown_preview.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 O.treesitter.ensure_installed = "all"
@@ -73,11 +73,20 @@ O.lang.tsserver.formatter = 'prettier'
 O.lang.tsserver.linter = nil
 O.lang.tsserver.autoformat = true
 
--- json
-O.lang.json.autoformat = true
+-- python
+-- O.python.linter = 'flake8'
+O.lang.python.isort = true
+O.lang.python.diagnostics.virtual_text = true
+O.lang.python.analysis.use_library_code_types = true
 
 -- Additional Plugins
--- O.user_plugins = {{"windwp/nvim-ts-autotag"}}
+-- O.user_plugins = {
+--     {"folke/tokyonight.nvim"}, {
+--         "ray-x/lsp_signature.nvim",
+--         config = function() require"lsp_signature".on_attach() end,
+--         event = "InsertEnter"
+--     } 
+-- }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- O.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}
@@ -92,14 +101,6 @@ O.lang.json.autoformat = true
 -- }
 ```
 
-**NOTE** After changing a setting it is important to exit LunarVim and run the following:
-
-```
-:PackerInstall
-
-:PackerCompile
-```
-
 ## Updating LunarVim
 
 In order to update you should be aware of three things `Plugins`, `LunarVim` and `Neovim`
@@ -112,9 +113,11 @@ To update plugins:
 
 To update LunarVim:
 
-```
+```bash
 cd ~/.config/nvim && git pull
 ```
+
+To update Neovim use your package manager
 
 ## Resources
 
@@ -131,13 +134,8 @@ cd ~/.config/nvim && git pull
 > "I have the processing power of a potato with 4 gb of ram and LunarVim runs perfectly."
 > - @juanCortelezzi, LunarVim user.
 
-<<<<<<< HEAD
-
-=======
 <div align="center">
 	
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blue.svg?style=for-the-badge&logo=lua)]()
 	
-	
 </div>
->>>>>>> 68bfac0468ea4d5d7faf5bede0a4ab8cb5572f0c
