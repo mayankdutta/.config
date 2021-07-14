@@ -1,6 +1,6 @@
 CONFIG_PATH = vim.fn.stdpath "config"
-DATA_PATH = vim.fn.stdpath "data"
 CACHE_PATH = vim.fn.stdpath "cache"
+DATA_PATH = vim.fn.stdpath "data"
 TERMINAL = vim.fn.expand "$TERMINAL"
 USER = vim.fn.expand "$USER"
 
@@ -14,7 +14,7 @@ O = {
 
   default_options = {
     backup = false, -- creates a backup file
-    clipboard = "unnamedplus", -- allows neovim to access the system clipboard
+    -- clipboard = "unnamedplus", -- allows neovim to access the system clipboard
     cmdheight = 2, -- more space in the neovim command line for displaying messages
     colorcolumn = "99999", -- fixes indentline for now
     completeopt = { "menuone", "noselect" },
@@ -30,10 +30,8 @@ O = {
     showtabline = 2, -- always show tabs
     smartcase = true, -- smart case
     smartindent = true, -- make indenting smarter again
-
     autoindent = false, -- make indenting smarter again
     cindent = false, -- make indenting smarter again
-
     splitbelow = true, -- force all horizontal splits to go below current window
     splitright = true, -- force all vertical splits to go to the right of current window
     swapfile = false, -- creates a swapfile
@@ -154,6 +152,35 @@ O = {
     },
     kotlin = {},
     latex = {
+      filetypes = { "tex", "bib"},
+      aux_directory = nil,
+      bibtex_formatter = "texlab",
+      diagnostics_delay = 300,
+      formatter_line_length = 80,
+      latex_formatter = "latexindent",
+      build = {
+        executable = "latexmk",
+        args = {'-pdf', '-interaction=nonstopmode', '-synctex=1', '%f'},
+        on_save = false,
+        forward_search_after = false,
+      },
+      chktex = {
+        on_open_and_save = false,
+        on_edit = false,
+      },
+      forward_search = {
+        executable = nil,
+        args = {}
+      },
+      latexindent = {
+        ["local"] = nil,
+        modify_line_breaks = false
+      },
+      diagnostics = {
+        virtual_text = {spacing = 0, prefix = ""},
+        signs = true,
+        underline = true,
+      },
       auto_save = false,
       ignore_errors = {},
     },
@@ -284,7 +311,7 @@ O = {
       },
       formatter = {
         exe = "prettier",
-        args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote" },
+        args = {},
       },
     },
     vim = {},

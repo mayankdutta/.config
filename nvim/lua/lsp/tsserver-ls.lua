@@ -9,15 +9,21 @@ end
 
 O.formatters.filetype["javascriptreact"] = {
   function()
+    local args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)) }
+    local extend_args = O.lang.tsserver.formatter.args
+    for i = 1, #extend_args do
+      table.insert(args, extend_args[i])
+    end
     return {
       exe = prettier_instance,
-      -- TODO: allow user to override this
-      args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote" },
+      args = args,
       stdin = true,
     }
   end,
 }
 O.formatters.filetype["javascript"] = O.formatters.filetype["javascriptreact"]
+O.formatters.filetype["typescript"] = O.formatters.filetype["javascriptreact"]
+O.formatters.filetype["typescriptreact"] = O.formatters.filetype["javascriptreact"]
 
 require("formatter.config").set_defaults {
   logging = false,

@@ -67,7 +67,6 @@ M.config = function()
       ["c"] = { "<cmd>BufferClose<CR>", "Close Buffer" },
       ["e"] = { "<cmd>lua require'core.nvimtree'.toggle_tree()<CR>", "Explorer" },
       ["f"] = { "<cmd>Telescope find_files<CR>", "Find File" },
-      [";"] = { "<cmd>Dashboard<CR>", "Dashboard" },
       ["<esc>"] = { '<cmd>let @/=""<CR>', "No Highlight" },
       p = {
         name = "Packer",

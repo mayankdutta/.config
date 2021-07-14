@@ -69,8 +69,8 @@ local mappings = {
   },
   x = { -- Visual mode
     -- Move selected line / block of text in visual mode
-    { "K", ":move '<-2<CR>gv=gv" },
-    { "J", ":move '>+1<CR>gv=gv" },
+    { "K", ":move '<-2<CR>gv-gv" },
+    { "J", ":move '>+1<CR>gv-gv" },
 
     -- Move current line / block with Alt-j/k ala vscode.
     { "<A-j>", ":m '>+1<CR>gv-gv" },
@@ -94,10 +94,10 @@ register_mappings(mappings, { silent = true, noremap = true })
 
 vim.cmd 'inoremap <expr> <c-j> ("\\<C-n>")'
 vim.cmd 'inoremap <expr> <c-k> ("\\<C-p>")'
+
 vim.cmd [[
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 ]]
-
 -- vim.cmd('inoremap <expr> <TAB> (\"\\<C-n>\")')
 -- vim.cmd('inoremap <expr> <S-TAB> (\"\\<C-p>\")')
 

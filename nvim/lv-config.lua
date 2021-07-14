@@ -46,11 +46,34 @@ O.lang.python.analysis.use_library_code_types = true
 -- javascript
 O.lang.tsserver.linter = nil
 
+-- rust
+-- O.lang.rust.formatter = {
+--   exe = "rustfmt",
+--   args = {"--emit=stdout", "--edition=2018"},
+-- }
+
+--LaTeX
+-- Options: https://github.com/latex-lsp/texlab/blob/master/docs/options.md
+O.lang.latex.active = true
+O.lang.latex.aux_directory = "."
+O.lang.latex.bibtex_formatter = "texlab"
+O.lang.latex.build.args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' }
+O.lang.latex.build.executable = "latexmk"
+O.lang.latex.build.forward_search_after = false
+O.lang.latex.build.on_save = false
+O.lang.latex.chktex.on_edit = false
+O.lang.latex.chktex.on_open_and_save = false
+O.lang.latex.diagnostics_delay = 300
+O.lang.latex.formatter_line_length = 80
+O.lang.latex.forward_search.executable = "zathura"
+O.lang.latex.latex_formatter = "latexindent"
+O.lang.latex.latexindent.modify_line_breaks = false
+
+
 
 -- mine 
-O.default_options.autoindent = true
-O.default_options.cindent = true
-O.default_options.clipboard = nil
+-- O.default_options.autoindent = true
+-- O.default_options.cindent = true
 
 
 O.lang.tsserver.linter = 'eslint'
@@ -64,15 +87,13 @@ O.user_which_key = {
       h = { '<cmd>split<CR>', 'horizontal split'},
       y = { '"+y', 'copy selected line'},
       Y = { 'gg"+yG', 'copy whole file'},
+      p = {
+        S = { "<cmd>PackerStatus<cr>", "Status" },
+        C = { "<cmd>PackerClean<cr>", "Clean" },
+      }
 }
 
--- rust
--- O.lang.rust.formatter = {
---   exe = "rustfmt",
---   args = {"--emit=stdout", "--edition=2018"},
--- }
 
--- latex
 -- O.lang.latex.auto_save = false
 -- O.lang.latex.ignore_errors = { }
 
@@ -96,3 +117,5 @@ O.user_which_key = {
 --     b = { "<cmd>echo 'second custom command'<cr>", "Description for b" },
 --   },
 -- }
+
+
