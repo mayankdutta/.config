@@ -47,6 +47,9 @@ O.lang.tailwindcss.active = true
 
 O.lang.emmet.active = true
 
+O.plugin.ts_autotag.active = true
+O.plugin.floatterm.active = true
+
 -- Additional Plugins
 -- O.user_plugins = {
 --     {"folke/tokyonight.nvim"}, {

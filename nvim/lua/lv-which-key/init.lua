@@ -285,6 +285,12 @@ if O.plugin.floatterm then
     vim.api.nvim_set_keymap("n", "<leader>gg",
                             "<CMD>lua _G.__fterm_lazygit()<CR>",
                             {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "<Leader>n",
+                            "<CMD>lua require('FTerm').toggle()<CR>",
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("t", "<Leader>n",
+                            "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>",
+                            {noremap = true, silent = true})
     mappings["gg"] = "LazyGit"
 end
 
