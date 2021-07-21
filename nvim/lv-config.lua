@@ -71,27 +71,9 @@ O.lang.latex.latexindent.modify_line_breaks = false
 
 
 
--- mine 
 -- O.default_options.autoindent = true
 -- O.default_options.cindent = true
 
-
-O.lang.tsserver.linter = 'eslint'
-O.lang.tailwindcss.active = true
-O.lang.emmet.active = true
-O.plugin.floatterm.active = true
-
-O.user_which_key = {
-      t = { '<cmd>split term://fish | resize 28 <CR>', "split terminal"},
-      v = { '<cmd>vsplit<CR>', 'vertical split'},
-      h = { '<cmd>split<CR>', 'horizontal split'},
-      y = { '"+y', 'copy selected line'},
-      Y = { 'gg"+yG', 'copy whole file'},
-      p = {
-        S = { "<cmd>PackerStatus<cr>", "Status" },
-        C = { "<cmd>PackerClean<cr>", "Clean" },
-      }
-}
 
 
 -- O.lang.latex.auto_save = false
@@ -118,4 +100,69 @@ O.user_which_key = {
 --   },
 -- }
 
+
+-- mine 
+
+O.lang.tsserver.linter = 'eslint'
+O.lang.tailwindcss.active = true
+O.lang.emmet.active = true
+O.plugin.floatterm.active = true
+
+O.user_which_key = {
+      t = { '<cmd>split term://fish | resize 28 <CR>', "split terminal"},
+      v = { '<cmd>vsplit<CR>', 'vertical split'},
+      h = { '<cmd>split<CR>', 'horizontal split'},
+      y = { '"+y', 'copy selected line'},
+      Y = { 'gg"+yG', 'copy whole file'},
+      p = {
+        S = { "<cmd>PackerStatus<cr>", "Status" },
+        C = { "<cmd>PackerClean<cr>", "Clean" },
+      }
+}
+
+O.treesitter.playground.enable = true
+O.treesitter.matchup.enable = true
+O.treesitter.autotag.enable = true
+
+vim.cmd [[
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+  set autoindent
+  set cindent
+]]
+
+
+
+O.user_plugins = {
+  {
+    "unblevable/quick-scope",
+    config = function()
+      vim.cmd [[
+      let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+      ]]
+    end,
+  },
+  {
+    "andymass/vim-matchup",
+    event = "CursorMoved",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
+  {
+    "kevinhwang91/nvim-bqf",
+    event = "BufRead",
+  },
+{
+    "nvim-treesitter/playground",
+    event = "BufRead",
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+  },
+  {
+    "sindrets/diffview.nvim",
+    event = "BufRead",
+  },
+}
 
