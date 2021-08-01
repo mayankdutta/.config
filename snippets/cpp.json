@@ -133,7 +133,7 @@
             "  COUT << \"\\n}\\n\";",
             "  return COUT;",
             "}",
-            ""
+            "",
             "/* To print pair, cout << {name_of_pair}*/",
             "template <typename T, typename S>",
             "ostream &operator<<(ostream &COUT, const pair<T, S> &v) {",
@@ -305,7 +305,7 @@
             "  COUT << \"\\n}\\n\";",
             "  return COUT;",
             "}",
-            ""
+            "",
             "/* To print pair, cout << {name_of_pair}*/",
             "template <typename T, typename S>",
             "ostream &operator<<(ostream &COUT, const pair<T, S> &v) {",
