@@ -91,6 +91,7 @@ lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
 lvim.builtin.which_key.mappings.Y = { 'gg"+yG', "Copy whole file" }
 lvim.builtin.which_key.mappings.y = { '"+y', "Copy Selected line" }
+lvim.builtin.which_key.mappings.n = { "<cmd>:noh<cr>", "No hightlighting" }
 
 lvim.builtin.treesitter.playground.enable = true
 lvim.builtin.treesitter.matchup.enable = true
