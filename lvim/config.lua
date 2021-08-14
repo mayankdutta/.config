@@ -54,6 +54,8 @@ vim.cmd [[
 
 
 lvim.plugins= {
+    { "lunarvim/colorschemes" },
+
   {
     "unblevable/quick-scope",
     config = function()
