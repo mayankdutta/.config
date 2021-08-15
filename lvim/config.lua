@@ -1,5 +1,7 @@
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
+
+
 -- general
 lvim.format_on_save = true
 lvim.lint_on_save = true
@@ -13,7 +15,7 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
-lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.ensure_installed = {"c", "cpp","css", "html", "javascript", "json", "lua", "regex", "ruby", "rust", "svelte", "scss", "tsx", "toml", "vue", "yaml", "typescript", "fish", "bash", "cmake", "jsdoc" }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
@@ -55,7 +57,6 @@ vim.cmd [[
 
 lvim.plugins= {
     { "lunarvim/colorschemes" },
-
   {
     "unblevable/quick-scope",
     config = function()
