@@ -48,6 +48,10 @@ lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.indent.enable = false
 
+
+vim.opt.clipboard = ""
+
+
 vim.cmd [[
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
   set autoindent
