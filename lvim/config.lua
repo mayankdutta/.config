@@ -49,7 +49,7 @@ lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.indent.enable = false
 
 vim.opt.clipboard = ""
-lvim.builtin.terminal.open_mapping = "<leader>t"
+lvim.builtin.terminal.open_mapping = "<C-t>"
 lvim.builtin.terminal.direction="horizontal"
 lvim.builtin.terminal.shading_factor = 3
 
