@@ -36,7 +36,7 @@ lvim.lang.emmet.active = true
       -- }
 -- }
 
-lvim.builtin.which_key.mappings.t = { "<cmd>split term://fish | resize 28 <cr>", "Terminal" }
+-- lvim.builtin.which_key.mappings.t = { "<cmd>split term://fish | resize 28 <cr>", "Terminal" }
 lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
 lvim.builtin.which_key.mappings.Y = { 'gg"+yG', "Copy whole file" }
@@ -48,9 +48,10 @@ lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.indent.enable = false
 
-
 vim.opt.clipboard = ""
-
+lvim.builtin.terminal.open_mapping = "<leader>t"
+lvim.builtin.terminal.direction="horizontal"
+lvim.builtin.terminal.shading_factor = 3
 
 vim.cmd [[
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
@@ -92,6 +93,9 @@ lvim.plugins= {
     "sindrets/diffview.nvim",
     event = "BufRead",
   },
+{ 'ms-jpq/coq_nvim', branch = 'coq'},
+{ 'ms-jpq/coq.artifacts', branch= 'artifacts'},
+
 }
 
 
