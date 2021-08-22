@@ -1,7 +1,3 @@
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
-
-
 -- general
 lvim.format_on_save = true
 lvim.lint_on_save = true
@@ -24,16 +20,16 @@ lvim.lang.emmet.active = true
 
 -- Whichkey
 -- O.user_which_key = {
-      -- t = { '<cmd>split term://fish | resize 28 <CR>', "split terminal"},
-      -- v = { '<cmd>vsplit<CR>', 'vertical split'},
-      -- h = { '<cmd>split<CR>', 'horizontal split'},
-      -- y = { '"+y', 'copy selected line'},
-      -- Y = { 'gg"+yG', 'copy whole file'},
-      -- TODO add these
-      -- p = {
-      --   S = { "<cmd>PackerStatus<cr>", "Status" },
-      --   C = { "<cmd>PackerClean<cr>", "Clean" },
-      -- }
+-- t = { '<cmd>split term://fish | resize 28 <CR>', "split terminal"},
+-- v = { '<cmd>vsplit<CR>', 'vertical split'},
+-- h = { '<cmd>split<CR>', 'horizontal split'},
+-- y = { '"+y', 'copy selected line'},
+-- Y = { 'gg"+yG', 'copy whole file'},
+-- TODO add these
+-- p = {
+--   S = { "<cmd>PackerStatus<cr>", "Status" },
+--   C = { "<cmd>PackerClean<cr>", "Clean" },
+-- }
 -- }
 
 -- lvim.builtin.which_key.mappings.t = { "<cmd>split term://fish | resize 28 <cr>", "Terminal" }
@@ -80,14 +76,14 @@ lvim.lang.json.formatters = {
 }
 
 vim.cmd [[
-  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-  set autoindent
-  set cindent
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+set autoindent
+set cindent
 ]]
 
 
 lvim.plugins= {
-    { "lunarvim/colorschemes" },
+  { "lunarvim/colorschemes" },
   {
     "unblevable/quick-scope",
     config = function()
@@ -107,7 +103,7 @@ lvim.plugins= {
     "kevinhwang91/nvim-bqf",
     event = "BufRead",
   },
-{
+  {
     "nvim-treesitter/playground",
     event = "BufRead",
   },
@@ -119,8 +115,6 @@ lvim.plugins= {
     "sindrets/diffview.nvim",
     event = "BufRead",
   },
-{ 'ms-jpq/coq_nvim', branch = 'coq'},
-{ 'ms-jpq/coq.artifacts', branch= 'artifacts'},
+  { 'ms-jpq/coq_nvim', branch = 'coq'},
+  { 'ms-jpq/coq.artifacts', branch= 'artifacts'},
 }
-
-
