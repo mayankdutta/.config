@@ -49,9 +49,35 @@ lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.indent.enable = false
 
 vim.opt.clipboard = ""
-lvim.builtin.terminal.open_mapping = "<leader>t"
+lvim.builtin.terminal.open_mapping = "<C-t>"
 lvim.builtin.terminal.direction="horizontal"
 lvim.builtin.terminal.shading_factor = 3
+
+-- lvim.lang.lua.formatters = {
+--   {
+--     exe = "stylua",
+--   },
+-- }
+
+lvim.lang.javascript.formatters = {
+  {
+    exe = "prettier",
+  },
+}
+
+lvim.lang.javascript.linters = {
+  {
+    exe = "eslint_d",
+  },
+}
+
+
+--json
+lvim.lang.json.formatters = {
+  {
+    exe = "prettier",
+  },
+}
 
 vim.cmd [[
   au BufEnter * if &buftype == 'terminal' | :startinsert | endif
@@ -95,7 +121,6 @@ lvim.plugins= {
   },
 { 'ms-jpq/coq_nvim', branch = 'coq'},
 { 'ms-jpq/coq.artifacts', branch= 'artifacts'},
-
 }
 
 
