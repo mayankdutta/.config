@@ -10,6 +10,8 @@ lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.telescope.active=true
+
 
 lvim.builtin.treesitter.ensure_installed = {"c", "cpp","css", "html", "javascript", "json", "lua", "regex", "ruby", "rust", "svelte", "scss", "tsx", "toml", "vue", "yaml", "typescript", "fish", "bash", "cmake", "jsdoc" }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
