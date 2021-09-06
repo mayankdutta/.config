@@ -16,7 +16,7 @@ lvim.builtin.treesitter.ensure_installed = {"c", "cpp","css", "html", "javascrip
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
-lvim.lang.tailwindcss.active = true
+-- lvim.lang.tailwindcss.lsp.active = true
 lvim.lang.emmet.active = true
 
 -- Whichkey
@@ -56,11 +56,11 @@ lvim.builtin.terminal.shading_factor = 3
 --   },
 -- }
 
-lvim.lang.javascript.formatters = {
-  {
-    exe = "prettier",
-  },
-}
+-- lvim.lang.javascript.formatters = {
+--   {
+--     exe = "prettier",
+--   },
+-- }
 
 lvim.lang.javascript.linters = {
   {
@@ -70,11 +70,11 @@ lvim.lang.javascript.linters = {
 
 
 --json
-lvim.lang.json.formatters = {
-  {
-    exe = "prettier",
-  },
-}
+-- lvim.lang.json.formatters = {
+--   {
+--     exe = "prettier",
+--   },
+-- }
 
 vim.cmd [[
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
