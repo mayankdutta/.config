@@ -10,13 +10,14 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.telescope.active=true
+lvim.builtin.autopairs.active = true
 
 
 lvim.builtin.treesitter.ensure_installed = {"c", "cpp","css", "html", "javascript", "json", "lua", "regex", "ruby", "rust", "svelte", "scss", "tsx", "toml", "vue", "yaml", "typescript", "fish", "bash", "cmake", "jsdoc" }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
--- lvim.lang.tailwindcss.lsp.active = true
+lvim.lang.tailwindcss.lsp.active = true
 lvim.lang.emmet.active = true
 
 -- Whichkey
@@ -119,3 +120,6 @@ lvim.plugins= {
   { 'ms-jpq/coq_nvim', branch = 'coq'},
   { 'ms-jpq/coq.artifacts', branch= 'artifacts'},
 }
+
+
+
