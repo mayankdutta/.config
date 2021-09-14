@@ -51,6 +51,8 @@ lvim.builtin.terminal.open_mapping = "<C-t>"
 lvim.builtin.terminal.direction="horizontal"
 lvim.builtin.terminal.shading_factor = 3
 
+
+
 -- lvim.lang.lua.formatters = {
 --   {
 --     exe = "stylua",
@@ -120,6 +122,9 @@ lvim.plugins= {
   { 'ms-jpq/coq_nvim', branch = 'coq'},
   { 'ms-jpq/coq.artifacts', branch= 'artifacts'},
 }
+
+
+
 
 
 
