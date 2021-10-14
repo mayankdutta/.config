@@ -7,26 +7,33 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
--- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
+-- lvim.builtin.autopairs.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "c",
+  "cpp",
+  "fish",
   "javascript",
   "json",
   "lua",
+  "regex",
+  "scss",
+  "tsx",
   "python",
   "typescript",
   "css",
   "rust",
+  "vim",
+  "yaml",
   "java",
   "yaml",
+
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }

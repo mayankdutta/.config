@@ -1,3 +1,4 @@
+-- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
@@ -7,8 +8,12 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
+
+-- TODO: User Config for predefined plugins
+-- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
+
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
@@ -31,12 +36,10 @@ lvim.builtin.treesitter.ensure_installed = {
   "vim",
   "yaml",
   "java",
-  "yaml",
-
+  "yaml"
 }
+lvim.builtin.treesitter.indent.disable = { "python" }
 
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
 
 lvim.builtin.telescope.active=true
 lvim.builtin.autopairs.active = true
@@ -45,21 +48,10 @@ lvim.builtin.autopairs.active = true
 -- lvim.lang.tailwindcss.lsp.active = true
 lvim.lang.emmet.active = true
 
--- Whichkey
--- O.user_which_key = {
--- t = { '<cmd>split term://fish | resize 28 <CR>', "split terminal"},
--- v = { '<cmd>vsplit<CR>', 'vertical split'},
--- h = { '<cmd>split<CR>', 'horizontal split'},
--- y = { '"+y', 'copy selected line'},
--- Y = { 'gg"+yG', 'copy whole file'},
--- TODO add these
--- p = {
---   S = { "<cmd>PackerStatus<cr>", "Status" },
---   C = { "<cmd>PackerClean<cr>", "Clean" },
--- }
--- }
 
--- lvim.builtin.which_key.mappings.t = { "<cmd>split term://fish | resize 28 <cr>", "Terminal" }
+lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.highlight.enabled = true
+
 lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
 lvim.builtin.which_key.mappings.Y = { 'gg"+yG', "Copy whole file" }
@@ -78,35 +70,12 @@ lvim.builtin.terminal.shading_factor = 3
 
 
 
--- lvim.lang.lua.formatters = {
---   {
---     exe = "stylua",
---   },
--- }
-
--- lvim.lang.javascript.formatters = {
---   {
---     exe = "prettier",
---   },
--- }
-
--- lvim.lang.javascript.linters = {
---   {
---     exe = "eslint_d",
---   },
--- }
-
-
-
 vim.cmd [[
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-set autoindent
-set cindent
 ]]
 
-
 lvim.plugins= {
-  { "lunarvim/colorschemes" },
+  { "mfussenegger/nvim-jdtls" },
   {
     "unblevable/quick-scope",
     config = function()
@@ -135,10 +104,12 @@ lvim.plugins= {
     event = "InsertEnter",
   },
   {
-    "sindrets/diffview.nvim",
-    event = "BufRead",
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
   },
-  { 'ms-jpq/coq_nvim', branch = 'coq'},
-  { 'ms-jpq/coq.artifacts', branch= 'artifacts'},
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+  },
 }
-
