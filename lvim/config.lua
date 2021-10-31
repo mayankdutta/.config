@@ -13,6 +13,8 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
+lvim.builtin.dap.active = true
+lvim.builtin.bufferline.active = true
 
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
@@ -49,6 +51,7 @@ lvim.builtin.autopairs.active = true
 lvim.lang.emmet.active = true
 
 
+
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
@@ -73,6 +76,16 @@ lvim.builtin.terminal.shading_factor = 3
 vim.cmd [[
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 ]]
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  {
+    exe = "prettier",
+    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact"},
+  },
+}
+
 
 lvim.plugins= {
   { "mfussenegger/nvim-jdtls" },
