@@ -77,27 +77,6 @@ vim.cmd [[
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 ]]
 
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  {
-  { exe = "black" },
-    exe = "prettier",
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = {"scss", "typescript", "typescriptreact", "javascript", "javascriptreact"},
-  },
-}
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  { exe = "black" },
-  {
-    exe = "eslint_d",
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "javascript", "javascriptreact" },
-  },
-}
-
-
-
 lvim.plugins= {
   { "mfussenegger/nvim-jdtls" },
   {
@@ -135,5 +114,27 @@ lvim.plugins= {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     ft = "markdown",
+  },
+}
+
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { exe = "black" },
+  {
+    exe = "prettier",
+    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+    filetypes = { "typescript", "typescriptreact" },
+  },
+}
+
+-- set additional linters
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { exe = "black" },
+  {
+    exe = "eslint_d",
+    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+    filetypes = { "javascript", "javascriptreact" },
   },
 }
