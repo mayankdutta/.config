@@ -1,6 +1,6 @@
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -115,7 +115,16 @@ lvim.plugins= {
     run = "cd app && npm install",
     ft = "markdown",
   },
+  {"lunarvim/colorschemes"},
+  {"folke/tokyonight.nvim"}, {
+    "ray-x/lsp_signature.nvim",
+    config = function() require"lsp_signature".on_attach() end,
+    event = "BufRead"
+  }
 }
+
+
+-- removing the filetypes argument will allow the formatter to attach to all the default filetypes it supports.
 
 
 local formatters = require "lvim.lsp.null-ls.formatters"
@@ -124,7 +133,6 @@ formatters.setup {
   {
     exe = "prettier",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact" },
   },
 }
 
@@ -135,6 +143,7 @@ linters.setup {
   {
     exe = "eslint_d",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "javascript", "javascriptreact" },
   },
 }
+
+
