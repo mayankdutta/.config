@@ -58,8 +58,16 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
 lvim.builtin.which_key.mappings.Y = { 'gg"+yG', "Copy whole file" }
-lvim.builtin.which_key.mappings.y = { '"+y', "Copy Selected line" }
-lvim.builtin.which_key.mappings.n = { "<cmd>:noh<cr>", "No hightlighting" }
+-- lvim.builtin.which_key.mappings.y = { '"+y', "Copy Selected line" }
+lvim.builtin.which_key.mappings.n = { "<cmd>noh<cr>", "No hightlighting" }
+
+lvim.builtin.which_key.mappings["m"] = {
+  name = "+MarkdownPreview",
+  p = { "<cmd>MarkdownPreview<cr>", "Markdown preview " },
+  s = { "<cmd>MarkdownPreviewStop<cr>", "Makrdown preview stop" },
+  t = { "<cmd>MarkdownPreviewToggle<cr>", "Makrdown preview Toogle" },
+}
+
 
 lvim.builtin.treesitter.playground.enable = true
 lvim.builtin.treesitter.matchup.enable = true
@@ -75,6 +83,8 @@ lvim.builtin.terminal.shading_factor = 3
 
 vim.cmd [[
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+vnoremap <space>y "+y
+
 ]]
 
 lvim.plugins= {
