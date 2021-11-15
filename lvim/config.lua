@@ -68,6 +68,7 @@ lvim.builtin.which_key.mappings["m"] = {
   t = { "<cmd>MarkdownPreviewToggle<cr>", "Makrdown preview Toogle" },
 }
 
+lvim.builtin.which_key.mappings.b.v = { "<cmd>only<cr>", "Close all splits except currently on focus" }
 
 lvim.builtin.treesitter.playground.enable = true
 lvim.builtin.treesitter.matchup.enable = true
