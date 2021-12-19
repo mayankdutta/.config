@@ -8,7 +8,7 @@ require("luasnip/loaders/from_vscode").load { paths = { "./snippets/" } }
 
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "darkplus"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"

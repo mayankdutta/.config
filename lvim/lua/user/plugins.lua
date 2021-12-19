@@ -36,7 +36,6 @@ lvim.plugins= {
     run = "cd app && npm install",
     ft = "markdown",
   },
-  {"lunarvim/colorschemes"},
   {"p00f/nvim-ts-rainbow"},
   {
     "filipdutescu/renamer.nvim",
@@ -45,76 +44,76 @@ lvim.plugins= {
     end,
     branch = "master",
   },
-  {
-    "tzachar/cmp-tabnine",
-    config = function()
-      local tabnine = require "cmp_tabnine.config"
-      tabnine:setup {
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-      }
-    end,
+  -- {
+  --   "tzachar/cmp-tabnine",
+  --   config = function()
+  --     local tabnine = require "cmp_tabnine.config"
+  --     tabnine:setup {
+  --       max_lines = 1000,
+  --       max_num_results = 20,
+  --       sort = true,
+  --     }
+  --   end,
 
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  },
-  {
-    "karb94/neoscroll.nvim",
-    config = function()
-      require("user.neoscroll").config()
-    end,
-  },
-  {
-    "abzcoding/zephyr-nvim",
-    config = function()
-      vim.cmd [[
-      colorscheme zephyr
-      ]]
-    end,
-    cond = function()
-      local _time = os.date "*t"
-      return (_time.hour >= 5 and _time.hour < 8)
-    end,
-  },
-  {
-    "rose-pine/neovim",
-    as = "rose-pine",
-    config = function()
-      require("user.theme").rose_pine()
-    end,
-    cond = function()
-      local _time = os.date "*t"
-      return (_time.hour >= 8 and _time.hour < 11)
-    end,
-  },
-  {
-    "folke/tokyonight.nvim",
-    config = function()
-      require("user.theme").tokyonight()
-      vim.cmd [[
-      colorscheme tokyonight
-      ]]
-    end,
-    cond = function()
-      local _time = os.date "*t"
-      return (_time.hour >= 0 and _time.hour < 5) or (_time.hour >= 11 and _time.hour < 17)
-    end,
-  },
-  {
-    "abzcoding/doom-one.nvim",
-    branch = "feat/nvim-cmp-floating",
-    config = function()
-      require("user.theme").doom()
-      vim.cmd [[
-      colorscheme doom-one
-      ]]
-    end,
-    cond = function()
-      local _time = os.date "*t"
-      return (_time.hour >= 17 and _time.hour < 21)
-    end,
-  },
+  --   run = "./install.sh",
+  --   requires = "hrsh7th/nvim-cmp",
+  -- },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   config = function()
+  --     require("user.neoscroll").config()
+  --   end,
+  -- },
+  -- {
+  --   "abzcoding/zephyr-nvim",
+  --   config = function()
+  --     vim.cmd [[
+  --     colorscheme zephyr
+  --     ]]
+  --   end,
+  --   cond = function()
+  --     local _time = os.date "*t"
+  --     return (_time.hour >= 5 and _time.hour < 8)
+  --   end,
+  -- },
+  -- {
+  --   "rose-pine/neovim",
+  --   as = "rose-pine",
+  --   config = function()
+  --     require("user.theme").rose_pine()
+  --   end,
+  --   cond = function()
+  --     local _time = os.date "*t"
+  --     return (_time.hour >= 8 and _time.hour < 11)
+  --   end,
+  -- },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   config = function()
+  --     require("user.theme").tokyonight()
+  --     vim.cmd [[
+  --     colorscheme tokyonight
+  --     ]]
+  --   end,
+  --   cond = function()
+  --     local _time = os.date "*t"
+  --     return (_time.hour >= 0 and _time.hour < 5) or (_time.hour >= 11 and _time.hour < 17)
+  --   end,
+  -- },
+  -- {
+  --   "abzcoding/doom-one.nvim",
+  --   branch = "feat/nvim-cmp-floating",
+  --   config = function()
+  --     require("user.theme").doom()
+  --     vim.cmd [[
+  --     colorscheme doom-one
+  --     ]]
+  --   end,
+  --   -- cond = function()
+  --   --   local _time = os.date "*t"
+  --   --   return (_time.hour >= 17 and _time.hour < 21)
+  --   -- end,
+  -- },
   {
     "simrat39/symbols-outline.nvim",
     setup = function()
@@ -123,16 +122,16 @@ lvim.plugins= {
     event = "BufReadPost",
     -- cmd = "SymbolsOutline",
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    setup = function()
-      vim.g.indent_blankline_char = "▏"
-    end,
-    config = function()
-      require("user.indent_blankline").config()
-    end,
-    event = "BufRead",
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   setup = function()
+  --     vim.g.indent_blankline_char = "▏"
+  --   end,
+  --   config = function()
+  --     require("user.indent_blankline").config()
+  --   end,
+  --   event = "BufRead",
+  -- },
   { "gelguy/wilder.nvim",
   config = function ()
     -- vim.cmd("source $HOME/.config/lvim/lua/user/wilder.vim")
@@ -145,7 +144,6 @@ lvim.plugins= {
       \ 'reject_key': '<Up>',
       \ })
       ]])
-
     end
   },
   {
@@ -161,5 +159,7 @@ lvim.plugins= {
     end,
     disable = lvim.builtin.nvim_web_devicons == nil,
   },
-
+  {
+    "LunarVim/Colorschemes"
+  },
 }
