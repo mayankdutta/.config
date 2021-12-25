@@ -1,14 +1,13 @@
--- general
+lvim.colorscheme = "darkplus"
 
+-- general
 require "user.plugins"
 require "user.bufferline"
-
-require("luasnip/loaders/from_vscode").load { paths = { "./snippets/" } }
-
+-- require("luasnip/loaders/from_vscode").load { paths = { "./snippets/" } }
 
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "darkplus"
+
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -62,7 +61,7 @@ lvim.builtin.autopairs.active = true
 
 
 -- lvim.lang.tailwindcss.lsp.active = true
-lvim.lang.emmet.active = true
+-- lvim.lang.emmet.active = true
 
 
 
@@ -108,8 +107,6 @@ lvim.builtin.terminal.direction="horizontal"
 lvim.builtin.terminal.shading_factor = 3
 lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
 
-
-
 vim.cmd [[
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 vnoremap <space>y "+y
@@ -118,10 +115,9 @@ vnoremap <space>y "+y
 
 -- removing the filetypes argument will allow the formatter to attach to all the default filetypes it supports.
 
-
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { exe = "black" },
+  -- { exe = "black" },
   {
     exe = "prettier",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
@@ -131,7 +127,7 @@ formatters.setup {
 -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { exe = "black" },
+  -- { exe = "black" },
   {
     exe = "eslint_d",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.

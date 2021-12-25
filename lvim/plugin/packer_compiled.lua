@@ -139,6 +139,12 @@ _G.packer_plugins = {
     path = "/Users/info/.local/share/lunarvim/site/pack/packer/opt/dashboard-nvim",
     url = "https://github.com/ChristianChiarulli/dashboard-nvim"
   },
+  ["doom-one.nvim"] = {
+    config = { "\27LJ\2\nå\3\0\0\4\0\v\0\0186\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0'\2\n\0B\0\2\1K\0\1\0@      colorscheme doom-one\n      set background=dark\n      \bcmd\bvim\25plugins_integrations\1\0\14\rgitsigns\2\rwhichkey\2\rstartify\2\19vim_illuminate\2\flspsaga\1\21indent_blankline\2\nneorg\2\vbarbar\2\14gitgutter\1\vneogit\2\14dashboard\2\14telescope\1\14nvim_tree\2\15bufferline\1\rpumblend\1\0\2\venable\2\24transparency_amount\3\20\1\0\5\20cursor_coloring\1\20terminal_colors\1\22enable_treesitter\2\27transparent_background\1\20italic_comments\1\nsetup\rdoom-one\frequire\0" },
+    loaded = true,
+    path = "/Users/info/.local/share/lunarvim/site/pack/packer/start/doom-one.nvim",
+    url = "https://github.com/NTBBloodbath/doom-one.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/info/.local/share/lunarvim/site/pack/packer/start/friendly-snippets",
@@ -346,12 +352,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/info/.local/share/lunarvim/site/pack/packer/opt/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
-  },
-  ["wilder.nvim"] = {
-    config = { "\27LJ\2\nî\1\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0Î\1    call wilder#setup({\n      \\ 'modes': [':', '/', '?'],\n      \\ 'next_key': '<Tab>',\n      \\ 'previous_key': '<S-Tab>',\n      \\ 'accept_key': '<Down>',\n      \\ 'reject_key': '<Up>',\n      \\ })\n      \bcmd\bvim\0" },
-    loaded = true,
-    path = "/Users/info/.local/share/lunarvim/site/pack/packer/start/wilder.nvim",
-    url = "https://github.com/gelguy/wilder.nvim"
   }
 }
 
@@ -360,54 +360,54 @@ time([[Defining packer_plugins]], false)
 time([[Setup for symbols-outline.nvim]], true)
 try_loadstring("\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\25user.symbols_outline\frequire\0", "setup", "symbols-outline.nvim")
 time([[Setup for symbols-outline.nvim]], false)
--- Config for: LuaSnip
-time([[Config for LuaSnip]], true)
-try_loadstring("\27LJ\2\nM\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14lazy_load luasnip/loaders/from_vscode\frequire\0", "config", "LuaSnip")
-time([[Config for LuaSnip]], false)
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22lvim.core.project\frequire\0", "config", "project.nvim")
-time([[Config for project.nvim]], false)
--- Config for: renamer.nvim
-time([[Config for renamer.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\17user.renamer\frequire\0", "config", "renamer.nvim")
-time([[Config for renamer.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\23lvim.core.nvimtree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\24lvim.core.autopairs\frequire\0", "config", "nvim-autopairs")
-time([[Config for nvim-autopairs]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\2\n`\0\0\3\0\6\0\v6\0\0\0009\0\1\0009\0\2\0\15\0\0\0X\1\5€6\0\3\0'\2\4\0B\0\2\0029\0\5\0B\0\1\1K\0\1\0\nsetup\18lvim.core.cmp\frequire\bcmp\fbuiltin\tlvim\0", "config", "nvim-cmp")
 time([[Config for nvim-cmp]], false)
--- Config for: wilder.nvim
-time([[Config for wilder.nvim]], true)
-try_loadstring("\27LJ\2\nî\1\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0Î\1    call wilder#setup({\n      \\ 'modes': [':', '/', '?'],\n      \\ 'next_key': '<Tab>',\n      \\ 'previous_key': '<S-Tab>',\n      \\ 'accept_key': '<Down>',\n      \\ 'reject_key': '<Up>',\n      \\ })\n      \bcmd\bvim\0", "config", "wilder.nvim")
-time([[Config for wilder.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22lvim.core.lualine\frequire\0", "config", "lualine.nvim")
-time([[Config for lualine.nvim]], false)
--- Config for: quick-scope
-time([[Config for quick-scope]], true)
-try_loadstring("\27LJ\2\nb\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0C      let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']\n      \bcmd\bvim\0", "config", "quick-scope")
-time([[Config for quick-scope]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\nB\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\25lvim.core.treesitter\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18lvim.core.dap\frequire\0", "config", "nvim-dap")
-time([[Config for nvim-dap]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\24lvim.core.telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22lvim.core.project\frequire\0", "config", "project.nvim")
+time([[Config for project.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\nB\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\25lvim.core.treesitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: renamer.nvim
+time([[Config for renamer.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\17user.renamer\frequire\0", "config", "renamer.nvim")
+time([[Config for renamer.nvim]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+try_loadstring("\27LJ\2\nM\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14lazy_load luasnip/loaders/from_vscode\frequire\0", "config", "LuaSnip")
+time([[Config for LuaSnip]], false)
+-- Config for: doom-one.nvim
+time([[Config for doom-one.nvim]], true)
+try_loadstring("\27LJ\2\nå\3\0\0\4\0\v\0\0186\0\0\0'\2\1\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\2B\0\2\0016\0\b\0009\0\t\0'\2\n\0B\0\2\1K\0\1\0@      colorscheme doom-one\n      set background=dark\n      \bcmd\bvim\25plugins_integrations\1\0\14\rgitsigns\2\rwhichkey\2\rstartify\2\19vim_illuminate\2\flspsaga\1\21indent_blankline\2\nneorg\2\vbarbar\2\14gitgutter\1\vneogit\2\14dashboard\2\14telescope\1\14nvim_tree\2\15bufferline\1\rpumblend\1\0\2\venable\2\24transparency_amount\3\20\1\0\5\20cursor_coloring\1\20terminal_colors\1\22enable_treesitter\2\27transparent_background\1\20italic_comments\1\nsetup\rdoom-one\frequire\0", "config", "doom-one.nvim")
+time([[Config for doom-one.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22lvim.core.lualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18lvim.core.dap\frequire\0", "config", "nvim-dap")
+time([[Config for nvim-dap]], false)
+-- Config for: quick-scope
+time([[Config for quick-scope]], true)
+try_loadstring("\27LJ\2\nb\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0C      let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']\n      \bcmd\bvim\0", "config", "quick-scope")
+time([[Config for quick-scope]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\24lvim.core.autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\23lvim.core.nvimtree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -422,11 +422,11 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufReadPost * ++once lua require("packer.load")({'symbols-outline.nvim', 'nvim-ts-context-commentstring'}, { event = "BufReadPost *" }, _G.packer_plugins)]]
-vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'which-key.nvim', 'barbar.nvim', 'dashboard-nvim', 'toggleterm.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufReadPost * ++once lua require("packer.load")({'nvim-ts-context-commentstring', 'symbols-outline.nvim'}, { event = "BufReadPost *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'Comment.nvim', 'nvim-bqf', 'playground', 'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-ts-autotag'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'barbar.nvim', 'which-key.nvim', 'dashboard-nvim', 'toggleterm.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au CursorMoved * ++once lua require("packer.load")({'vim-matchup'}, { event = "CursorMoved *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

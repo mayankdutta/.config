@@ -1,7 +1,13 @@
+lvim.colorscheme = "darkplus"
+
 -- general
+require "user.plugins"
+require "user.bufferline"
+-- require("luasnip/loaders/from_vscode").load { paths = { "./snippets/" } }
+
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "onedarker"
+
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -15,6 +21,13 @@ lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = true
+
+lvim.builtin.cmp.experimental.ghost_text = false
+lvim.builtin.telescope.defaults.path_display = { "smart" }
+lvim.builtin.project.patterns = { ".git" }
+lvim.builtin.project.detection_methods = { "pattern" }
+lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy statusline
+-- lvim.builtin.lualine.options.theme = ""
 
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
@@ -48,7 +61,7 @@ lvim.builtin.autopairs.active = true
 
 
 -- lvim.lang.tailwindcss.lsp.active = true
-lvim.lang.emmet.active = true
+-- lvim.lang.emmet.active = true
 
 
 
@@ -75,12 +88,24 @@ lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.indent.enable = false
 
+lvim.builtin.treesitter.rainbow = {
+  enable = true,
+  colors = {
+    "Gold",
+    "Orchid",
+    "DodgerBlue",
+    -- "Cornsilk",
+    -- "Salmon",
+    -- "LawnGreen",
+  },
+  disable = { "html" },
+}
+
 vim.opt.clipboard = ""
 lvim.builtin.terminal.open_mapping = "<C-t>"
 lvim.builtin.terminal.direction="horizontal"
 lvim.builtin.terminal.shading_factor = 3
-
-
+lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
 
 vim.cmd [[
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
@@ -88,59 +113,11 @@ vnoremap <space>y "+y
 
 ]]
 
-lvim.plugins= {
-  { "mfussenegger/nvim-jdtls" },
-  {
-    "unblevable/quick-scope",
-    config = function()
-      vim.cmd [[
-      let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-      ]]
-    end,
-  },
-  {
-    "andymass/vim-matchup",
-    event = "CursorMoved",
-    config = function()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end,
-  },
-  {
-    "kevinhwang91/nvim-bqf",
-    event = "BufRead",
-  },
-  {
-    "nvim-treesitter/playground",
-    event = "BufRead",
-  },
-  {
-    "windwp/nvim-ts-autotag",
-    event = "InsertEnter",
-  },
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
-  },
-  {"lunarvim/colorschemes"},
-  {"folke/tokyonight.nvim"}, {
-    "ray-x/lsp_signature.nvim",
-    config = function() require"lsp_signature".on_attach() end,
-    event = "BufRead"
-  }
-}
-
-
 -- removing the filetypes argument will allow the formatter to attach to all the default filetypes it supports.
-
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { exe = "black" },
+  -- { exe = "black" },
   {
     exe = "prettier",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
@@ -150,11 +127,10 @@ formatters.setup {
 -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { exe = "black" },
+  -- { exe = "black" },
   {
     exe = "eslint_d",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
   },
 }
-
 

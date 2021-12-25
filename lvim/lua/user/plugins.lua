@@ -132,20 +132,20 @@ lvim.plugins= {
   --   end,
   --   event = "BufRead",
   -- },
-  { "gelguy/wilder.nvim",
-  config = function ()
-    -- vim.cmd("source $HOME/.config/lvim/lua/user/wilder.vim")
-    vim.cmd([[
-    call wilder#setup({
-      \ 'modes': [':', '/', '?'],
-      \ 'next_key': '<Tab>',
-      \ 'previous_key': '<S-Tab>',
-      \ 'accept_key': '<Down>',
-      \ 'reject_key': '<Up>',
-      \ })
-      ]])
-    end
-  },
+  -- { "gelguy/wilder.nvim",
+  -- config = function ()
+  --   -- vim.cmd("source $HOME/.config/lvim/lua/user/wilder.vim")
+  --   vim.cmd([[
+  --   call wilder#setup({
+  --     \ 'modes': [':', '/', '?'],
+  --     \ 'next_key': '<Tab>',
+  --     \ 'previous_key': '<S-Tab>',
+  --     \ 'accept_key': '<Down>',
+  --     \ 'reject_key': '<Up>',
+  --     \ })
+  --     ]])
+  --   end
+  -- },
   {
     "Nguyen-Hoang-Nam/nvim-mini-file-icons",
     config = function()
@@ -161,5 +161,43 @@ lvim.plugins= {
   },
   {
     "LunarVim/Colorschemes"
+  },
+  {
+    'NTBBloodbath/doom-one.nvim',
+    config = function()
+      require('doom-one')
+      require('doom-one').setup({
+        cursor_coloring = false,
+        terminal_colors = false,
+        italic_comments = false,
+        enable_treesitter = true,
+        transparent_background = false,
+        pumblend = {
+          enable = true,
+          transparency_amount = 20,
+        },
+        plugins_integrations = {
+          neorg = true,
+          barbar = true,
+          bufferline = false,
+          gitgutter = false,
+          gitsigns = true,
+          telescope = false,
+          neogit = true,
+          nvim_tree = true,
+          dashboard = true,
+          startify = true,
+          whichkey = true,
+          indent_blankline = true,
+          vim_illuminate = true,
+          lspsaga = false,
+        },
+      })
+      vim.cmd [[
+      colorscheme doom-one
+      set background=dark
+      ]]
+    end,
+
   },
 }
