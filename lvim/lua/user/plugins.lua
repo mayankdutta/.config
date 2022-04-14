@@ -202,10 +202,16 @@ lvim.plugins= {
   -- },
 
 
-  { 
-    "beauwilliams/focus.nvim", 
-    config = function() 
-      require("focus").setup() 
-    end 
-  }, 
+  {
+    "beauwilliams/focus.nvim",
+    config = function()
+      require("focus").setup()
+    end
+  },
+  -- {
+  --   "blackCauldron7/surround.nvim",
+  --   config = function()
+  --     require"surround".setup {mappings_style = "surround"}
+  --   end
+  -- },
 }

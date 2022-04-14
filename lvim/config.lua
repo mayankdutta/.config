@@ -17,7 +17,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
+-- lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = true
@@ -56,7 +56,7 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.indent.disable = { "python" }
 
 
-lvim.builtin.telescope.active=true
+lvim.builtin.telescope.active = true
 lvim.builtin.autopairs.active = true
 
 
@@ -103,7 +103,7 @@ lvim.builtin.treesitter.rainbow = {
 
 vim.opt.clipboard = ""
 lvim.builtin.terminal.open_mapping = "<C-t>"
-lvim.builtin.terminal.direction="horizontal"
+lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.terminal.shading_factor = 3
 lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
 
@@ -125,12 +125,3 @@ formatters.setup {
 }
 
 -- set additional linters
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  -- { exe = "black" },
-  {
-    exe = "eslint_d",
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  },
-}
-
