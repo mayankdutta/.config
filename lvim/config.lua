@@ -1,9 +1,13 @@
 lvim.colorscheme = "darkplus"
 
+
 -- general
+
 require "user.plugins"
 require "user.bufferline"
 -- require("luasnip/loaders/from_vscode").load { paths = { "./snippets/" } }
+require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets/my-snippets" } }
+-- require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets/vscode-es7-javascript-react-snippets" } }
 
 lvim.log.level = "warn"
 lvim.format_on_save = false
@@ -125,3 +129,18 @@ formatters.setup {
 }
 
 -- set additional linters
+
+
+-- require('luasnip').filetype_extend("javascript", { "javascriptreact" })
+-- require('luasnip').filetype_extend("javascript", { "html" })
+
+lvim.builtin.which_key.mappings["t"] = {
+  name = "Diagnostics",
+  t = { "<cmd>TroubleToggle<cr>", "trouble" },
+  w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
+  d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
+  q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+  l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+  r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+}
+

@@ -1,0 +1,15 @@
+{
+  "test console log object": {
+    "prefix": "cltest",
+    "body": "console.log('${1:object}:', ${1})",
+    "description": "console.log object"
+  },
+  "test const function": {
+    "prefix": "cftest",
+    "body": [
+      "const ${1:name} = (${2:arguments}) => {",
+      "\t\treturn ${3}",
+      "\t}"
+    ]
+  }
+}

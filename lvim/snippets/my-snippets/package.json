@@ -1,0 +1,19 @@
+{
+  "name": "my-snippets",
+  "author": "user",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascriptreact",
+        "path": "./js-react.json"
+      },
+      {
+        "language": ["javascript", "javascriptreact"],
+        "path": "./javascript.json"
+      }
+    ]
+  }
+}

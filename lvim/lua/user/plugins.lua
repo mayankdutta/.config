@@ -1,4 +1,4 @@
-lvim.plugins= {
+lvim.plugins = {
   { "mfussenegger/nvim-jdtls" },
   {
     "unblevable/quick-scope",
@@ -28,190 +28,119 @@ lvim.plugins= {
     event = "InsertEnter",
   },
   {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "BufRead",
   },
   {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
-  },
-  {"p00f/nvim-ts-rainbow"},
-  {
-    "filipdutescu/renamer.nvim",
+    "romgrk/nvim-treesitter-context",
     config = function()
-      require("user.renamer").config()
-    end,
-    branch = "master",
-  },
-  -- {
-  --   "tzachar/cmp-tabnine",
-  --   config = function()
-  --     local tabnine = require "cmp_tabnine.config"
-  --     tabnine:setup {
-  --       max_lines = 1000,
-  --       max_num_results = 20,
-  --       sort = true,
-  --     }
-  --   end,
-
-  --   run = "./install.sh",
-  --   requires = "hrsh7th/nvim-cmp",
-  -- },
-  -- {
-  --   "karb94/neoscroll.nvim",
-  --   config = function()
-  --     require("user.neoscroll").config()
-  --   end,
-  -- },
-  -- {
-  --   "abzcoding/zephyr-nvim",
-  --   config = function()
-  --     vim.cmd [[
-  --     colorscheme zephyr
-  --     ]]
-  --   end,
-  --   cond = function()
-  --     local _time = os.date "*t"
-  --     return (_time.hour >= 5 and _time.hour < 8)
-  --   end,
-  -- },
-  -- {
-  --   "rose-pine/neovim",
-  --   as = "rose-pine",
-  --   config = function()
-  --     require("user.theme").rose_pine()
-  --   end,
-  --   cond = function()
-  --     local _time = os.date "*t"
-  --     return (_time.hour >= 8 and _time.hour < 11)
-  --   end,
-  -- },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   config = function()
-  --     require("user.theme").tokyonight()
-  --     vim.cmd [[
-  --     colorscheme tokyonight
-  --     ]]
-  --   end,
-  --   cond = function()
-  --     local _time = os.date "*t"
-  --     return (_time.hour >= 0 and _time.hour < 5) or (_time.hour >= 11 and _time.hour < 17)
-  --   end,
-  -- },
-  -- {
-  --   "abzcoding/doom-one.nvim",
-  --   branch = "feat/nvim-cmp-floating",
-  --   config = function()
-  --     require("user.theme").doom()
-  --     vim.cmd [[
-  --     colorscheme doom-one
-  --     ]]
-  --   end,
-  --   -- cond = function()
-  --   --   local _time = os.date "*t"
-  --   --   return (_time.hour >= 17 and _time.hour < 21)
-  --   -- end,
-  -- },
-  {
-    "simrat39/symbols-outline.nvim",
-    setup = function()
-      require("user.symbols_outline").config()
-    end,
-    event = "BufReadPost",
-    -- cmd = "SymbolsOutline",
-  },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   setup = function()
-  --     vim.g.indent_blankline_char = "▏"
-  --   end,
-  --   config = function()
-  --     require("user.indent_blankline").config()
-  --   end,
-  --   event = "BufRead",
-  -- },
-  -- { "gelguy/wilder.nvim",
-  -- config = function ()
-  --   -- vim.cmd("source $HOME/.config/lvim/lua/user/wilder.vim")
-  --   vim.cmd([[
-  --   call wilder#setup({
-  --     \ 'modes': [':', '/', '?'],
-  --     \ 'next_key': '<Tab>',
-  --     \ 'previous_key': '<S-Tab>',
-  --     \ 'accept_key': '<Down>',
-  --     \ 'reject_key': '<Up>',
-  --     \ })
-  --     ]])
-  --   end
-  -- },
-  {
-    "Nguyen-Hoang-Nam/nvim-mini-file-icons",
-    config = function()
-      require("nvim-web-devicons").set_icon {
-        rs = {
-          icon = "",
-          color = "#d28445",
-          name = "Rust",
+      require("treesitter-context").setup {
+        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+        throttle = true, -- Throttles plugin updates (may improve performance)
+        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+        patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+          -- For all filetypes
+          -- Note that setting an entry here replaces all other patterns for this entry.
+          -- By setting the 'default' entry below, you can control which nodes you want to
+          -- appear in the context window.
+          default = {
+            'class',
+            'function',
+            'method',
+          },
         },
       }
-    end,
-    disable = lvim.builtin.nvim_web_devicons == nil,
-  },
-  {
-    "LunarVim/Colorschemes"
-  },
-  -- {
-  --   'NTBBloodbath/doom-one.nvim',
-  --   config = function()
-  --     require('doom-one')
-  --     require('doom-one').setup({
-  --       cursor_coloring = false,
-  --       terminal_colors = false,
-  --       italic_comments = false,
-  --       enable_treesitter = true,
-  --       transparent_background = false,
-  --       pumblend = {
-  --         enable = true,
-  --         transparency_amount = 20,
-  --       },
-  --       plugins_integrations = {
-  --         neorg = true,
-  --         barbar = true,
-  --         bufferline = false,
-  --         gitgutter = false,
-  --         gitsigns = true,
-  --         telescope = false,
-  --         neogit = true,
-  --         nvim_tree = true,
-  --         dashboard = true,
-  --         startify = true,
-  --         whichkey = true,
-  --         indent_blankline = true,
-  --         vim_illuminate = true,
-  --         lspsaga = false,
-  --       },
-  --     })
-  --     vim.cmd [[
-  --     colorscheme doom-one
-  --     set background=dark
-  --     ]]
-  --   end,
-
-  -- },
-
-
-  {
-    "beauwilliams/focus.nvim",
-    config = function()
-      require("focus").setup()
     end
   },
-  -- {
-  --   "blackCauldron7/surround.nvim",
-  --   config = function()
-  --     require"surround".setup {mappings_style = "surround"}
-  --   end
-  -- },
+  {
+    {
+      "folke/trouble.nvim",
+      cmd = "TroubleToggle",
+    },
+    {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && npm install",
+      ft = "markdown",
+    },
+    { "p00f/nvim-ts-rainbow" },
+    {
+      "filipdutescu/renamer.nvim",
+      config = function()
+        require("user.renamer").config()
+      end,
+      branch = "master",
+    },
+    {
+      "simrat39/symbols-outline.nvim",
+      setup = function()
+        require("user.symbols_outline").config()
+      end,
+      event = "BufReadPost",
+      cmd = "SymbolsOutline",
+    },
+    {
+      "Nguyen-Hoang-Nam/nvim-mini-file-icons",
+      config = function()
+        require("nvim-web-devicons").set_icon {
+          rs = {
+            icon = "",
+            color = "#d28445",
+            name = "Rust",
+          },
+        }
+      end,
+      disable = lvim.builtin.nvim_web_devicons == nil,
+    },
+    {
+      "LunarVim/Colorschemes"
+    },
+    -- automatic resizing
+    -- {
+    --   "beauwilliams/focus.nvim",
+    --   config = function()
+    --     require("focus").setup()
+    --   end
+    -- },
+    -- {
+    --   "ur4ltz/surround.nvim",
+    --   config = function()
+    --     require "surround".setup { mappings_style = "surround" }
+    --   end
+    -- },
+    {
+      "nvim-telescope/telescope-project.nvim",
+      event = "BufWinEnter",
+      setup = function()
+        vim.cmd [[packadd telescope.nvim]]
+      end,
+    },
+    {
+      "norcalli/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup({ "*" }, {
+          RGB = true, -- #RGB hex codes
+          RRGGBB = true, -- #RRGGBB hex codes
+          RRGGBBAA = true, -- #RRGGBBAA hex codes
+          rgb_fn = true, -- CSS rgb() and rgba() functions
+          hsl_fn = true, -- CSS hsl() and hsla() functions
+          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        })
+      end,
+    },
+    {
+      "ray-x/lsp_signature.nvim",
+      event = "BufRead",
+      config = function()
+        require "lsp_signature".setup()
+      end
+    },
+    { "tpope/vim-repeat" },
+    { "tpope/vim-surround" },
+    {
+      "turbio/bracey.vim",
+      cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
+      run = "npm install --prefix server",
+    },
+  }
 }
