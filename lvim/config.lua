@@ -6,8 +6,7 @@ lvim.colorscheme = "darkplus"
 require "user.plugins"
 require "user.bufferline"
 -- require("luasnip/loaders/from_vscode").load { paths = { "./snippets/" } }
-require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets/my-snippets" } }
--- require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets/vscode-es7-javascript-react-snippets" } }
+-- require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets/my-snippets" } }
 
 lvim.log.level = "warn"
 lvim.format_on_save = false
@@ -135,7 +134,7 @@ formatters.setup {
 -- require('luasnip').filetype_extend("javascript", { "html" })
 
 lvim.builtin.which_key.mappings["t"] = {
-  name = "Diagnostics",
+  name = "trouble",
   t = { "<cmd>TroubleToggle<cr>", "trouble" },
   w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
   d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
@@ -144,3 +143,55 @@ lvim.builtin.which_key.mappings["t"] = {
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
+lvim.builtin.telescope.defaults.file_ignore_patterns = {
+    "vendor/*",
+    "%.lock",
+    "__pycache__/*",
+    "%.sqlite3",
+    "%.ipynb",
+    "node_modules/*",
+    "%.jpg",
+    "%.jpeg",
+    "%.png",
+    "%.svg",
+    "%.otf",
+    "%.ttf",
+    ".git/",
+    "%.webp",
+    ".dart_tool/",
+    ".github/",
+    ".gradle/",
+    ".idea/",
+    ".settings/",
+    ".vscode/",
+    "__pycache__/",
+    "build/",
+    "env/",
+    "gradle/",
+    "node_modules/",
+    "target/",
+    "%.pdb",
+    "%.dll",
+    "%.class",
+    "%.exe",
+    "%.cache",
+    "%.ico",
+    "%.pdf",
+    "%.dylib",
+    "%.jar",
+    "%.docx",
+    "%.met",
+    "smalljre_*/*",
+    ".vale/",
+    "%.burp",
+    "%.mp4",
+    "%.mkv",
+    "%.rar",
+    "%.zip",
+    "%.7z",
+    "%.tar",
+    "%.bz2",
+    "%.epub",
+    "%.flac",
+    "%.tar.gz",
+  }

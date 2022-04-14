@@ -52,95 +52,94 @@ lvim.plugins = {
       }
     end
   },
+
   {
-    {
-      "folke/trouble.nvim",
-      cmd = "TroubleToggle",
-    },
-    {
-      "iamcco/markdown-preview.nvim",
-      run = "cd app && npm install",
-      ft = "markdown",
-    },
-    { "p00f/nvim-ts-rainbow" },
-    {
-      "filipdutescu/renamer.nvim",
-      config = function()
-        require("user.renamer").config()
-      end,
-      branch = "master",
-    },
-    {
-      "simrat39/symbols-outline.nvim",
-      setup = function()
-        require("user.symbols_outline").config()
-      end,
-      event = "BufReadPost",
-      cmd = "SymbolsOutline",
-    },
-    {
-      "Nguyen-Hoang-Nam/nvim-mini-file-icons",
-      config = function()
-        require("nvim-web-devicons").set_icon {
-          rs = {
-            icon = "",
-            color = "#d28445",
-            name = "Rust",
-          },
-        }
-      end,
-      disable = lvim.builtin.nvim_web_devicons == nil,
-    },
-    {
-      "LunarVim/Colorschemes"
-    },
-    -- automatic resizing
-    -- {
-    --   "beauwilliams/focus.nvim",
-    --   config = function()
-    --     require("focus").setup()
-    --   end
-    -- },
-    -- {
-    --   "ur4ltz/surround.nvim",
-    --   config = function()
-    --     require "surround".setup { mappings_style = "surround" }
-    --   end
-    -- },
-    {
-      "nvim-telescope/telescope-project.nvim",
-      event = "BufWinEnter",
-      setup = function()
-        vim.cmd [[packadd telescope.nvim]]
-      end,
-    },
-    {
-      "norcalli/nvim-colorizer.lua",
-      config = function()
-        require("colorizer").setup({ "*" }, {
-          RGB = true, -- #RGB hex codes
-          RRGGBB = true, -- #RRGGBB hex codes
-          RRGGBBAA = true, -- #RRGGBBAA hex codes
-          rgb_fn = true, -- CSS rgb() and rgba() functions
-          hsl_fn = true, -- CSS hsl() and hsla() functions
-          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-          css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-        })
-      end,
-    },
-    {
-      "ray-x/lsp_signature.nvim",
-      event = "BufRead",
-      config = function()
-        require "lsp_signature".setup()
-      end
-    },
-    { "tpope/vim-repeat" },
-    { "tpope/vim-surround" },
-    {
-      "turbio/bracey.vim",
-      cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
-      run = "npm install --prefix server",
-    },
-  }
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+  },
+  { "p00f/nvim-ts-rainbow" },
+  {
+    "filipdutescu/renamer.nvim",
+    config = function()
+      require("user.renamer").config()
+    end,
+    branch = "master",
+  },
+  {
+    "simrat39/symbols-outline.nvim",
+    setup = function()
+      require("user.symbols_outline").config()
+    end,
+    event = "BufReadPost",
+    cmd = "SymbolsOutline",
+  },
+  {
+    "Nguyen-Hoang-Nam/nvim-mini-file-icons",
+    config = function()
+      require("nvim-web-devicons").set_icon {
+        rs = {
+          icon = "",
+          color = "#d28445",
+          name = "Rust",
+        },
+      }
+    end,
+    disable = lvim.builtin.nvim_web_devicons == nil,
+  },
+  {
+    "LunarVim/Colorschemes"
+  },
+  -- automatic resizing
+  -- {
+  --   "beauwilliams/focus.nvim",
+  --   config = function()
+  --     require("focus").setup()
+  --   end
+  -- },
+  -- {
+  --   "ur4ltz/surround.nvim",
+  --   config = function()
+  --     require "surround".setup { mappings_style = "surround" }
+  --   end
+  -- },
+  {
+    "nvim-telescope/telescope-project.nvim",
+    event = "BufWinEnter",
+    setup = function()
+      vim.cmd [[packadd telescope.nvim]]
+    end,
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup({ "*" }, {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      })
+    end,
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function()
+      require "lsp_signature".setup()
+    end
+  },
+  { "tpope/vim-repeat" },
+  { "tpope/vim-surround" },
+  {
+    "turbio/bracey.vim",
+    cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
+    run = "npm install --prefix server",
+  },
 }

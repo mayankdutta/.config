@@ -1,7 +1,0 @@
-**/tsconfig.json
-*.ts
-.github/**
-.gitignore
-.vscode/**
-docs/**
-src/**
