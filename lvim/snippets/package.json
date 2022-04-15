@@ -16,6 +16,13 @@
           "javascriptreact"
         ],
         "path": "./javascript.json"
+      },
+      {
+        "language": [
+          "cpp",
+          "c"
+        ],
+        "path": "./cpp.json"
       }
     ]
   }
