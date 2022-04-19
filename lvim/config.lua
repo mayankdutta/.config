@@ -1,6 +1,5 @@
 lvim.colorscheme = "darkplus"
 
-
 -- general
 
 require "user.plugins"
@@ -27,8 +26,10 @@ lvim.builtin.bufferline.active = true
 
 lvim.builtin.cmp.experimental.ghost_text = false
 lvim.builtin.telescope.defaults.path_display = { "smart" }
+
+lvim.builtin.project.active = true;
 lvim.builtin.project.patterns = { ".git" }
-lvim.builtin.project.detection_methods = { "pattern" }
+lvim.builtin.project.detection_methods = { "pattern", "lsp"}
 lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy statusline
 -- lvim.builtin.lualine.options.theme = ""
 
@@ -36,26 +37,8 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "cpp",
-  "fish",
-  "javascript",
-  "json",
-  "lua",
-  "regex",
-  "scss",
-  "tsx",
-  "python",
-  "typescript",
-  "css",
-  "rust",
-  "vim",
-  "yaml",
-  "java",
-  "yaml"
-}
+lvim.builtin.treesitter.ensure_installed = "maintained"
+
 lvim.builtin.treesitter.indent.disable = { "python" }
 
 
@@ -144,54 +127,56 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 lvim.builtin.telescope.defaults.file_ignore_patterns = {
-    "vendor/*",
-    "%.lock",
-    "__pycache__/*",
-    "%.sqlite3",
-    "%.ipynb",
-    "node_modules/*",
-    "%.jpg",
-    "%.jpeg",
-    "%.png",
-    "%.svg",
-    "%.otf",
-    "%.ttf",
-    ".git/",
-    "%.webp",
-    ".dart_tool/",
-    ".github/",
-    ".gradle/",
-    ".idea/",
-    ".settings/",
-    ".vscode/",
-    "__pycache__/",
-    "build/",
-    "env/",
-    "gradle/",
-    "node_modules/",
-    "target/",
-    "%.pdb",
-    "%.dll",
-    "%.class",
-    "%.exe",
-    "%.cache",
-    "%.ico",
-    "%.pdf",
-    "%.dylib",
-    "%.jar",
-    "%.docx",
-    "%.met",
-    "smalljre_*/*",
-    ".vale/",
-    "%.burp",
-    "%.mp4",
-    "%.mkv",
-    "%.rar",
-    "%.zip",
-    "%.7z",
-    "%.tar",
-    "%.bz2",
-    "%.epub",
-    "%.flac",
-    "%.tar.gz",
-  }
+  "vendor/*",
+  "%.lock",
+  "__pycache__/*",
+  "%.sqlite3",
+  "%.ipynb",
+  "node_modules/*",
+  "%.jpg",
+  "%.jpeg",
+  "%.png",
+  "%.svg",
+  "%.otf",
+  "%.ttf",
+  ".git/",
+  "%.webp",
+  ".dart_tool/",
+  ".github/",
+  ".gradle/",
+  ".idea/",
+  ".settings/",
+  ".vscode/",
+  "__pycache__/",
+  "build/",
+  "env/",
+  "gradle/",
+  "node_modules/",
+  "target/",
+  "%.pdb",
+  "%.dll",
+  "%.class",
+  "%.exe",
+  "%.cache",
+  "%.ico",
+  "%.pdf",
+  "%.dylib",
+  "%.jar",
+  "%.docx",
+  "%.met",
+  "smalljre_*/*",
+  ".vale/",
+  "%.burp",
+  "%.mp4",
+  "%.mkv",
+  "%.rar",
+  "%.zip",
+  "%.7z",
+  "%.tar",
+  "%.bz2",
+  "%.epub",
+  "%.flac",
+  "%.tar.gz",
+}
+
+
