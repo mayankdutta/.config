@@ -29,7 +29,7 @@ lvim.builtin.telescope.defaults.path_display = { "smart" }
 
 lvim.builtin.project.active = true;
 lvim.builtin.project.patterns = { ".git" }
-lvim.builtin.project.detection_methods = { "pattern", "lsp"}
+lvim.builtin.project.detection_methods = { "pattern", "lsp" }
 lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy statusline
 -- lvim.builtin.lualine.options.theme = ""
 
@@ -37,7 +37,20 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.ensure_installed = {
+  "bash",
+  "c",
+  "javascript",
+  "json",
+  "lua",
+  "python",
+  "typescript",
+  "css",
+  "rust",
+  "java",
+  "yaml",
+  "scss"
+}
 
 lvim.builtin.treesitter.indent.disable = { "python" }
 
@@ -113,9 +126,6 @@ formatters.setup {
 -- set additional linters
 
 
--- require('luasnip').filetype_extend("javascript", { "javascriptreact" })
--- require('luasnip').filetype_extend("javascript", { "html" })
-
 lvim.builtin.which_key.mappings["t"] = {
   name = "trouble",
   t = { "<cmd>TroubleToggle<cr>", "trouble" },
@@ -178,5 +188,3 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "%.flac",
   "%.tar.gz",
 }
-
-
