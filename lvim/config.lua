@@ -49,7 +49,19 @@ lvim.builtin.treesitter.ensure_installed = {
   "rust",
   "java",
   "yaml",
-  "scss"
+  "scss",
+  "cpp",
+  "bash",
+  "dot",
+  "fish",
+  "go",
+  "graphql",
+  "html",
+  "json5",
+  "latex",
+  "lua",
+  "tsx",
+  "vim"
 }
 
 lvim.builtin.treesitter.indent.disable = { "python" }
