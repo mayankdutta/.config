@@ -79,9 +79,10 @@ lvim.builtin.autopairs.active = true
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
+
 lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
-lvim.builtin.which_key.mappings.Y = { 'gg"+yG', "Copy whole file" }
+lvim.builtin.which_key.mappings.Y = { 'gg"+yG\'\'', "Copy whole file" }
 -- lvim.builtin.which_key.mappings.y = { '"+y', "Copy Selected line" }
 lvim.builtin.which_key.mappings.n = { "<cmd>noh<cr>", "No hightlighting" }
 
