@@ -24,6 +24,8 @@ lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = true
 
+lvim.builtin.terminal.shell = "/bin/zsh"
+
 lvim.builtin.cmp.experimental.ghost_text = false
 lvim.builtin.telescope.defaults.path_display = { "smart" }
 
