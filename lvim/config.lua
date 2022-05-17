@@ -1,9 +1,12 @@
 lvim.colorscheme = "darkplus"
 
+
 -- general
 
 require "user.plugins"
 require "user.bufferline"
+require "user.ignore_pattern"
+
 -- require("luasnip/loaders/from_vscode").load { paths = { "./snippets/" } }
 -- require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets/my-snippets" } }
 
@@ -158,6 +161,16 @@ linters.setup {
 }
 
 
+local code_actions = require "lvim.lsp.null-ls.code_actions"
+code_actions.setup {
+  {
+    command = "proselint"
+  },
+  {
+    command = "eslint_d"
+  },
+}
+
 lvim.builtin.which_key.mappings["t"] = {
   name = "trouble",
   t = { "<cmd>TroubleToggle<cr>", "trouble" },
@@ -166,57 +179,4 @@ lvim.builtin.which_key.mappings["t"] = {
   q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
   l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
   r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
-}
-
-lvim.builtin.telescope.defaults.file_ignore_patterns = {
-  "vendor/*",
-  "%.lock",
-  "__pycache__/*",
-  "%.sqlite3",
-  "%.ipynb",
-  "node_modules/*",
-  "%.jpg",
-  "%.jpeg",
-  "%.png",
-  "%.svg",
-  "%.otf",
-  "%.ttf",
-  ".git/",
-  "%.webp",
-  ".dart_tool/",
-  ".github/",
-  ".gradle/",
-  ".idea/",
-  ".settings/",
-  ".vscode/",
-  "__pycache__/",
-  "build/",
-  "env/",
-  "gradle/",
-  "node_modules/",
-  "target/",
-  "%.pdb",
-  "%.dll",
-  "%.class",
-  "%.exe",
-  "%.cache",
-  "%.ico",
-  "%.pdf",
-  "%.dylib",
-  "%.jar",
-  "%.docx",
-  "%.met",
-  "smalljre_*/*",
-  ".vale/",
-  "%.burp",
-  "%.mp4",
-  "%.mkv",
-  "%.rar",
-  "%.zip",
-  "%.7z",
-  "%.tar",
-  "%.bz2",
-  "%.epub",
-  "%.flac",
-  "%.tar.gz",
 }

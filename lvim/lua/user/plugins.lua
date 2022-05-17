@@ -27,10 +27,10 @@ lvim.plugins = {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
   },
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "BufRead",
-  },
+  -- {
+  --   "JoosepAlviste/nvim-ts-context-commentstring",
+  --   event = "BufRead",
+  -- },
   {
     "romgrk/nvim-treesitter-context",
     config = function()
