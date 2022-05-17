@@ -9,6 +9,10 @@ set t_Co=256
 syntax on
 set foldlevelstart=1
 
+" set easymotion
+set which-key
+set notimeout
+
 
 set hidden                                 "     for coc, also something for buffers
 syntax enable
@@ -18,7 +22,7 @@ filetype plugin indent on
 set ttyfast                                "     helps in fast scrolling of screen
 
 set list                                   "     show trailing white space
-set relativenumber
+" set relativenumber
 set showmode                               "     always show what mode we're currently editing in
 set nowrap                                 "     don't wrap lines
 set backspace=indent,eol,start             "     allow backspacing over everything in insert mode
@@ -31,18 +35,6 @@ set hlsearch                               "     highlight matches
 set visualbell                             "     don't beep
 set noerrorbells                           "     don't beep
 
-set noswapfile                             "     Don't use swapfile
-set nobackup                               "     Don't create annoying backup files, also required for coc
-
-set fileformats=unix,dos,mac               "     Prefer Unix over Windows over OS 9 formats
-
-set autowrite                              "     Save on buffer switch
-set mouse=a
-
-                                           "     don't know what it does
-                                           "     switching them on will make redrawing on screen slower
-set nocursorcolumn                         "     speed up syntax highlighting
-set nocursorline                           "     removing no to this, will highlight the current line but will make the screen redrawing slower
 set signcolumn=yes
 
 set pumheight=10                           "     Completion window max size
@@ -96,20 +88,6 @@ set cindent                                "     stricter rules for C programs
 set ruler
 set conceallevel=0                         "     So that I can see `` in markdown files
 
-                                           "     TAB in general mode will move to text buffer
-                                           "     nnoremap <TAB> :bnext<CR>
-                                           "     SHIFT-TAB will go back
-                                           "     nnoremap <S-TAB> :bprevious<CR>
-
-" colorscheme dracula
-" colorscheme gruvbox
-" :highlight Comment ctermfg=green           "     to set comments in green colour
-
-                                           ""    Use modeline overrides
-                                           "     set modeline
-                                           "     set modelines=10
-
-
 set foldmethod=syntax
 set foldnestmax=10
 set nofoldenable
@@ -142,93 +120,57 @@ noremap <Leader>v :<C-u>vsplit<CR>
 nnoremap <S-l> gt
 nnoremap <S-h> gT
 
-" nnoremap <silent> <S-t> :tabnew<CR>
-
-"" Opens an edit command with the path of the currently edited file filled in
-" noremap <Leader>p :e <C-R>=expand("%:p:h") . "/" <CR>
-
-"" Opens a tab edit command with the path of the currently edited file filled
-" noremap <Leader>tp :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-" Search mappings: These will make it so that going to the next one in a
-" search will center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
 "" Close buffer
 noremap <leader>c :bd<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader>n :noh<CR>
 
-vnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
-
-" Remap H and L (top, bottom of screen to left and right end of line)
-" nnoremap H ^
-" nnoremap L $
-" vnoremap H ^
-" vnoremap L g_
-
-
-"" for coc
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 inoremap <C-l> <Right>
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 
-
-"" Git
-" nnoremap <Leader>o :.Gbrowse<CR> " Open current line on GitHub
-" noremap <Leader>ga :Gwrite<CR>
-" noremap <Leader>gc :Gcommit<CR>
-" noremap <Leader>gsh :Gpush<CR>
-" noremap <Leader>gll :Gpull<CR>
-" noremap <Leader>gs :Gstatus<CR>
-" noremap <Leader>gb :Gblame<CR>
-" noremap <Leader>gd :Gvdiff<CR>
-" noremap <Leader>gr :Gremove<CR>
-
-" session management
-" nnoremap <leader>so :OpenSession<Space>
-" nnoremap <leader>ss :SaveSession<Space>
-" nnoremap <leader>sd :DeleteSession<CR>
-" nnoremap <leader>sc :CloseSession<CR>
-"" Buffer nav
-
-nnoremap <C-p> :bn <CR>
-nnoremap <C-n> :bp <CR>
-
-
-"" netrew
-
-" % create new file, more info :help netrw-%
-" d create new directory
-" R rename file/directory under cursor
-" D delete file/directory under cursor
-
-" nnoremap <leader>e :Vex<CR>
-" nnoremap <leader>e :GFiles<CR>
-
-
-let g:netrw_browse_split = 2
-" 1 - open files in a new horizontal split
-" 2 - open files in a new vertical split
-" 3 - open files in a new tab
-" 4 - open in previous window
-
-let g:netrw_winsize = 15
-let g:netrw_banner = 0
-let g:netrw_altv = 1
-let g:netrw_liststyle = 3
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd VimEnter * :Vexplore
-" augroup END
+" nnoremap <C-p> :bn <CR>
+" nnoremap <C-n> :bp <CR>
 
 set ideajoin
 
+nnoremap <leader>ls :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+
+
+nnoremap <leader>c :action CloseContent<CR>
+
+nnoremap <leader>la :action Refactorings.QuickListPopupAction<CR>
+nnoremap <Leader>lf :action ReformatCode<CR>
+nnoremap <leader>lo :action OptimizeImports<CR>
+
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+
+" nnoremap <leader>f :action FindInPath<CR>
+nnoremap <leader>la :action GotoAction<CR>
+nnoremap <leader>f :action GotoFile<CR>
+
+" nnoremap <leader>u :action FindUsages<CR>
+
+nnoremap <leader>st :action ShowNavBar<CR>
+" nnoremap <leader>e :action FileStructurePopup<CR>
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
+
+nnoremap gc :action GotoClass<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotToDeclaration<CR>
+nnoremap gp :action GotToSuperMethod<CR>
+nnoremap gt :action GotoTest<CR>
+" nnoremap gb :action Back<CR>
+" nnoremap gf :action Forward<CR>
+
+
+map <leader>r <Action>(RenameElement)
+map gh <Action>(ShowErrorDescription)
+
+nnoremap <c-z> :action HideAllWindows<CR>
