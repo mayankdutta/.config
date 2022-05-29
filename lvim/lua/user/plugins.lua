@@ -52,11 +52,6 @@ lvim.plugins = {
       }
     end
   },
-
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
