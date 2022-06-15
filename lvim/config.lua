@@ -39,7 +39,6 @@ lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy status
 -- lvim.builtin.lualine.options.theme = ""
 
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
 
 lvim.lsp.diagnostics.virtual_text = false;
 
