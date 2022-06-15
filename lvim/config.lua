@@ -172,5 +172,3 @@ code_actions.setup {
     command = "eslint_d"
   },
 }
-
-
