@@ -99,6 +99,10 @@ lvim.builtin.which_key.mappings["m"] = {
   t = { "<cmd>MarkdownPreviewToggle<cr>", "Makrdown preview Toogle" },
 }
 
+
+vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+
 lvim.builtin.which_key.mappings.b.v = { "<cmd>only<cr>", "Close all splits except currently on focus" }
 
 lvim.builtin.treesitter.playground.enable = true
@@ -125,9 +129,10 @@ lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.terminal.shading_factor = 3
 lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
 
+vim.api.nvim_set_keymap("v","<space>y", '"+y', {noremap = true});
 vim.cmd [[
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-vnoremap <space>y "+y
+" vnoremap <space>y "+y
 
 ]]
 

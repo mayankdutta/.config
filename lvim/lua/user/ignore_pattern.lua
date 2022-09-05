@@ -49,4 +49,5 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "%.epub",
   "%.flac",
   "%.tar.gz",
+  "%.class",
 }
