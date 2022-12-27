@@ -23,6 +23,10 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 -- lvim.builtin.dashboard.active = true
+
+lvim.lsp.installer.automatic_servers_installation = true
+
+
 lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = true
@@ -90,18 +94,19 @@ lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
 lvim.builtin.which_key.mappings.Y = { 'gg"+yG\'\'', "Copy whole file" }
 -- lvim.builtin.which_key.mappings.y = { '"+y', "Copy Selected line" }
-lvim.builtin.which_key.mappings.n = { "<cmd>noh<cr>", "No hightlighting" }
+lvim.builtin.which_key.mappings.n = { "<cmd>noh<cr>", "No highlighting" }
 
 lvim.builtin.which_key.mappings["m"] = {
   name = "+MarkdownPreview",
   p = { "<cmd>MarkdownPreview<cr>", "Markdown preview " },
   s = { "<cmd>MarkdownPreviewStop<cr>", "Makrdown preview stop" },
-  t = { "<cmd>MarkdownPreviewToggle<cr>", "Makrdown preview Toogle" },
+  t = { "<cmd>MarkdownPreviewToggle<cr>", "Makrdown preview Toggle" },
 }
 
 
 vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+vim.opt.relativenumber = true
 
 lvim.builtin.which_key.mappings.b.v = { "<cmd>only<cr>", "Close all splits except currently on focus" }
 
@@ -162,7 +167,7 @@ linters.setup {
   {
     command = "codespell",
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "javascript", "python" },
+    -- filetypes = { "javascript", "python" , "lua", "cpp", "c", "java"},
   },
 }
 
@@ -170,9 +175,12 @@ linters.setup {
 local code_actions = require "lvim.lsp.null-ls.code_actions"
 code_actions.setup {
   {
-    command = "proselint"
-  },
-  {
     command = "eslint_d"
   },
+  {
+    name = "proselint"
+  },
 }
+
+
+
