@@ -7,3 +7,6 @@ vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 
+vim.opt.smartcase = true
+
+-- vim.o.completeopt = 'menuone,noselect'

@@ -17,8 +17,31 @@ lvim.plugins = {
   },
   {
     "kevinhwang91/nvim-bqf",
-    event = "BufRead",
+    event = { "BufRead", "BufNew" },
+    config = function()
+      require("bqf").setup({
+        auto_enable = true,
+        preview = {
+          win_height = 12,
+          win_vheight = 12,
+          delay_syntax = 80,
+          border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+        },
+        func_map = {
+          vsplit = "",
+          ptogglemode = "z,",
+          stoggleup = "",
+        },
+        filter = {
+          fzf = {
+            action_for = { ["ctrl-s"] = "split" },
+            extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+          },
+        },
+      })
+    end,
   },
+
   {
     "nvim-treesitter/playground",
     event = "BufRead",
@@ -56,15 +79,23 @@ lvim.plugins = {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
     ft = "markdown",
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end,
   },
   { "p00f/nvim-ts-rainbow" },
+
+
   {
     "filipdutescu/renamer.nvim",
+    requires = { { 'nvim-lua/plenary.nvim' } },
+    branch = "master",
     config = function()
       require("user.renamer").config()
     end,
-    branch = "master",
   },
+
+
   {
     "simrat39/symbols-outline.nvim",
     setup = function()
@@ -94,12 +125,6 @@ lvim.plugins = {
   --   "beauwilliams/focus.nvim",
   --   config = function()
   --     require("focus").setup()
-  --   end
-  -- },
-  -- {
-  --   "ur4ltz/surround.nvim",
-  --   config = function()
-  --     require "surround".setup { mappings_style = "surround" }
   --   end
   -- },
   {
@@ -137,4 +162,22 @@ lvim.plugins = {
     cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
     run = "npm install --prefix server",
   },
+  {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("numb").setup {
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      }
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+
 }

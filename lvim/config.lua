@@ -10,7 +10,6 @@ lvim.colorscheme = "darkplus"
 lvim.log.level = "warn"
 lvim.format_on_save = false
 
-
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 lvim.lsp.installer.automatic_servers_installation = true
@@ -27,20 +26,36 @@ lvim.builtin.telescope.defaults.path_display = { "smart" }
 lvim.builtin.project.active = true;
 lvim.builtin.project.patterns = { ".git" }
 lvim.builtin.project.detection_methods = { "pattern", "lsp" }
+
 lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy statusline
--- lvim.builtin.lualine.options.theme = ""
 
 lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
 lvim.builtin.which_key.mappings.n = { "<cmd>noh<cr>", "No highlighting" }
 lvim.builtin.which_key.mappings.Y = { 'gg"+yG\'\'', "Copy whole file" }
 
+lvim.builtin.which_key.mappings["m"] = {
+  name = "+MarkdownPreview",
+  p = { "<cmd>MarkdownPreview<cr>", "Markdown preview " },
+  s = { "<cmd>MarkdownPreviewStop<cr>", "Makrdown preview stop" },
+  t = { "<cmd>MarkdownPreviewToggle<cr>", "Makrdown preview Toggle" },
+}
+
+lvim.builtin.which_key.mappings.b.v = { "<cmd>only<cr>", "Close all splits except currently on focus" }
 
 lvim.builtin.nvimtree.setup.view.side = "left"
 
 lvim.lsp.diagnostics.virtual_text = false;
 
--- if you don't want all the parsers change this to a table of the ones you want
+lvim.builtin.treesitter.indent.disable = { "python" }
+lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.highlight.enabled = true
+
+lvim.builtin.treesitter.playground.enable = true
+lvim.builtin.treesitter.matchup.enable = true
+lvim.builtin.treesitter.autotag.enable = true
+lvim.builtin.treesitter.indent.enable = false
+
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "c",
@@ -65,34 +80,12 @@ lvim.builtin.treesitter.ensure_installed = {
   "latex",
   "lua",
   "tsx",
-  "vim"
+  "vim", 
+  "jsdoc",
+  "markdown",
+  "markdown_inline",
+  "sql", 
 }
-
-lvim.builtin.treesitter.indent.disable = { "python" }
-
-
-lvim.builtin.telescope.active = true
-lvim.builtin.autopairs.active = true
-
-
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
-
-vim.opt.relativenumber = true
-
-lvim.builtin.which_key.mappings["m"] = {
-  name = "+MarkdownPreview",
-  p = { "<cmd>MarkdownPreview<cr>", "Markdown preview " },
-  s = { "<cmd>MarkdownPreviewStop<cr>", "Makrdown preview stop" },
-  t = { "<cmd>MarkdownPreviewToggle<cr>", "Makrdown preview Toggle" },
-}
-
-
-lvim.builtin.which_key.mappings.b.v = { "<cmd>only<cr>", "Close all splits except currently on focus" }
-lvim.builtin.treesitter.playground.enable = true
-lvim.builtin.treesitter.matchup.enable = true
-lvim.builtin.treesitter.autotag.enable = true
-lvim.builtin.treesitter.indent.enable = false
 
 lvim.builtin.treesitter.rainbow = {
   enable = true,
@@ -107,13 +100,16 @@ lvim.builtin.treesitter.rainbow = {
   disable = { "html" },
 }
 
+
+
+lvim.builtin.telescope.active = true
+lvim.builtin.autopairs.active = true
+
+vim.opt.relativenumber = true
+
 lvim.builtin.terminal.open_mapping = "<C-t>"
 lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.terminal.shading_factor = 3
-lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
-
-
-
 
 -- removing the filetypes argument will allow the formatter to attach to all the default filetypes it supports.
 
