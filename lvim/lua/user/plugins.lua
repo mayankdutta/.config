@@ -179,5 +179,6 @@ lvim.plugins = {
       require("todo-comments").setup()
     end,
   },
-
+  { "catppuccin/nvim" },
+  { "gruvbox-community/gruvbox" }
 }

@@ -8,5 +8,6 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 
 vim.opt.smartcase = true
+vim.opt.updatetime = 50
 
 -- vim.o.completeopt = 'menuone,noselect'

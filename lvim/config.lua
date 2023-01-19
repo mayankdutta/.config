@@ -5,7 +5,8 @@ require "user.bufferline"
 require "user.ignore_pattern"
 require "user.telescope"
 
-lvim.colorscheme = "darkplus"
+lvim.colorscheme = "gruvbox"
+lvim.transparent_window = true
 
 lvim.log.level = "warn"
 lvim.format_on_save = false
@@ -33,6 +34,7 @@ lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
 lvim.builtin.which_key.mappings.n = { "<cmd>noh<cr>", "No highlighting" }
 lvim.builtin.which_key.mappings.Y = { 'gg"+yG\'\'', "Copy whole file" }
+
 
 lvim.builtin.which_key.mappings["m"] = {
   name = "+MarkdownPreview",
@@ -80,11 +82,11 @@ lvim.builtin.treesitter.ensure_installed = {
   "latex",
   "lua",
   "tsx",
-  "vim", 
+  "vim",
   "jsdoc",
   "markdown",
   "markdown_inline",
-  "sql", 
+  "sql",
 }
 
 lvim.builtin.treesitter.rainbow = {
@@ -103,7 +105,8 @@ lvim.builtin.treesitter.rainbow = {
 
 
 lvim.builtin.telescope.active = true
-lvim.builtin.autopairs.active = true
+lvim.builtin.autopairs.active = false;
+
 
 vim.opt.relativenumber = true
 
@@ -144,9 +147,6 @@ linters.setup {
 
 local code_actions = require "lvim.lsp.null-ls.code_actions"
 code_actions.setup {
-  {
-    command = "eslint_d"
-  },
   {
     name = "proselint"
   },
