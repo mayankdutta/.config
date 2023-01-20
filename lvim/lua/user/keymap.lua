@@ -1,18 +1,24 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, desc = { "copy one line" } })
-vim.keymap.set("n", "<leader>y", '"+y', { noremap = true, desc = { "copy one line" } })
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "J", "mzJ`z") -- keep the cursor at the beginning while joining the line.
-vim.keymap.set("x", "<leader>p", [["_dP]])
+local map = vim.keymap.set
+
+
+map("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+map("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+
+map("v", "<leader>y", '"+y', { noremap = true, desc = { "copy one line" } })
+map("n", "<leader>y", '"+y', { noremap = true, desc = { "copy one line" } })
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+map("n", "J", "mzJ`z") -- keep the cursor at the beginning while joining the line.
+map("x", "<leader>p", [["_dP]])
+
+map("n", "<C-h>", "<S-^>");
+map("n", "<C-l>", "<S-$>");
 
 -- keep the cursor at the middle of the screen while moving half page up/down
-vim.keymap.set("n", "<C-d>", "<C-d>zz") 
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
 vim.cmd [[ au BufEnter * if &buftype == 'terminal' | :startinsert | endif ]]
-
