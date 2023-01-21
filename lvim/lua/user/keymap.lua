@@ -12,8 +12,8 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "J", "mzJ`z") -- keep the cursor at the beginning while joining the line.
 map("x", "<leader>p", [["_dP]])
 
-map("n", "<C-h>", "<S-^>");
-map("n", "<C-l>", "<S-$>");
+map("n", "gh", "<S-^>");
+map("n", "gl", "<S-$>");
 
 -- keep the cursor at the middle of the screen while moving half page up/down
 map("n", "<C-d>", "<C-d>zz")
