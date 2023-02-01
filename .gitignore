@@ -1,3 +1,4 @@
 .DS_Store
 node_modules/
-lvim/plugin/packer_compiled.lua
+./lvim/plugin/packer_compiled.lua
+packer_compiled.lua

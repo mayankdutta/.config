@@ -1,0 +1,85 @@
+# export STARSHIP_CONFIG=~/example/non/default/path/starship.toml
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$git_metrics\
+$fill\
+$python\
+$shell\
+$nodejs\
+$cmd_duration $jobs $time\
+$line_break\
+$character"""
+
+[sudo]
+disabled = false
+style = 'bold red'
+symbol = '👩‍💻 '
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+[python]
+symbol = '👾 '
+pyenv_version_name = true
+
+[fill]
+symbol = " "
+
+[directory]
+style = "bold blue"
+read_only = " "
+truncation_length = 4
+truncate_to_repo = false
+
+[character]
+success_symbol = "[-❯](bold green)"
+error_symbol = "[=❯](red)"
+vicmd_symbol = '[V](bold green) '
+
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "bright-black"
+
+[jobs]
+symbol = ""
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "cyan"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[git_metrics]
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style)"
+style = "yellow"
+
+[memory_usage]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[time]
+disabled = true
+
+[custom.stunnel]
+when = "ps aux | grep stunnel | grep -v grep"
+command = "ps -o etime= -p $(ps aux | grep stunnel | grep -v grep | awk '{print $2}')"
+style = "red"
+format = "[TUNNEL OPEN for $output]($style)"
+

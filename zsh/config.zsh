@@ -1,5 +1,8 @@
+ulimit -n 1024
+
 alias luamake=/Users/info/.config/lua-language-server/3rd/luamake/luamake
 export PATH=/bin:/usr/bin:/usr/local/bin:/Users/info/bin:/Users/info/.local/bin:/usr/local/bin:/opt/X11/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/info/.cache/zsh4humans/v4/fzf/bin:/usr/local/opt/fzf/bin
+export STARSHIP_CONFIG=~/.config/starship.toml
 
 path=(~/bin $path)
 alias run='~/bin/run.sh'
@@ -13,14 +16,12 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 
-# z4h source $ZSH/plugins
-source $ZSH/plugins/history-substring-search/history-substring-search.zsh
 
-plugins=(history-substring-search)
+# Example install plugins
+plug "zap-zsh/supercharge"
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/exa"
 
-bindkey '^K' history-substring-search-up
-bindkey '^N' history-substring-search-down
-
-setopt rcs
-. "$HOME/.cargo/env"
-
+plug "wintermi/zsh-starship"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-history-substring-search"
