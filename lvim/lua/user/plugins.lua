@@ -1,13 +1,5 @@
 lvim.plugins = {
 	{ "mfussenegger/nvim-jdtls" },
-	-- {
-	--   "unblevable/quick-scope",
-	--   config = function()
-	--     vim.cmd [[
-	--     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-	--     ]]
-	--   end,
-	-- },
 	{
 		"andymass/vim-matchup",
 		event = "CursorMoved",
@@ -71,13 +63,6 @@ lvim.plugins = {
 	{
 		"LunarVim/Colorschemes",
 	},
-	-- automatic resizing
-	-- {
-	--   "beauwilliams/focus.nvim",
-	--   config = function()
-	--     require("focus").setup()
-	--   end
-	-- },
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
@@ -102,6 +87,7 @@ lvim.plugins = {
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-surround" },
 	{
+		-- live editing of html/css
 		"turbio/bracey.vim",
 		cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
 		run = "npm install --prefix server",
@@ -133,4 +119,7 @@ lvim.plugins = {
 			vim.cmd("colorscheme everforest")
 		end,
 	},
+	{ "mbbill/undotree", cmd = { "UndotreeToggle" } },
+	-- { "godlygeek/tabular", cmd = { "tabular" } },
+	{ "szw/vim-maximizer", cmd = { "MaximizerToggle" } },
 }

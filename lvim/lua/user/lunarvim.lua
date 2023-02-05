@@ -11,7 +11,6 @@ lvim.format_on_save = {
 
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
-
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 lvim.lsp.installer.automatic_servers_installation = true
@@ -42,8 +41,22 @@ lvim.builtin.treesitter.playground.enable = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.indent.enable = false
-
 lvim.builtin.treesitter.auto_install = true
+
+lvim.builtin.treesitter.textobjects.select = {
+	enable = true,
+
+	-- Automatically jump forward to textobj, similar to targets.vim
+	lookahead = true,
+
+	keymaps = {
+		-- You can use the capture groups defined in textobjects.scm
+		["af"] = "@function.outer",
+		["if"] = "@function.inner",
+		["ac"] = "@class.outer",
+		["ic"] = "@class.inner",
+	},
+}
 
 -- lvim.builtin.treesitter.ensure_installed = { "bash", "c", "javascript", "json", "lua", "python", "typescript", "css", "rust", "java", "yaml", "scss", "cpp", "bash", "dot", "fish", "go", "graphql", "html", "json5", "latex", "lua", "tsx", "vim", "jsdoc", "markdown", "markdown_inline", "sql", }
 

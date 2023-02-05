@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 local map = vim.keymap.set
 
-
 map("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 map("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 
@@ -24,12 +23,15 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-vim.cmd [[ au BufEnter * if &buftype == 'terminal' | :startinsert | endif ]]
+vim.cmd([[ au BufEnter * if &buftype == 'terminal' | :startinsert | endif ]])
 
 lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }
 lvim.builtin.which_key.mappings.n = { "<cmd>noh<cr>", "No highlighting" }
 lvim.builtin.which_key.mappings.Y = { "gg\"+yG''", "Copy whole file" }
+lvim.builtin.which_key.mappings.u = { "<cmd>UndotreeToggle<cr>", "undo tree" }
+lvim.builtin.which_key.mappings.f = { "<cmd>MaximizerToggle<cr>", "full focus " }
+-- lvim.builtin.which_key.mappings.t = { '<cmd>tabular<cr>=expand() ."/"', "Vim tabular" }
 
 lvim.builtin.which_key.mappings["m"] = {
 	name = "+MarkdownPreview",
