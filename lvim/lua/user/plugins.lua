@@ -30,6 +30,7 @@ lvim.plugins = {
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
+		event = "VeryLazy",
 		config = function()
 			vim.g.mkdp_auto_start = 1
 		end,
@@ -124,5 +125,21 @@ lvim.plugins = {
 	{
 		"wellle/targets.vim",
 		lazy = true,
+	},
+	-- {
+	-- 	"ggandor/leap.nvim",
+	-- 	keys = { "s", "S" },
+	-- 	config = function()
+	-- 		local leap = require("leap")
+	-- 		leap.set_default_keymaps()
+	-- 	end,
+	-- 	lazy = true,
+	-- },
+	{
+		"ggandor/flit.nvim",
+		dependencies = "ggandor/leap.nvim",
+		config = function()
+			require("user.config.flit").setup()
+		end,
 	},
 }
