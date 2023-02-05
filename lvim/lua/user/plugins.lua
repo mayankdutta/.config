@@ -29,7 +29,6 @@ lvim.plugins = {
 	},
 	{
 		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
 		ft = "markdown",
 		config = function()
 			vim.g.mkdp_auto_start = 1
@@ -38,7 +37,7 @@ lvim.plugins = {
 
 	{
 		"filipdutescu/renamer.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		dependencies = "nvim-lua/plenary.nvim",
 		branch = "master",
 		config = function()
 			require("user.renamer").config()
@@ -75,7 +74,7 @@ lvim.plugins = {
 		-- live editing of html/css
 		"turbio/bracey.vim",
 		cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
-		run = "npm install --prefix server",
+		-- run = "npm install --prefix server",
 	},
 	{
 		"nacro90/numb.nvim",
@@ -98,12 +97,6 @@ lvim.plugins = {
 	{ "gruvbox-community/gruvbox" },
 	{ "chaoren/vim-wordmotion" },
 
-	{
-		"sainnhe/everforest",
-		config = function()
-			vim.cmd("colorscheme everforest")
-		end,
-	},
 	{ "mbbill/undotree", cmd = { "UndotreeToggle" }, lazy = true },
 	-- { "godlygeek/tabular", cmd = { "tabular" } , lazy = true},
 	{ "szw/vim-maximizer", cmd = { "MaximizerToggle" }, lazy = true },
@@ -112,20 +105,24 @@ lvim.plugins = {
 		config = function()
 			require("telescope").load_extension("frecency")
 		end,
-		requires = { "kkharji/sqlite.lua" },
+		dependencies = "kkharji/sqlite.lua",
 		lazy = true,
 	},
 	{
 		"ThePrimeagen/harpoon",
 		event = "VimEnter",
-		config = function()
-			require("config.harpoon").setup()
+		dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
+		init = function()
+			-- latipun7/dotfiles/blob/main/home/dot_config/exact_lvim/exact_lua/exact_latipun/exact_plugins/harpoon.lua
+			-- require("config.harpoon").keybindings()
 		end,
 	},
 	{
 		"RRethy/nvim-treesitter-textsubjects",
+		lazy = true,
 	},
 	{
 		"wellle/targets.vim",
+		lazy = true,
 	},
 }
