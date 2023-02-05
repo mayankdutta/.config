@@ -42,6 +42,17 @@ lvim.builtin.which_key.mappings["m"] = {
 
 lvim.builtin.which_key.mappings.b.a = { "<cmd>only<cr>", "Close all splits except currently on focus" }
 
+lvim.builtin.which_key.mappings["j"] = {
+	name = "Jump",
+	a = { "<Cmd>lua require('harpoon.mark').add_file()<Cr>", "Add" },
+	m = { "<Cmd>lua require('harpoon.ui').toggle_quick_menu()<Cr>", "Menu" },
+}
+
+lvim.builtin.which_key.mappings["1"] = { "<Cmd>lua require('harpoon.ui').nav_file(1) <Cr>", "Jump 1" }
+lvim.builtin.which_key.mappings["2"] = { "<Cmd>lua require('harpoon.ui').nav_file(2) <Cr>", "Jump 2" }
+lvim.builtin.which_key.mappings["3"] = { "<Cmd>lua require('harpoon.ui').nav_file(3) <Cr>", "Jump 3" }
+lvim.builtin.which_key.mappings["4"] = { "<Cmd>lua require('harpoon.term').gotoTerminal(1)<Cr>", "Terminal" }
+
 lvim.builtin.terminal.open_mapping = "<C-t>"
 
 lvim.builtin.terminal.direction = "horizontal"

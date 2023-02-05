@@ -43,6 +43,14 @@ lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.indent.enable = false
 lvim.builtin.treesitter.auto_install = true
 
+lvim.builtin.treesitter.textsubjects = {
+	enable = true,
+	keymaps = {
+		["."] = "textsubjects-smart",
+		[";"] = "textsubjects-container-outer",
+	},
+}
+
 lvim.builtin.treesitter.textobjects.select = {
 	enable = true,
 
@@ -55,6 +63,35 @@ lvim.builtin.treesitter.textobjects.select = {
 		["if"] = "@function.inner",
 		["ac"] = "@class.outer",
 		["ic"] = "@class.inner",
+	},
+	move = {
+		enable = true,
+		set_jumps = true, -- whether to set jumps in the jumplist
+		goto_next_start = {
+			["]m"] = "@function.outer",
+			["]]"] = "@class.outer",
+		},
+		goto_next_end = {
+			["]M"] = "@function.outer",
+			["]["] = "@class.outer",
+		},
+		goto_previous_start = {
+			["[m"] = "@function.outer",
+			["[["] = "@class.outer",
+		},
+		goto_previous_end = {
+			["[M"] = "@function.outer",
+			["[]"] = "@class.outer",
+		},
+	},
+
+	lsp_interop = {
+		enable = true,
+		border = "none",
+		peek_definition_code = {
+			["<leader>df"] = "@function.outer",
+			["<leader>dF"] = "@class.outer",
+		},
 	},
 }
 

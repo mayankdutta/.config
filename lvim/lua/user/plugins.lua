@@ -7,37 +7,22 @@ lvim.plugins = {
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
 	},
-	-- {
-	-- 	"kevinhwang91/nvim-bqf",
-	-- 	event = { "BufRead", "BufNew" },
-	-- 	config = function()
-	-- 		require("bqf").setup({
-	-- 			auto_enable = true,
-	-- 			preview = {
-	-- 				win_height = 12,
-	-- 				win_vheight = 12,
-	-- 				delay_syntax = 80,
-	-- 				border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
-	-- 			},
-	-- 			func_map = {
-	-- 				vsplit = "",
-	-- 				ptogglemode = "z,",
-	-- 				stoggleup = "",
-	-- 			},
-	-- 			filter = {
-	-- 				fzf = {
-	-- 					action_for = { ["ctrl-s"] = "split" },
-	-- 					extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		-- quickfix
+		"kevinhwang91/nvim-bqf",
+		lazy = true,
+		ft = "qf",
+		event = "QuickFixCmdPost",
+		config = function()
+			require("user.config.quickfix")
+		end,
+	},
 
 	{
 		"nvim-treesitter/playground",
 		event = "BufRead",
 	},
+	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "BufRead" },
 	{
 		"windwp/nvim-ts-autotag",
 		event = "InsertEnter",
@@ -119,7 +104,28 @@ lvim.plugins = {
 			vim.cmd("colorscheme everforest")
 		end,
 	},
-	{ "mbbill/undotree", cmd = { "UndotreeToggle" } },
-	-- { "godlygeek/tabular", cmd = { "tabular" } },
-	{ "szw/vim-maximizer", cmd = { "MaximizerToggle" } },
+	{ "mbbill/undotree", cmd = { "UndotreeToggle" }, lazy = true },
+	-- { "godlygeek/tabular", cmd = { "tabular" } , lazy = true},
+	{ "szw/vim-maximizer", cmd = { "MaximizerToggle" }, lazy = true },
+	{
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+		requires = { "kkharji/sqlite.lua" },
+		lazy = true,
+	},
+	{
+		"ThePrimeagen/harpoon",
+		event = "VimEnter",
+		config = function()
+			require("config.harpoon").setup()
+		end,
+	},
+	{
+		"RRethy/nvim-treesitter-textsubjects",
+	},
+	{
+		"wellle/targets.vim",
+	},
 }
