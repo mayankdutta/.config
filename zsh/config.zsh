@@ -25,3 +25,5 @@ plug "zap-zsh/exa"
 plug "wintermi/zsh-starship"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
+
+plug "zap-zsh/completions"

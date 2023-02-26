@@ -67,6 +67,11 @@ colorspace@1.1.x:
     color "3.0.x"
     text-hex "1.0.x"
 
+create-vite@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-4.1.0.tgz#107931dd181c8caa32ae32152367ac76c6d9d7ae"
+  integrity sha512-IQAkwLJcp/6fQUnB2CBxTnsT5xfaHDUTCUi/LLWZTrzfrhVvtoKv9eHuXoG+XzyOyNgqUPJi9aNzwTXqSHw8Vg==
+
 enabled@2.0.x:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/enabled/-/enabled-2.0.0.tgz#f9dd92ec2d6f4bbc0d5d1e64e21d61cd4665e7c2"

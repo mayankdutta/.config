@@ -15,10 +15,12 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.leader = "space"
 lvim.lsp.installer.automatic_servers_installation = true
 
-lvim.builtin.terminal.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = true
 
+lvim.builtin.terminal.active = true
+lvim.builtin.terminal.open_mapping = "<C-t>"
+lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.terminal.shell = "/bin/zsh"
 
 lvim.builtin.cmp.experimental.ghost_text = false
@@ -95,10 +97,39 @@ lvim.builtin.treesitter.textobjects.select = {
 	},
 }
 
--- lvim.builtin.treesitter.ensure_installed = { "bash", "c", "javascript", "json", "lua", "python", "typescript", "css", "rust", "java", "yaml", "scss", "cpp", "bash", "dot", "fish", "go", "graphql", "html", "json5", "latex", "lua", "tsx", "vim", "jsdoc", "markdown", "markdown_inline", "sql", }
+lvim.builtin.treesitter.ensure_installed = {
+	"bash",
+	"c",
+	"javascript",
+	"json",
+	"lua",
+	"python",
+	"typescript",
+	"css",
+	"rust",
+	"java",
+	"yaml",
+	"scss",
+	"cpp",
+	"bash",
+	"dot",
+	"fish",
+	"go",
+	"graphql",
+	"html",
+	"json5",
+	"latex",
+	"lua",
+	"tsx",
+	"vim",
+	"jsdoc",
+	"markdown",
+	"markdown_inline",
+	"sql",
+}
 
 lvim.builtin.telescope.active = true
-lvim.builtin.autopairs.active = false
+lvim.builtin.autopairs.active = true
 
 vim.opt.relativenumber = true
 
@@ -109,7 +140,6 @@ formatters.setup({
 	{ command = "stylua" },
 	{
 		exe = "prettier",
-		extra_args = { "--print-width", "100" },
 	},
 })
 
