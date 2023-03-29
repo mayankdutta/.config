@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "create-vite": "^4.1.0",
+    "create-vite": "^4.2.0",
     "neovim": "^4.10.1",
     "tree-sitter-cli": "^0.20.6"
   }

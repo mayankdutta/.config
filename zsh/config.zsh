@@ -3,6 +3,7 @@ ulimit -n 1024
 alias luamake=/Users/info/.config/lua-language-server/3rd/luamake/luamake
 export PATH=/bin:/usr/bin:/usr/local/bin:/Users/info/bin:/Users/info/.local/bin:/usr/local/bin:/opt/X11/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/info/.cache/zsh4humans/v4/fzf/bin:/usr/local/opt/fzf/bin
 export STARSHIP_CONFIG=~/.config/starship.toml
+export PATH="$HOME/.cargo/bin:$PATH"
 
 path=(~/bin $path)
 alias run='~/bin/run.sh'

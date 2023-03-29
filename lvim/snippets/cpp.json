@@ -917,5 +917,16 @@
       "}"
     ],
     "description": "random"
+  },
+  "hello": {
+    "prefix": "hello",
+    "body": [
+      "#include <iostream> ",
+      "using namespace std; ",
+      "",
+      "int main() {",
+      "  cout << \"Hello, World!\";",
+      "}"
+    ]
   }
 }
