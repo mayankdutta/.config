@@ -4,6 +4,8 @@ alias luamake=/Users/info/.config/lua-language-server/3rd/luamake/luamake
 export PATH=/bin:/usr/bin:/usr/local/bin:/Users/info/bin:/Users/info/.local/bin:/usr/local/bin:/opt/X11/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/info/.cache/zsh4humans/v4/fzf/bin:/usr/local/opt/fzf/bin
 export STARSHIP_CONFIG=~/.config/starship.toml
 export PATH="$HOME/.cargo/bin:$PATH"
+export OPENAI_API_KEY=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
+
 
 path=(~/bin $path)
 alias run='~/bin/run.sh'
