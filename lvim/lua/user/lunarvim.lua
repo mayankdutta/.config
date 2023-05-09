@@ -34,7 +34,7 @@ lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy status
 
 lvim.builtin.nvimtree.setup.view.side = "left"
 
-lvim.lsp.diagnostics.virtual_text = false
+vim.diagnostics.config = { virtual_text = false }
 
 lvim.builtin.treesitter.indent.disable = { "python" }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
