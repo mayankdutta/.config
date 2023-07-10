@@ -34,6 +34,7 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 
 -- causing prettier to not attach with current buffer.
 -- vim.diagnostics.config = { virtual_text = false }
+vim.diagnostic.config({ virtual_text = false })
 
 lvim.builtin.treesitter.indent.disable = { "python" }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -45,86 +46,86 @@ lvim.builtin.treesitter.indent.enable = false
 lvim.builtin.treesitter.auto_install = true
 
 lvim.builtin.treesitter.textsubjects = {
-  enable = true,
-  keymaps = {
-    ["."] = "textsubjects-smart",
-    [";"] = "textsubjects-container-outer",
-  },
+	enable = true,
+	keymaps = {
+		["."] = "textsubjects-smart",
+		[";"] = "textsubjects-container-outer",
+	},
 }
 
 lvim.builtin.treesitter.textobjects.select = {
-  enable = true,
+	enable = true,
 
-  -- Automatically jump forward to textobj, similar to targets.vim
-  lookahead = true,
+	-- Automatically jump forward to textobj, similar to targets.vim
+	lookahead = true,
 
-  keymaps = {
-    -- You can use the capture groups defined in textobjects.scm
-    ["af"] = "@function.outer",
-    ["if"] = "@function.inner",
-    ["ac"] = "@class.outer",
-    ["ic"] = "@class.inner",
-  },
-  move = {
-    enable = true,
-    set_jumps = true, -- whether to set jumps in the jumplist
-    goto_next_start = {
-      ["]m"] = "@function.outer",
-      ["]]"] = "@class.outer",
-    },
-    goto_next_end = {
-      ["]M"] = "@function.outer",
-      ["]["] = "@class.outer",
-    },
-    goto_previous_start = {
-      ["[m"] = "@function.outer",
-      ["[["] = "@class.outer",
-    },
-    goto_previous_end = {
-      ["[M"] = "@function.outer",
-      ["[]"] = "@class.outer",
-    },
-  },
+	keymaps = {
+		-- You can use the capture groups defined in textobjects.scm
+		["af"] = "@function.outer",
+		["if"] = "@function.inner",
+		["ac"] = "@class.outer",
+		["ic"] = "@class.inner",
+	},
+	move = {
+		enable = true,
+		set_jumps = true, -- whether to set jumps in the jumplist
+		goto_next_start = {
+			["]m"] = "@function.outer",
+			["]]"] = "@class.outer",
+		},
+		goto_next_end = {
+			["]M"] = "@function.outer",
+			["]["] = "@class.outer",
+		},
+		goto_previous_start = {
+			["[m"] = "@function.outer",
+			["[["] = "@class.outer",
+		},
+		goto_previous_end = {
+			["[M"] = "@function.outer",
+			["[]"] = "@class.outer",
+		},
+	},
 
-  lsp_interop = {
-    enable = true,
-    border = "none",
-    peek_definition_code = {
-      ["<leader>df"] = "@function.outer",
-      ["<leader>dF"] = "@class.outer",
-    },
-  },
+	lsp_interop = {
+		enable = true,
+		border = "none",
+		peek_definition_code = {
+			["<leader>df"] = "@function.outer",
+			["<leader>dF"] = "@class.outer",
+		},
+	},
 }
 
 lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "css",
-  "rust",
-  "java",
-  "yaml",
-  "scss",
-  "cpp",
-  "bash",
-  "dot",
-  "fish",
-  "go",
-  "graphql",
-  "html",
-  "json5",
-  "latex",
-  "lua",
-  "tsx",
-  "vim",
-  "jsdoc",
-  "markdown",
-  "markdown_inline",
-  "sql",
+	"bash",
+	"c",
+	"javascript",
+	"json",
+	"lua",
+	"python",
+	"typescript",
+	"css",
+	"rust",
+	"java",
+	"yaml",
+	"scss",
+	"cpp",
+	"bash",
+	"dot",
+	"fish",
+	"go",
+	"graphql",
+	"html",
+	"json5",
+	"latex",
+	"lua",
+	"tsx",
+	"vim",
+	"jsdoc",
+	"markdown",
+	"markdown_inline",
+	"sql",
 }
 
 lvim.builtin.telescope.active = true
@@ -136,30 +137,49 @@ vim.opt.relativenumber = true
 
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
-  { command = "stylua" },
-  {
-    exe = "prettier",
-  },
+	{ command = "stylua" },
+	{
+		exe = "prettier",
+	},
 })
+
+-- local formatters = require("lvim.lsp.null-ls.formatters")
+-- formatters.setup({
+
+-- 	{
+-- 		command = "prettier",
+-- 		filetypes = {
+-- 			"astro",
+-- 			"html",
+-- 			"css",
+-- 			"markdown",
+-- 			"typescript",
+-- 			"typescriptreact",
+-- 			"javascriptreact",
+-- 			"javascript",
+-- 		},
+-- 	},
+-- })
 
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
-  {
-    command = "shellcheck",
-    extra_args = { "--severity", "warning" },
-  },
+	{
+		command = "shellcheck",
+		extra_args = { "--severity", "warning" },
+	},
 })
 
-local code_actions = require("lvim.lsp.null-ls.code_actions");
+local code_actions = require("lvim.lsp.null-ls.code_actions")
 code_actions.setup({
-  {
-    name = "proselint",
-  },
+	{
+		name = "proselint",
+	},
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "zsh",
-  callback = function()
-    require("nvim-treesitter.highlight").attach(0, "bash")
-  end,
+	pattern = "zsh",
+	callback = function()
+		require("nvim-treesitter.highlight").attach(0, "bash")
+	end,
 })
+
