@@ -135,11 +135,15 @@ lvim.plugins = {
 	-- 	end,
 	-- 	lazy = true,
 	-- },
+	-- {
+	-- 	"ggandor/flit.nvim",
+	-- 	dependencies = "ggandor/leap.nvim",
+	-- 	config = function()
+	-- 		require("user.config.flit").setup()
+	-- 	end,
+	-- },
+
 	{
-		"ggandor/flit.nvim",
-		dependencies = "ggandor/leap.nvim",
-		config = function()
-			require("user.config.flit").setup()
-		end,
+		"ggandor/lightspeed.nvim",
 	},
 }

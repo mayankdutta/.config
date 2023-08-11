@@ -1,2 +1,15 @@
-[lsp]
-display-messages = true
+theme = "tokyonight_storm"
+ 
+[editor]
+bufferline = 'always'
+line-number = 'relative'
+true-color = true
+
+[editor.cursor-shape]
+insert = 'bar'
+normal = 'block'
+select = 'underline'
+
+
+[editor.file-picker]
+hidden = false

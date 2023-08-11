@@ -22,7 +22,6 @@ local emmet_options = {
 		"pug",
 		"typescriptreact",
 		"vue",
-
 		"typescript",
 		"xml",
 	},
