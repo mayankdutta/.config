@@ -23,7 +23,8 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-vim.cmd([[ au BufEnter * if &buftype == 'terminal' | :startinsert | endif ]])
+-- might be causing issue. 
+-- vim.cmd([[ au BufEnter * if &buftype == 'terminal' | :startinsert | endif ]])
 
 lvim.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "vertical split" }
 lvim.builtin.which_key.mappings.h = { "<cmd>split<cr>", "horizontal split" }

@@ -41,7 +41,7 @@ lvim.plugins = {
 		dependencies = "nvim-lua/plenary.nvim",
 		branch = "master",
 		config = function()
-			require("user.renamer").config()
+			require("user.config.renamer").config()
 		end,
 	},
 
@@ -101,23 +101,37 @@ lvim.plugins = {
 	{ "mbbill/undotree", cmd = { "UndotreeToggle" }, lazy = true },
 	-- { "godlygeek/tabular", cmd = { "tabular" } , lazy = true},
 	{ "szw/vim-maximizer", cmd = { "MaximizerToggle" }, lazy = true },
+	-- {
+	-- 	"nvim-telescope/telescope-frecency.nvim",
+	-- 	config = function()
+	-- 		require("telescope").load_extension("frecency")
+	-- 	end,
+	-- 	dependencies = "kkharji/sqlite.lua",
+	-- 	lazy = true,
+	-- },
+
 	{
-		"nvim-telescope/telescope-frecency.nvim",
+		"theprimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+
 		config = function()
-			require("telescope").load_extension("frecency")
+			require("user.config.harpoon").config()
+			-- require("harpoon"):setup()
 		end,
-		dependencies = "kkharji/sqlite.lua",
-		lazy = true,
+		keys = require("user.config.harpoon").keys,
 	},
-	{
-		"ThePrimeagen/harpoon",
-		event = "VimEnter",
-		dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
-		init = function()
-			-- latipun7/dotfiles/blob/main/home/dot_config/exact_lvim/exact_lua/exact_latipun/exact_plugins/harpoon.lua
-			-- require("config.harpoon").keybindings()
-		end,
-	},
+
+	-- {
+	-- 	"ThePrimeagen/harpoon",
+	-- 	event = "VimEnter",
+	-- 	dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
+	-- 	init = function()
+	-- 		-- latipun7/dotfiles/blob/main/home/dot_config/exact_lvim/exact_lua/exact_latipun/exact_plugins/harpoon.lua
+	-- 		require("user.config.harpoon").keybindings()
+	-- 	end,
+	-- },
+
 	{
 		"RRethy/nvim-treesitter-textsubjects",
 		lazy = true,

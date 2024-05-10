@@ -23,6 +23,12 @@ lvim.builtin.terminal.shell = "/bin/zsh"
 
 lvim.builtin.cmp.experimental.ghost_text = false
 lvim.builtin.telescope.defaults.path_display = { "smart" }
+-- lvim.builtin.telescope.defaults.mappings = {
+--   n = {
+--     ["<C-h>"] = actions.move_selection_next,
+--   }
+
+-- }
 
 lvim.builtin.project.active = true
 lvim.builtin.project.patterns = { ".git" }

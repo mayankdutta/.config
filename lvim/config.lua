@@ -1,9 +1,14 @@
 reload("user.lunarvim")
-reload("user.set")
+
+-- reload("user.keymaps.defaults")
+reload("user.keymaps.keymap")
+
+
 reload("user.plugins")
+--
 reload("user.bufferline")
 reload("user.ignore_pattern")
-reload("user.telescope")
+-- reload("user.telescope")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -31,3 +36,8 @@ local emmet_options = {
 	end,
 }
 require("lvim.lsp.manager").setup("emmet_ls", emmet_options)
+
+
+
+
+

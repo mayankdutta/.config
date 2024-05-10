@@ -1,2 +1,1 @@
-au BufReadPost *.wiki set filetype=markdown
-
+" au BufReadPost *.wiki set filetype=markdown
