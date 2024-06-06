@@ -1,12 +1,12 @@
 -- Remap leader and local leader to <Space>
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
-vim.g.maplocalleader = " "
+-- vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+-- vim.g.maplocalleader = " "
 
-vim.opt.updatetime = 250 --Decrease update time
+-- vim.opt.updatetime = 250 --Decrease update time
 vim.opt.signcolumn = "yes" -- Always show sign column
 
 -- Time in milliseconds to wait for a mapped sequence to complete.
-vim.opt.timeoutlen = 300
+-- vim.opt.timeoutlen = 300
 
 vim.opt.clipboard = ""
 vim.opt.relativenumber = true
