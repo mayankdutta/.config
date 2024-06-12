@@ -1,0 +1,77 @@
+[
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-w z": "workspace::ToggleZoom",
+      "ctrl-w t": "terminal_panel::ToggleFocus",
+      "g ]": "editor::GoToDiagnostic",
+      "g [": "editor::GoToPrevDiagnostic",
+      "g r": "editor::FindAllReferences",
+      "shift-k": "editor::Hover",
+      "space l a": "editor::ToggleCodeActions",
+      "space l r": "editor::Rename",
+      "space l f": "editor::Format",
+      "space l l": "diagnostics::Deploy",
+      "space /": "editor::ToggleComments",
+      "space f": "file_finder::Toggle",
+      "space o": "tab_switcher::Toggle",
+      "space e": "workspace::ToggleLeftDock",
+      "space p": "outline::Toggle",
+      "space v": "pane::SplitRight",
+      "space h": "pane::SplitDown",
+      "space q": "pane::CloseActiveItem",
+      "w": "vim::NextSubwordStart",
+      "b": "vim::PreviousSubwordStart",
+      "e": "vim::NextSubwordEnd",
+      "g e": "vim::PreviousSubwordEnd",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j j": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-w z": "workspace::ToggleZoom",
+      "ctrl-w t": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "bindings": {
+      "cmd-i": "tab_switcher::Toggle"
+    }
+  },
+
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space i": "tab_switcher::Toggle"
+    }
+  },
+
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "k": "menu::SelectPrev",
+      "j": "menu::SelectNext",
+      "l": "menu::Confirm",
+      "d": "tab_switcher::CloseSelectedItem",
+      "cmd-shift-i": "menu::SelectPrev",
+      "cmd-backspace": "tab_switcher::CloseSelectedItem"
+    }
+  }
+]
