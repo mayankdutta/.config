@@ -27,6 +27,18 @@ map("n", "<Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Wid
 map({ "v", "n" }, "<leader>y", '"+y', { noremap = true, desc = "copying a line" })
 map("n", "<leader>Y", "gg\"+yG''", { desc = "Copy whole file" })
 
+map({ "i" }, "jj", "<Esc>", { silent = true })
+map({ "i" }, "jk", "<Esc>", { silent = true })
+map({ "i" }, "kj", "<Esc>", { silent = true })
+map({ "i" }, "JJ", "<Esc>", { silent = true })
+map({ "i" }, "JK", "<Esc>", { silent = true })
+map({ "i" }, "KJ", "<Esc>", { silent = true })
+
+map("n", "<S-h>", "^", { noremap = true, silent = true })
+map("n", "<S-l>", "$", { noremap = true, silent = true })
+
+
+
 -- map(
 --   { "n", "i", "v" },
 --   "<C-d>",
