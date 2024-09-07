@@ -38,6 +38,11 @@ map("n", "<S-h>", "^", { noremap = true, silent = true })
 map("n", "<S-l>", "$", { noremap = true, silent = true })
 
 
+map(("n", "<S-h>", "^", {noremap = true, silent = true} ))
+map(("n", "<S-l>", "$", {noremap = true, silent = true} ))
+
+vim.api.nvim_set_keymap("n", "<leader>bo", ":only<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-t>", ":term<CR>", {noremap = true, silent = true})
 
 -- map(
 --   { "n", "i", "v" },
