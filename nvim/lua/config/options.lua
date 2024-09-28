@@ -27,3 +27,6 @@ vim.api.nvim_create_autocmd({"TermOpen", "BufEnter" }, {
 vim.opt.winbar = "%=%m %f"
 vim.opt.clipboard = ""
 vim.b.autoformat = false
+vim.o.timeoutlen = 50
+vim.g.autoformat = false
+vim.go.background = 'dark'

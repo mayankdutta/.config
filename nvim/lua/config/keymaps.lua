@@ -37,12 +37,39 @@ map({ "i" }, "KJ", "<Esc>", { silent = true })
 map("n", "<S-h>", "^", { noremap = true, silent = true })
 map("n", "<S-l>", "$", { noremap = true, silent = true })
 
-
-map(("n", "<S-h>", "^", {noremap = true, silent = true} ))
-map(("n", "<S-l>", "$", {noremap = true, silent = true} ))
+map("n", "J", "mzJ`z", { desc = "" })
 
 vim.api.nvim_set_keymap("n", "<leader>bo", ":only<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<C-t>", ":term<CR>", {noremap = true, silent = true})
+
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>a", function()
+    harpoon:list():add()
+end)
+vim.keymap.set("n", "<leader>H", function()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+
+harpoon:extend({
+    UI_CREATE = function(cx)
+        vim.keymap.set("n", "<C-v>", function()
+            harpoon.ui:select_menu_item({ vsplit = true })
+        end, { buffer = cx.bufnr })
+
+        vim.keymap.set("n", "<C-x>", function()
+            harpoon.ui:select_menu_item({ split = true })
+        end, { buffer = cx.bufnr })
+
+        vim.keymap.set("n", "<C-t>", function()
+            harpoon.ui:select_menu_item({ tabedit = true })
+        end, { buffer = cx.bufnr })
+    end,
+})
+
+map("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })
+map("n", "<leader>h", ":split<CR>", { noremap = true, silent = true })
+map("n", "<leader>ce", ":EslintFixAll<CR>", { noremap = true, silent = true })
+
 
 -- map(
 --   { "n", "i", "v" },
