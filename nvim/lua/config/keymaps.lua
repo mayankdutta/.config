@@ -77,3 +77,6 @@ map("n", "<leader>ce", ":EslintFixAll<CR>", { noremap = true, silent = true })
 --   require("telescope.actions").delete_buffer,
 --   { noremap = true, silent = true, desc = "Deleting Buffer" }
 -- )
+
+map('n', '+', '<C-a>')
+map('n', '-', '<C-x>')
