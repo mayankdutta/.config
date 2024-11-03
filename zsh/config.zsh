@@ -17,6 +17,22 @@ plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/exa"
 
+myArray=(
+    "$HOME/dir1", 
+    "$HOME/dir2"
+)
+
+function fzf_jump_to_nvim() {
+    selected_dirs=$(printf '%s\n' "${myArray[@]}" | fzf)
+    if [[ -n "$selected_dirs" ]]; then
+        cd "$seelcted_dirs" || return 1
+    else 
+        echo "No Directory selected"
+    fi
+}
+
+bindkey -s '^f' 'fzf_jump_to_nvim\n'
+
 # plug "wintermi/zsh-starship"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
