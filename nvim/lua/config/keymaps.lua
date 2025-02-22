@@ -1,4 +1,3 @@
-
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -58,6 +57,8 @@ map("n", "<C-u>", "<C-u>zz")
 
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
+
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 map("n", "<leader>t", function()
   Snacks.terminal()

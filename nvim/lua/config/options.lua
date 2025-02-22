@@ -4,19 +4,19 @@
 
 local map = vim.keymap.set
 
-require("telescope").setup({
-  pickers = {
-    buffers = {
-      show_all_buffers = true,
-      sort_mru = true,
-      mappings = {
-        i = {
-          ["<c-d>"] = "delete_buffer",
-        },
-      },
-    },
-  },
-})
+-- require("telescope").setup({
+--   pickers = {
+--     buffers = {
+--       show_all_buffers = true,
+--       sort_mru = true,
+--       mappings = {
+--         i = {
+--           ["<c-d>"] = "delete_buffer",
+--         },
+--       },
+--     },
+--   },
+-- })
 -- vim.api.nvim_create_autocmd({ "TermOpen", "WinEnter term://*" }, { command = "startinsert" })
 
 vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
@@ -55,4 +55,3 @@ vim.opt.cursorline = false
 -- map("n", ";b", function() harpoon:list():replace_at(2) end)
 -- map("n", ";c", function() harpoon:list():replace_at(3) end)
 -- map("n", ";d", function() harpoon:list():replace_at(4) end)
-
