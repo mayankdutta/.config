@@ -192,4 +192,3 @@ return {
   },
   { "ThePrimeagen/vim-be-good" },
 }
-k
