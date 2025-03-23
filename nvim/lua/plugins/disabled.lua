@@ -16,6 +16,7 @@ return {
       terminal = { enabled = false },
       scroll = { enabled = false },
       animate = { enabled = false },
+      indent = { enabled = false },
     },
   },
 }

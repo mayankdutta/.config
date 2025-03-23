@@ -184,7 +184,12 @@ return {
         "vimdoc",
         "xml",
         "yaml",
+        "css",
       },
+      textobjects = { enabled = true },
+      hightlight = { enable = true },
     },
   },
+  { "ThePrimeagen/vim-be-good" },
 }
+k

@@ -38,7 +38,7 @@ vim.g.autoformat = false
 vim.go.background = "dark"
 vim.opt.sessionoptions = "curdir"
 
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 -- local harpoon = require("harpoon")
 --

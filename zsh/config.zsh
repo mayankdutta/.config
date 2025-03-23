@@ -40,6 +40,12 @@ alias ntm="/Users/mdutt14/.nvm/versions/node/v16.20.2/bin/npm run test:unit -- -
 alias nrm="/Users/mdutt14/.nvm/versions/node/v16.20.2/bin/npm run start"
 alias one="dks && dkr && /Users/mdutt14/.nvm/versions/node/v16.20.2/bin/npm run start"
 
+alias tmux-sessionizer="~/.config/tmux/tmux-sessionizer.sh"
+
+alias one1="cd /Users/mdutt14/lumi/one-app && npm start -- --root-module-name=axp-lumi-root"
+# alias serve="cd /Users/mdutt14/lumi/ && zsh automate.sh"
+
+
 # alias one="cd /Users/mdutt14/lumi/one-app && npm start -- --root-module-name=axp-lumi-root"
 # alias serve="cd /Users/mdutt14/lumi/ && zsh automate.sh"
 
@@ -49,6 +55,5 @@ alias lsa='ls -a'
 alias lt='eza --tree --level=2 --long --icons --git'
 alias lta='lt -a'
 
-/Users/mdutt14/.nvm/versions/node/v16.20.2/bin/npm config set registry https://artifactory.aexp.com/api/npm/npm-virtual
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
