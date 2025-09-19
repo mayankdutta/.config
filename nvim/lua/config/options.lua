@@ -55,3 +55,33 @@ vim.opt.cursorline = true
 -- map("n", ";b", function() harpoon:list():replace_at(2) end)
 -- map("n", ";c", function() harpoon:list():replace_at(3) end)
 -- map("n", ";d", function() harpoon:list():replace_at(4) end)
+
+-- Enabling Git worktree, via primeagen
+-- local WorkTree = require("git-worktree")
+--
+-- local function fzf_worktree()
+--   local fzf = require("fzf-lua")
+--   WorkTree.get_worktrees(function(worktrees)
+--     if not worktrees or #worktrees == 0 then
+--       print("No git worktrees found")
+--       return
+--     end
+--
+--     local choices = {}
+--     for _, worktree in ipairs(worktrees) do
+--       table.insert(choices, {
+--         name = worktree.path,
+--         value = worktree.path,
+--       })
+--     end
+--
+--     fzf.fzf_exec(choices, {
+--       prompt = "Select a worktree: ",
+--       on_select = function(selected)
+--         WorkTree.switch_to_worktree(selected.value)
+--       end,
+--     })
+--   end)
+-- end
+--
+-- vim.keymap.set("n", "<leader>gw", fzf_worktree, { desc = "Switch Git Worktree" })

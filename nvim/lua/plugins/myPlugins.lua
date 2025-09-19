@@ -77,6 +77,24 @@ return {
   },
   {
     "echasnovski/mini.surround",
+    recommended = true,
+    keys = function(_, keys)
+      -- Populate the keys based on the user's options
+      local opts = LazyVim.opts("mini.surround")
+      local mappings = {
+        { opts.mappings.add, desc = "Add Surrounding", mode = { "n", "v" } },
+        { opts.mappings.delete, desc = "Delete Surrounding" },
+        { opts.mappings.find, desc = "Find Right Surrounding" },
+        { opts.mappings.find_left, desc = "Find Left Surrounding" },
+        { opts.mappings.highlight, desc = "Highlight Surrounding" },
+        { opts.mappings.replace, desc = "Replace Surrounding" },
+        { opts.mappings.update_n_lines, desc = "Update `MiniSurround.config.n_lines`" },
+      }
+      mappings = vim.tbl_filter(function(m)
+        return m[1] and #m[1] > 0
+      end, mappings)
+      return vim.list_extend(mappings, keys)
+    end,
     opts = {
       mappings = {
         add = "sa", -- Add surrounding in Normal and Visual modes
@@ -138,7 +156,6 @@ return {
     },
   },
   -- from example.lua
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -177,6 +194,99 @@ return {
     },
   },
   { "ThePrimeagen/vim-be-good" },
+  {
+    "ThePrimeagen/git-worktree.nvim",
+    config = function()
+      local WorkTree = require("git-worktree")
+      local fzf = require("fzf-lua")
+
+      WorkTree.setup({})
+
+      local function pick_or_create_worktree()
+        -- Get existing worktrees
+        local output = vim.fn.systemlist("git worktree list")
+        if vim.v.shell_error ~= 0 then
+          print("Not a git repository")
+          return
+        end
+
+        local choices = { "[+] Create new worktree" }
+        vim.list_extend(choices, output)
+
+        fzf.fzf_exec(choices, {
+          prompt = "Worktrees > ",
+          actions = {
+            ["default"] = function(selected)
+              if not selected or #selected == 0 then
+                return
+              end
+
+              local choice = selected[1]
+
+              -- Case 1: Create new
+              if choice:match("^%[%+%] Create new worktree") then
+                local path = vim.fn.input("New worktree path: ")
+                if path == "" then
+                  print("Cancelled")
+                  return
+                end
+                local branch = vim.fn.input("Branch name: ")
+                if branch == "" then
+                  print("Cancelled")
+                  return
+                end
+                local upstream = vim.fn.input("Upstream (optional): ")
+                if upstream == "" then
+                  upstream = nil
+                end
+
+                WorkTree.create_worktree(path, branch, upstream)
+                return
+              end
+
+              -- Case 2: Switch existing
+              local chosen_path = vim.split(choice, " ")[1] -- first column is path
+              if chosen_path and chosen_path ~= "" then
+                WorkTree.switch_worktree(chosen_path)
+              end
+            end,
+          },
+        })
+      end
+
+      -- Map it (example: <leader>gw)
+      vim.keymap.set("n", "<leader>gw", pick_or_create_worktree, { desc = "Switch/Create Git Worktree (fzf)" })
+    end,
+  },
+
+  -- {
+  --   "ThePrimeagen/git-worktree.nvim",
+  --   opts = function()
+  --     local WorkTree = require("git-worktree")
+  --     local fzf = require("fzf-lua")
+  --     WorkTree.get_worktrees(function(worktrees)
+  --       if not worktrees or #worktrees == 0 then
+  --         print("No git worktrees found")
+  --         return
+  --       end
+  --
+  --       local choices = {}
+  --       for _, worktree in ipairs(worktrees) do
+  --         table.insert(choices, {
+  --           name = worktree.path,
+  --           value = worktree.path,
+  --         })
+  --       end
+  --
+  --       fzf.fzf_exec(choices, {
+  --         prompt = "Select a worktree: ",
+  --         on_select = function(selected)
+  --           WorkTree.switch_to_worktree(selected.value)
+  --         end,
+  --       })
+  --     end)
+  --   end,
+  -- },
   {
     "mason-org/mason.nvim",
     opts = { ensure_installed = { "java-debug-adapter", "java-test" } },

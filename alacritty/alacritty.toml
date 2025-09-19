@@ -6,7 +6,7 @@ startup_mode = 'Maximized'
 opacity = 0.75
 
 [font]
-size = 15
+size = 18
 
 # FiraCode Nerd Font
 normal = { family = "FiraCode Nerd Font", style = "Regular" }
@@ -17,7 +17,7 @@ italic = { family = "FiraCode Nerd Font", style = "Italic" }
 live_config_reload = true
 
 [env]
-TERM = "xterm-256color"
+term = "xterm-256color"
 
 # catpuccin
 [colors.primary]
