@@ -13,9 +13,10 @@ return {
         variant = "moon", -- auto, main, moon, or dawn
       })
       -- AdjustColors()
-      vim.cmd("colorscheme rose-pine")
+      -- vim.cmd("colorscheme rose-pine")
       -- vim.cmd("colorscheme nightfox")
       -- vim.cmd("colorscheme catppuccin-mocha")
+      vim.cmd("colorscheme catppuccin-frappe")
     end,
   },
 

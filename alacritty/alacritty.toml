@@ -2,10 +2,11 @@
 # padding.x = 16
 # padding.y = 14
 decorations = "none" # Removes the window decoration (title bar, etc.)
-startup_mode = 'Fullscreen'
+startup_mode = 'Maximized'
+opacity = 0.75
 
 [font]
-size = 13
+size = 15
 
 # FiraCode Nerd Font
 normal = { family = "FiraCode Nerd Font", style = "Regular" }

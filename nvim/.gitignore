@@ -6,3 +6,4 @@ debug
 foo.*
 *.log
 data
+node_modules

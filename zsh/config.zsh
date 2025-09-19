@@ -2,16 +2,11 @@
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 myDirectories=(
-"$HOME/lumi/axp-lumi-login"
-"$HOME/lumi/axp-lumi-home"
-"$HOME/lumi/axp-lumi-data-market-place/"
-"$HOME/lumi/axp-lumi-use-case-management/"
-"$HOME/lumi/axp-lumi-business-managed-data/"
-"$HOME/lumi/axp-lumi-data-ingestion-management/"
-"$HOME/lumi/axp-lumi-data-transformation-management/"
-"$HOME/lumi/axp-lumi-root/"
-"$HOME/lumi"
 "$HOME/.config/"
 "$HOME/.config/nvim/"
 "$HOME/.config/kitty/"
@@ -23,7 +18,7 @@ myDirectories=(
 )
 
 function fzf_jump_to_nvim() {
-  selected_firs=$(printf '%s\n' "${myDirectories[@]}" | fzf)
+  selected_firs=$(find ~/lumi ~/info ~/projects ~/.config -mindepth 0 -maxdepth 1 -type d | fzf)
 
   if [[ -n "$selected_firs" ]]; then
     cd "$selected_firs" || return 1
@@ -54,6 +49,13 @@ alias ls='eza -lh --group-directories-first --icons --hyperlink'
 alias lsa='ls -a'
 alias lt='eza --tree --level=2 --long --icons --git'
 alias lta='lt -a'
+alias lg='lazygit'
+alias cra='npm create vite@latest'
+alias n='nvim'
 
 # eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+export PATH=$JAVA_HOME/bin:$PATH
 
