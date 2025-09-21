@@ -76,7 +76,7 @@ return {
     "tpope/vim-repeat",
   },
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     recommended = true,
     keys = function(_, keys)
       -- Populate the keys based on the user's options
@@ -177,6 +177,7 @@ return {
         "luadoc",
         "luap",
         "printf",
+        "go",
         "python",
         "query",
         "regex",
@@ -188,9 +189,13 @@ return {
         "xml",
         "yaml",
         "css",
+        "dockerfile", -- Dockerfiles
+        "docker", -- Docker syntax highlighting
+        "zsh",
       },
       textobjects = { enabled = true },
       hightlight = { enable = true },
+      rainbow = { enable = true }, -- Optional: Enable rainbow parentheses (for better readability)
     },
   },
   { "ThePrimeagen/vim-be-good" },
@@ -287,10 +292,10 @@ return {
   --     end)
   --   end,
   -- },
-  {
-    "mason-org/mason.nvim",
-    opts = { ensure_installed = { "java-debug-adapter", "java-test" } },
-  },
+  -- {
+  --   "mason-org/mason.nvim",
+  --   opts = { ensure_installed = { "java-debug-adapter", "java-test" } },
+  -- },
   {
     "folke/snacks.nvim",
     priority = 1000,

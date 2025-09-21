@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
   end,
 })
 
-vim.opt.winbar = "%=%m %f"
+-- vim.opt.winbar = "%=%m %f" -- for top window file name and all.
 vim.opt.clipboard = ""
 
 vim.opt.timeoutlen = 50
