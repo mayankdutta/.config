@@ -4,6 +4,7 @@ function AdjustColors()
 end
 
 return {
+  { "loctvl842/monokai-pro.nvim" },
   {
     "rose-pine/neovim",
     as = "rose-pine",
@@ -16,7 +17,9 @@ return {
       -- vim.cmd("colorscheme rose-pine")
       -- vim.cmd("colorscheme nightfox")
       -- vim.cmd("colorscheme catppuccin-mocha")
-      vim.cmd("colorscheme catppuccin-frappe")
+      -- vim.cmd("colorscheme catppuccin-frappe")
+      -- vim.cmd("colorscheme monokai-pro-octagon")
+      vim.cmd("colorscheme monokai-pro-default")
     end,
   },
 

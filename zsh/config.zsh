@@ -56,5 +56,5 @@ alias cra='npm create vite@latest'
 
 alias n='nvim'
 
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
