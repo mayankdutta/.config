@@ -19,6 +19,16 @@ return {
       scroll = { enabled = false },
       animate = { enabled = false },
       indent = { enabled = false },
+      notifier = { enabled = false },
+    },
+  },
+  {
+    "folke/noice.nvim",
+    opts = {
+      lsp = {
+        hover = { enabled = false },
+        signature = { enabled = false },
+      },
     },
   },
 }

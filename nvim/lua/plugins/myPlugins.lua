@@ -1,19 +1,5 @@
 return {
   {
-    "folke/flash.nvim",
-    keys = {
-      { "s", mode = { "n", "x", "o" }, false },
-      {
-        "<CR>",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
-    },
-  },
-  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     name = "harpoon",
@@ -21,16 +7,7 @@ return {
       menu = {
         width = vim.api.nvim_win_get_width(0) - 4,
       },
-      -- settings = {
-      --   save_on_toggle = true,
-      --   key = function()
-      --     local git_branch  = vim.trim(vim.fn.system("git branch --show-current 2> /dev/null")) or ""
-      --     local cwd = vim.fn.getcwd()
-      --     return git_branch .. cwd
-      --   end,
-      -- },
     },
-
     keys = function()
       local keys = {
         {
@@ -59,22 +36,10 @@ return {
           desc = "Harpoon to File " .. i,
         })
       end
-
-      for i = 1, 5 do
-        table.insert(keys, {
-          "<C-" .. i .. ">",
-          function()
-            require("harpoon"):list():replace_at(i)
-          end,
-          desc = "Harpoon to File " .. i,
-        })
-      end
       return keys
     end,
   },
-  {
-    "tpope/vim-repeat",
-  },
+  { "tpope/vim-repeat" },
   {
     "nvim-mini/mini.surround",
     recommended = true,
@@ -106,36 +71,30 @@ return {
         update_n_lines = "sn", -- Update `n_lines`
       },
     },
-    {
-      "nvim-neo-tree/neo-tree.nvim",
-      dependencies = {
-        "s1n7ax/nvim-window-picker",
-        opts = function()
-          require("window-picker").setup({
-
-            hint = "floating-big-letter",
-            show_prompt = false,
-
-            filter_rules = {
-              autoselect_one = false,
-            },
-          })
-        end,
-      },
-    },
-    {
-      "nvimtools/none-ls.nvim",
-      optional = true,
-      opts = function(_, opts)
-        local nls = require("null-ls")
-        opts.sources = opts.sources or {}
-        table.insert(opts.sources, nls.builtins.formatting.prettier)
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "s1n7ax/nvim-window-picker",
+      opts = function()
+        require("window-picker").setup({
+          hint = "floating-big-letter",
+          show_prompt = false,
+          filter_rules = {
+            autoselect_one = false,
+          },
+        })
       end,
     },
   },
   {
-    "rcarriga/nvim-notify",
-    enabled = false,
+    "nvimtools/none-ls.nvim",
+    optional = true,
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, nls.builtins.formatting.prettier)
+    end,
   },
   {
     "jiaoshijie/undotree",
@@ -305,9 +264,71 @@ return {
         enabled = true,
         exclude = { -- add folder names here to exclude
           ".git",
-          "node_modules",
         },
       },
     },
+  },
+  {
+    "ibhagwan/fzf-lua",
+    opts = function(_, opts)
+      local config = require("fzf-lua.config")
+      local actions = require("fzf-lua.actions")
+
+      -- Configure file ignore patterns
+      config.defaults.file_ignore_patterns = {
+        "node_modules",
+        "dist",
+        ".next",
+        ".git",
+        ".gitlab",
+        "build",
+        "target",
+      }
+
+      -- You can also set other options here, for example:
+      -- config.defaults.keymap.fzf["ctrl-q"] = "select-all+accept"
+      -- config.defaults.keymap.fzf["ctrl-u"] = "half-page-up"
+      -- config.defaults.keymap.fzf["ctrl-d"] = "half-page-down"
+      -- config.defaults.keymap.fzf["ctrl-x"] = "jump"
+    end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function(_, opts)
+      -- 1. Enforce Rounded Separators
+      opts.options.section_separators = { left = "", right = "" }
+      opts.options.component_separators = { left = "|", right = "|" }
+
+      -- 2. Center Section (lualine_c)
+      -- Removed: File Icon (logo) and Breadcrumbs (function context)
+      -- Added: Just the filename
+      opts.sections.lualine_c = {
+        {
+          "filename",
+          path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+          symbols = {
+            modified = " ",
+            readonly = " ",
+            unnamed = "",
+          },
+        },
+      }
+
+      -- 3. Right Section (lualine_x)
+      -- Removed: "Cube" (lazy.nvim updates)
+      -- Added: Diagnostics (Error/Warning signs)
+      opts.sections.lualine_x = {
+        {
+          "diagnostics",
+          symbols = { error = " ", warn = " ", info = " ", hint = " " },
+        },
+      }
+
+      -- 4. Far Right Sections (lualine_y & lualine_z)
+      -- Removed: Progress (%), Location (42:2), and Time
+      opts.sections.lualine_y = {}
+      opts.sections.lualine_z = {}
+    end,
   },
 }

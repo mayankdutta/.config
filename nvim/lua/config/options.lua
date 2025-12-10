@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
   end,
 })
 
--- vim.opt.winbar = "%=%m %f" -- for top window file name and all.
+vim.opt.winbar = "%=%m %f" -- for top window file name and all.
 vim.opt.clipboard = ""
 
 vim.opt.timeoutlen = 50
@@ -39,22 +39,7 @@ vim.go.background = "dark"
 vim.opt.sessionoptions = "curdir"
 
 vim.opt.cursorline = true
-
--- local harpoon = require("harpoon")
---
--- map("n", "<leader>a", function() harpoon:list():add() end)
---
--- map("n", "<leader>H>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
---
--- map("n", ",a", function() harpoon:list():select(1) end)
--- map("n", ",b", function() harpoon:list():select(2) end)
--- map("n", ",c", function() harpoon:list():select(3) end)
--- map("n", ",d", function() harpoon:list():select(4) end)
---
--- map("n", ";a", function() harpoon:list():replace_at(1) end)
--- map("n", ";b", function() harpoon:list():replace_at(2) end)
--- map("n", ";c", function() harpoon:list():replace_at(3) end)
--- map("n", ";d", function() harpoon:list():replace_at(4) end)
+vim.o.foldenable = false
 
 -- Enabling Git worktree, via primeagen
 -- local WorkTree = require("git-worktree")

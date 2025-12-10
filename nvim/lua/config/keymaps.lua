@@ -40,7 +40,7 @@ map("n", "J", "mzJ`z", { desc = "" }) -- keep the cursor at the beginning while 
 -- )
 
 vim.api.nvim_set_keymap("n", "<leader>bo", " :only<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>t", " :term<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>t", " :term<CR>", { noremap = true, silent = true })
 
 map("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })
 map("n", "<leader>h", ":split<CR>", { noremap = true, silent = true })

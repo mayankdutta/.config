@@ -4,6 +4,15 @@ function AdjustColors()
 end
 
 return {
+  {
+    "uhs-robert/oasis.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("oasis").setup() -- (see Configuration below for all customization options)
+      -- vim.cmd.colorscheme("oasis-lagoon") -- After setup, apply theme (or any style like "oasis-night")
+    end,
+  },
   { "loctvl842/monokai-pro.nvim" },
   {
     "rose-pine/neovim",
@@ -18,8 +27,21 @@ return {
       -- vim.cmd("colorscheme nightfox")
       -- vim.cmd("colorscheme catppuccin-mocha")
       -- vim.cmd("colorscheme catppuccin-frappe")
+      -- vim.cmd("colorscheme catppuccin-latte")
       -- vim.cmd("colorscheme monokai-pro-octagon")
-      vim.cmd("colorscheme monokai-pro-default")
+      -- vim.cmd("colorscheme monokai-pro-default")
+      vim.cmd("colorscheme everforest")
+    end,
+  },
+  {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("everforest").setup({
+        -- Your config here
+      })
     end,
   },
 
