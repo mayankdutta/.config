@@ -14,13 +14,6 @@ map("n", "<Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Wid
 map({ "v", "n" }, "<leader>y", '"+y', { noremap = true, desc = "copying a line" })
 map("n", "<leader>Y", "gg\"+yG''", { desc = "Copy whole file" })
 
--- map({ "i" }, "jj", "<Esc>", { silent = true })
--- map({ "i" }, "kj", "<Esc>", { silent = true })
--- map({ "i" }, "jk", "<Esc>", { silent = true })
--- map({ "i" }, "KJ", "<Esc>", { silent = true })
--- map({ "i" }, "JJ", "<Esc>", { silent = true })
--- map({ "i" }, "JK", "<Esc>", { silent = true })
-
 vim.keymap.del({ "n", "i", "v" }, "<A-j>")
 vim.keymap.del({ "n", "i", "v" }, "<A-k>")
 
