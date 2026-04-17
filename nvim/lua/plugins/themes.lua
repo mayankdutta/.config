@@ -4,6 +4,9 @@ function AdjustColors()
 end
 
 return {
+  -- {
+  --   "p00f/alabaster.nvim",
+  -- },
   {
     "uhs-robert/oasis.nvim",
     lazy = false,
@@ -30,7 +33,8 @@ return {
       -- vim.cmd("colorscheme catppuccin-latte")
       -- vim.cmd("colorscheme monokai-pro-octagon")
       -- vim.cmd("colorscheme monokai-pro-default")
-      vim.cmd("colorscheme everforest")
+      -- vim.cmd("colorscheme everforest")
+      vim.cmd("colorscheme kanagawa-dragon")
     end,
   },
   {
@@ -72,7 +76,6 @@ return {
 
       -- vim.cmd.colorscheme("kanagawa-lotus")
       -- vim.cmd.colorscheme("kanagawa-wave")
-      -- vim.cmd.colorscheme("kanagawa-dragon")
       -- vim.cmd.colorscheme("vividchalk")
       -- vim.cmd.colorscheme("bamboo")
     end,

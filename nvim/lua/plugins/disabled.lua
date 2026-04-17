@@ -20,6 +20,21 @@ return {
       animate = { enabled = false },
       indent = { enabled = false },
       notifier = { enabled = false },
+      picker = {
+        enabled = true,
+        exclude = { ".git", "node_modules", "dist", ".next" },
+        layout = {
+          hidden = { "preview" }, -- hide preview by default
+          -- preset = "ivy_split", -- or "vscode", "dropdown", "vertical", etc.
+        },
+        win = {
+          input = {
+            keys = {
+              ["<c-o>"] = { "toggle_preview", mode = { "i", "n" } },
+            },
+          },
+        },
+      },
     },
   },
   {

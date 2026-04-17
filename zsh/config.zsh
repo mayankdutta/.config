@@ -3,30 +3,37 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
   tmux new-session -A -s main
 fi
 
+# History settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS      # skip duplicate consecutive commands
+setopt HIST_IGNORE_ALL_DUPS  # remove older duplicate from history
+setopt SHARE_HISTORY         # share history across all zsh sessions
+setopt APPEND_HISTORY        # append instead of overwrite
 
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-export PATH=$JAVA_HOME/bin:$PATH
+# export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+# export PATH=$JAVA_HOME/bin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+
 myDirectories=(
-"$HOME/.config/"
-"$HOME/.config/nvim/"
-"$HOME/.config/kitty/"
-"$HOME/.config/tmux/"
-"$HOME/.config/fish"
-"$HOME/.config/alacritty/"
-"$HOME/"
-"$HOME/projects/"
+  "$HOME/.config/"
+  "$HOME/projects/"
+  "$HOME/translations/"
+  "$HOME/brevo/"
+  "$HOME/"
+  "$HOME/brevo/marketing-reports-frontend/apps/"
 )
 
 function fzf_jump_to_nvim() {
-  selected_firs=$(find ~/lumi ~/info ~/projects ~/.config -mindepth 0 -maxdepth 1 -type d | fzf)
+  selected_firs=$(find "${myDirectories[@]}" -mindepth 0 -maxdepth 1 -type d | fzf)
 
   if [[ -n "$selected_firs" ]]; then
     cd "$selected_firs" || return 1
@@ -58,3 +65,13 @@ alias n='nvim'
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+

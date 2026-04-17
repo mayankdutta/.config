@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 
+myDirectories=(
+  "$HOME/.config/"
+  "$HOME/projects/"
+  "$HOME/translations/"
+  "$HOME/brevo/"
+  "$HOME/"
+  "$HOME/brevo/marketing-reports-frontend/apps/"
+)
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find ~/info ~/projects ~/.config -mindepth 0 -maxdepth 1 -type d | fzf)
+  selected=$(find "${myDirectories[@]}" -mindepth 0 -maxdepth 1 -type d | fzf)
+
 fi
 
 if [[ -z $selected ]]; then

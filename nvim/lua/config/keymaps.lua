@@ -53,9 +53,6 @@ map("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-map("n", "<C-\\>", function()
-  Snacks.terminal()
-end, { desc = "Toggle Terminal" })
 
 map("n", "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>", { desc = "LSP Document Symbols" })
 map("n", "<leader>fw", function()
