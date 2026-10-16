@@ -5,7 +5,7 @@
 -- vim.opt.winbar = "%=%m %f" -- for top window file name and all.
 vim.opt.clipboard = ""
 
-vim.opt.timeoutlen = 50
+vim.opt.timeoutlen = 250 -- ms to wait for next key in a mapping; was 50 which silently broke <leader> sequences
 vim.opt.updatetime = 50
 
 vim.g.autoformat = false
@@ -14,3 +14,5 @@ vim.opt.sessionoptions = "curdir"
 
 vim.opt.cursorline = true
 vim.o.foldenable = false
+
+vim.opt.scrolloff = 8

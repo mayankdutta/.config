@@ -87,15 +87,9 @@ return {
       end,
     },
   },
-  {
-    "nvimtools/none-ls.nvim",
-    optional = true,
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.prettier)
-    end,
-  },
+  -- Removed: none-ls + prettier. LazyVim's `extras.formatting.prettier`
+  -- already wires Prettier through conform.nvim — keeping both caused
+  -- duplicate format-on-save sources.
   {
     "jiaoshijie/undotree",
     dependencies = "nvim-lua/plenary.nvim",
@@ -148,10 +142,17 @@ return {
         "css",
         "dockerfile", -- Dockerfiles
         "zsh",
+        "latex",
+        "norg",
+        "scss",
+        "svelte",
+        "typst",
+        "vue",
       },
       textobjects = { enabled = true },
       highlight = { enable = true },
-      rainbow = { enable = true }, -- Optional: Enable rainbow parentheses (for better readability)
+      -- Removed: `rainbow` is not a built-in nvim-treesitter option (it
+      -- belongs to HiPhish/rainbow-delimiters.nvim, which is not installed).
     },
   },
   { "ThePrimeagen/vim-be-good" },
@@ -301,8 +302,31 @@ return {
 
       -- 3. Right Section (lualine_x)
       -- Removed: "Cube" (lazy.nvim updates)
-      -- Added: Diagnostics (Error/Warning signs)
+      -- Added: Macro recording indicator, Diagnostics (Error/Warning signs)
+      --
+      -- On the macro indicator: Neovim reports `recording @q` through the
+      -- `msg_showmode` UI event, but noice's default routes skip that event
+      -- outright, so nothing ever reaches the cmdline. LazyVim compensated
+      -- with a `noice.api.status.mode` component in this very section --
+      -- assigning lualine_x wholesale (rather than inserting into it) dropped
+      -- that component. Rather than restore the noice one, read the register
+      -- directly: one less dependency, and we own the label. Same approach
+      -- AstroNvim takes in its macro_recording provider.
+      --
+      -- Needs the RecordingEnter/RecordingLeave autocmds in config/autocmds.lua
+      -- to redraw promptly; lualine's own statusline poll is 1000ms.
       opts.sections.lualine_x = {
+        {
+          function()
+            return "  REC @" .. vim.fn.reg_recording()
+          end,
+          cond = function()
+            return vim.fn.reg_recording() ~= ""
+          end,
+          color = function()
+            return { fg = Snacks.util.color("Constant"), gui = "bold" }
+          end,
+        },
         {
           "diagnostics",
           symbols = { error = " ", warn = " ", info = " ", hint = " " },
@@ -314,5 +338,35 @@ return {
       opts.sections.lualine_y = {}
       opts.sections.lualine_z = {}
     end,
+  },
+  -- REST client: open any .http file, place cursor on a request, <leader>Rs to send.
+  -- Useful for hitting your Node/Go APIs without leaving the editor.
+  {
+    "mistweaverco/kulala.nvim",
+    ft = { "http", "rest" },
+    keys = {
+      { "<leader>Rs", function() require("kulala").run() end, desc = "Send request" },
+      { "<leader>Ra", function() require("kulala").run_all() end, desc = "Send all requests" },
+      { "<leader>Rr", function() require("kulala").replay() end, desc = "Replay last request" },
+      { "<leader>Re", function() require("kulala").set_selected_env() end, desc = "Select env" },
+    },
+    opts = {
+      global_keymaps = false,
+      default_view = "body",
+    },
+  },
+  -- Emmet: expand abbreviations like `div.foo>span*3` in JSX/HTML/CSS.
+  -- Workflow: type the abbreviation, visual-select it, press <C-y> to expand.
+  {
+    "olrtg/nvim-emmet",
+    ft = { "html", "css", "scss", "javascriptreact", "typescriptreact", "vue", "svelte" },
+    keys = {
+      {
+        "<C-y>",
+        function() require("nvim-emmet").wrap_with_abbreviation() end,
+        mode = { "n", "v" },
+        desc = "Emmet: wrap with abbreviation",
+      },
+    },
   },
 }
