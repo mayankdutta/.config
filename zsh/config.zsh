@@ -1,7 +1,7 @@
 # auto-start tmux if not already inside one
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  tmux new-session -A -s main
-fi
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#   tmux new-session -A -s main
+# fi
 
 # History settings
 HISTFILE=~/.zsh_history
