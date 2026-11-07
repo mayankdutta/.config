@@ -1,0 +1,85 @@
+font-family = "Maple Mono NF"
+font-size = 19
+font-thicken = true
+
+# Kanagawa Dragon
+# Ported from kitty theme (rebelot/kanagawa.nvim, Dragon variant)
+background = 181616
+foreground = c5c9c5
+cursor-color = c5c9c5
+cursor-text = 181616
+selection-foreground = c8c093
+selection-background = 2d4f67
+
+palette = 0=#0d0c0c
+palette = 1=#c4746e
+palette = 2=#8a9a7b
+palette = 3=#c4b28a
+palette = 4=#8ba4b0
+palette = 5=#a292a3
+palette = 6=#8ea4a2
+palette = 7=#c8c093
+palette = 8=#a6a69c
+palette = 9=#e46876
+palette = 10=#87a987
+palette = 11=#e6c384
+palette = 12=#7fb4ca
+palette = 13=#938aa9
+palette = 14=#7aa89f
+palette = 15=#c5c9c5
+
+cursor-style = block
+cursor-style-blink = false
+
+scrollback-limit = 30000
+
+# Initial window size (in cells)
+window-width = 110
+window-height = 30
+
+shell-integration = zsh
+shell-integration-features = ssh-terminfo,ssh-env
+
+# Trade tear-free rendering for lower typing latency (only affects new windows)
+window-vsync = false
+
+window-padding-x = 0
+window-padding-y = 0
+window-decoration = false
+
+macos-titlebar-style = tabs
+macos-option-as-alt = false
+
+copy-on-select = true
+mouse-hide-while-typing = true
+
+link-url = true
+
+adjust-cell-height = 12%
+
+keybind = super+n=new_window
+keybind = super+t=new_tab
+keybind = super+shift+d=new_split:right
+keybind = super+right_bracket=next_tab
+keybind = super+left_bracket=previous_tab
+keybind = super+k=clear_screen
+keybind = super+w=close_surface
+keybind = super+1=goto_tab:1
+keybind = super+2=goto_tab:2
+keybind = super+3=goto_tab:3
+keybind = super+4=goto_tab:4
+keybind = super+5=goto_tab:5
+keybind = super+6=goto_tab:6
+keybind = super+7=goto_tab:7
+keybind = super+8=goto_tab:8
+keybind = super+9=goto_tab:9
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+# NOTE: these two shadow the shell's EOF (ctrl+d) and job-suspend (ctrl+z);
+# delete them if you'd rather keep those shell behaviors
+# keybind = ctrl+d=new_split:right
+# keybind = ctrl+z=close_surface
+# keybind = super+shift+enter=toggle_fullscreen
+# keybind = ctrl+shift+equal=increase_font_size:2
+# keybind = ctrl+shift+minus=decrease_font_size:2
+keybind = ctrl+shift+backspace=reset_font_size
