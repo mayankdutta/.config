@@ -60,35 +60,50 @@ rex.bind(P .. "shift+j", "pane.move_to_tab")
 -- ------------------------------------------------------------------------------
 -- Sessions, finding, config
 -- ------------------------------------------------------------------------------
-rex.bind(P .. "s", "session.switch")
 rex.bind(P .. "w", "pane.go_to")
--- Sessionizer (port of ~/.config/tmux/tmux-sessionizer.sh): fzf over project
--- folders in a temporary bottom split, then jump to the session labelled after
--- the folder, creating it first if needed. The switch needs Remote Control on
--- (Settings > Server), since the request comes from the script, not the app.
+
+-- fzf pickers (~/.config/rex/*.sh) run in a temporary bottom split. Switching
+-- sessions from them needs Remote Control on (Settings > Server), since the
+-- request comes from the script, not the app.
 -- The full rex path goes through the "Current" link, so it survives updates.
 local HOME = os.getenv("HOME")
 local REX = HOME .. "/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS/rex"
 
-rex.action{
-  name  = "sessionizer",
-  title = "Sessionizer",
-  run   = function(ctx)
-    -- `rex run` returns as soon as the split exists, so the action finishes
-    -- well inside Rex's 30 s limit while fzf waits for you.
-    -- The action runs inside the server, which has no "current" session, so
-    -- anchor the split on the session and pane the key was pressed in.
-    local r, err = rex.exec({ REX, "run",
-                              "-s", ctx.session_id, "-b", ctx.block_id,
-                              "--split=below", "--ratio", "40", "--",
-                              HOME .. "/.config/rex/rex-sessionizer.sh" })
-    -- Surface failures instead of silently doing nothing.
-    if err ~= nil then error(err, 0) end
-    if not r.ok then error("rex run failed: " .. r.stderr, 0) end
-    return r
-  end,
-}
+local function picker_action(name, title, script)
+  rex.action{
+    name  = name,
+    title = title,
+    run   = function(ctx)
+      -- `rex run` returns as soon as the split exists, so the action finishes
+      -- well inside Rex's 30 s limit while fzf waits for you.
+      -- The action runs inside the server, which has no "current" session, so
+      -- anchor the split on the session and pane the key was pressed in.
+      local r, err = rex.exec({ REX, "run",
+                                "-s", ctx.session_id, "-b", ctx.block_id,
+                                "--split=below", "--ratio", "40", "--",
+                                HOME .. "/.config/rex/" .. script })
+      -- Surface failures instead of silently doing nothing.
+      if err ~= nil then error(err, 0) end
+      if not r.ok then error("rex run failed: " .. r.stderr, 0) end
+      return r
+    end,
+  }
+end
+
+-- Sessionizer (port of ~/.config/tmux/tmux-sessionizer.sh): fzf over project
+-- folders, then jump to the session labelled after the folder, creating it
+-- first if needed.
+picker_action("sessionizer", "Sessionizer", "rex-sessionizer.sh")
 rex.bind(P .. "f", "sessionizer")
+
+-- Session picker: Enter switches, Ctrl+X kills the highlighted session.
+-- Replaces Rex's Cmd+K picker here because that one has no close key.
+-- Cmd+K still opens Rex's own picker.
+picker_action("session_picker", "Session Picker", "rex-sessions.sh")
+rex.bind(P .. "s", "session_picker")
+
+-- Close the session you are in (the picker refuses to kill its own session).
+rex.bind(P .. "shift+x", "session.close")
 -- Rex has no keyboard copy mode (tmux's [ with vi keys); Find is the closest.
 -- TODO: rebind to a copy mode if Rex ships one.
 rex.bind(P .. "[", "client.find.open")
