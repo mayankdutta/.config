@@ -7,3 +7,7 @@ alias lvim '~/.local/bin/lvim'
 ulimit -n 1024
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/Users/mayanksharma/.local/bin" $PATH
