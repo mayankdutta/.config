@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Workspace.animationStyle</key>
+	<string>off</string>
+	<key>Workspace.cursorShadersEnabled</key>
+	<false/>
+	<key>Workspace.darkThemeID</key>
+	<string>merino-dark</string>
+	<key>Workspace.experiments.usesNewQuickSwitcher</key>
+	<true/>
+	<key>Workspace.inactivePaneFadeMode</key>
+	<string>both</string>
+	<key>Workspace.interfaceStyle</key>
+	<string>useTheme</string>
+	<key>Workspace.lightThemeID</key>
+	<string>merino-light</string>
+	<key>Workspace.paneDensity</key>
+	<string>comfortable</string>
+	<key>Workspace.showsPaneHeaders</key>
+	<false/>
+	<key>Workspace.showsWindowOnLaunch</key>
+	<false/>
+	<key>Workspace.sidebarCollapsed</key>
+	<true/>
+	<key>Workspace.sidebarPosition</key>
+	<string>left</string>
+	<key>Workspace.sidebarShowsActivity</key>
+	<false/>
+	<key>Workspace.tabIconTintMode</key>
+	<string>off</string>
+	<key>Workspace.tabStyle</key>
+	<string>vertical</string>
+	<key>Workspace.terminalCopyOnSelect</key>
+	<true/>
+	<key>Workspace.terminalCustomSchemeLinks</key>
+	<string>ask</string>
+	<key>Workspace.terminalFontName</key>
+	<string>Maple Mono NF</string>
+	<key>Workspace.terminalFontPointSize</key>
+	<real>19.0</real>
+	<key>Workspace.terminalFontSmoothing</key>
+	<true/>
+	<key>Workspace.terminalImproveTextContrast</key>
+	<true/>
+	<key>Workspace.tintsPanesWithProgramBackground</key>
+	<true/>
+	<key>Workspace.usesStandardInactiveWindowPaneStyles</key>
+	<true/>
+</dict>
+</plist>
