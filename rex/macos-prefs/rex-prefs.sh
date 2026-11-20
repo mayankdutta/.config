@@ -5,7 +5,7 @@
 # Rex keeps key bindings in ~/.config/rex/init.lua, but everything set in its
 # Settings window (theme, font, tab style, sidebar...) lives in the macOS
 # defaults domain com.superlogical.rex. This copies the portable Workspace.*
-# settings into prefs.plist next to this script so they travel with the dotfiles.
+# settings, plus Remote Control (see EXTRA), into prefs.plist next to this script so they travel with the dotfiles.
 #
 #   rex-prefs.sh export   # this Mac     -> prefs.plist
 #   rex-prefs.sh import   # prefs.plist  -> this Mac (quit Rex first)
@@ -30,11 +30,14 @@ import plistlib, sys
 mode, path = sys.argv[1], sys.argv[2]
 SKIP = {"Workspace.lastFocusedSession", "Workspace.openWindows",
         "Workspace.programActivitySeen"}
+# Settings outside Workspace.* that init.lua depends on: the fzf pickers
+# switch sessions through rex do, which needs Remote Control on.
+EXTRA = {"rex.client.remoteControl"}
 current = plistlib.loads(sys.stdin.buffer.read())  # pipes are not seekable
 
 if mode == "export":
     keep = {k: v for k, v in current.items()
-            if k.startswith("Workspace.") and k not in SKIP}
+            if (k.startswith("Workspace.") or k in EXTRA) and k not in SKIP}
     with open(path, "wb") as f:
         plistlib.dump(keep, f, sort_keys=True)
     print(f"Exported {len(keep)} settings to {path}")

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Workspace.activityGrouping</key>
+	<string>priority</string>
+	<key>Workspace.activityGroupingResetToPriority</key>
+	<true/>
 	<key>Workspace.animationStyle</key>
 	<string>off</string>
 	<key>Workspace.cursorShadersEnabled</key>
@@ -17,7 +21,7 @@
 	<key>Workspace.lightThemeID</key>
 	<string>merino-light</string>
 	<key>Workspace.paneDensity</key>
-	<string>comfortable</string>
+	<string>compact</string>
 	<key>Workspace.showsPaneHeaders</key>
 	<false/>
 	<key>Workspace.showsWindowOnLaunch</key>
@@ -46,7 +50,11 @@
 	<true/>
 	<key>Workspace.tintsPanesWithProgramBackground</key>
 	<true/>
+	<key>Workspace.toolbarBehavior</key>
+	<string>hidden</string>
 	<key>Workspace.usesStandardInactiveWindowPaneStyles</key>
+	<true/>
+	<key>rex.client.remoteControl</key>
 	<true/>
 </dict>
 </plist>
