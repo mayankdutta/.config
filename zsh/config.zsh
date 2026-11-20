@@ -26,10 +26,7 @@ export NVM_DIR="$HOME/.nvm"
 myDirectories=(
   "$HOME/.config/"
   "$HOME/projects/"
-  "$HOME/translations/"
-  "$HOME/brevo/"
   "$HOME/"
-  "$HOME/brevo/marketing-reports-frontend/apps/"
 )
 
 function fzf_jump_to_nvim() {
