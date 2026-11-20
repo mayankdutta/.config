@@ -13,17 +13,22 @@ set -euo pipefail
 myDirectories=(
   "$HOME/.config/"
   "$HOME/projects/"
-  "$HOME/translations/"
-  "$HOME/brevo/"
   "$HOME/"
-  "$HOME/brevo/marketing-reports-frontend/apps/"
 )
 
 # A folder passed as an argument skips the picker, as in the tmux version.
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find "${myDirectories[@]}" -mindepth 0 -maxdepth 1 -type d 2>/dev/null | fzf) || exit 0
+  # find exits 1 when any listed folder is missing, and `2>/dev/null` hides the
+  # reason. Under `set -o pipefail` that status survives the pipe into fzf, so
+  # `|| exit 0` below would cancel the picker *after* a successful choice: the
+  # split closes and no session is created. Hand find only folders that exist.
+  existing=()
+  for dir in "${myDirectories[@]}"; do
+    [[ -d $dir ]] && existing+=("$dir")
+  done
+  selected=$(find "${existing[@]}" -mindepth 0 -maxdepth 1 -type d 2>/dev/null | fzf) || exit 0
 fi
 [[ -z $selected ]] && exit 0
 

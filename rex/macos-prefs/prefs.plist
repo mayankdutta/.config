@@ -22,6 +22,10 @@
 	<string>merino-light</string>
 	<key>Workspace.paneDensity</key>
 	<string>compact</string>
+	<key>Workspace.paneHeaderVisibility</key>
+	<string>never</string>
+	<key>Workspace.showsActivePaneBorder</key>
+	<true/>
 	<key>Workspace.showsPaneHeaders</key>
 	<false/>
 	<key>Workspace.showsWindowOnLaunch</key>

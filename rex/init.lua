@@ -104,8 +104,8 @@ rex.bind(P .. "s", "session_picker")
 
 -- Close the session you are in (the picker refuses to kill its own session).
 rex.bind(P .. "shift+x", "session.close")
--- Rex has no keyboard copy mode (tmux's [ with vi keys); Find is the closest.
--- TODO: rebind to a copy mode if Rex ships one.
+-- Rex ships a copy mode (pane.copy_mode.*, 12 actions), but it brings its own
+-- key table, so binding it here would need that table mirrored. Find stays.
 rex.bind(P .. "[", "client.find.open")
 rex.bind(P .. "ctrl+r", "client.config.reload")
 
@@ -122,6 +122,7 @@ rex.bind("resize/k", "pane.resize", { direction = "up" })
 rex.bind("resize/l", "pane.resize", { direction = "right" })
 rex.bind("resize/=", "pane.balance")
 rex.bind("resize/enter", "client.mode.exit")
+rex.bind("resize/esc", "client.mode.exit")
 
 -- ==============================================================================
 -- Smart Ctrl+h/j/k/l (vim-tmux-navigator style)
