@@ -14,6 +14,7 @@ myDirectories=(
   "$HOME/.config/"
   "$HOME/projects/"
   "$HOME/"
+  "$HOME/vhub/"
 )
 
 # A folder passed as an argument skips the picker, as in the tmux version.

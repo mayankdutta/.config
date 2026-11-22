@@ -27,6 +27,7 @@ myDirectories=(
   "$HOME/.config/"
   "$HOME/projects/"
   "$HOME/"
+  "$HOME/vhub/"
 )
 
 function fzf_jump_to_nvim() {
